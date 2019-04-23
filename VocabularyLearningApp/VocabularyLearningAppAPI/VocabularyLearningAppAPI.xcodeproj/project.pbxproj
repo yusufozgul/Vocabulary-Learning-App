@@ -10,7 +10,7 @@
 		88C4E8ED226EFCDD0008382C /* VocabularyLearningAppAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C4E8E3226EFCDD0008382C /* VocabularyLearningAppAPI.framework */; };
 		88C4E8F2226EFCDD0008382C /* VocabularyLearningAppAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E8F1226EFCDD0008382C /* VocabularyLearningAppAPITests.swift */; };
 		88C4E8F4226EFCDD0008382C /* VocabularyLearningAppAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 88C4E8E6226EFCDD0008382C /* VocabularyLearningAppAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		88C4E900226F04F60008382C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88C4E8FF226F04F60008382C /* GoogleService-Info.plist */; };
+		88C4E904226F070B0008382C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88C4E903226F070B0008382C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +30,7 @@
 		88C4E8EC226EFCDD0008382C /* VocabularyLearningAppAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabularyLearningAppAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C4E8F1226EFCDD0008382C /* VocabularyLearningAppAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyLearningAppAPITests.swift; sourceTree = "<group>"; };
 		88C4E8F3226EFCDD0008382C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88C4E8FF226F04F60008382C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		88C4E903226F070B0008382C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../VocabularyLearningApp/VocabularyLearningApp/Resource/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 		88C4E8D9226EFCDD0008382C = {
 			isa = PBXGroup;
 			children = (
-				88C4E8FF226F04F60008382C /* GoogleService-Info.plist */,
+				88C4E903226F070B0008382C /* GoogleService-Info.plist */,
 				88C4E8E5226EFCDD0008382C /* VocabularyLearningAppAPI */,
 				88C4E8F0226EFCDD0008382C /* VocabularyLearningAppAPITests */,
 				88C4E8E4226EFCDD0008382C /* Products */,
@@ -180,7 +180,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88C4E900226F04F60008382C /* GoogleService-Info.plist in Resources */,
+				88C4E904226F070B0008382C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

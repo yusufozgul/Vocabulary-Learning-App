@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		88C4E87D226EFB870008382C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E87C226EFB870008382C /* AppDelegate.swift */; };
-		88C4E87F226EFB870008382C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E87E226EFB870008382C /* FirstViewController.swift */; };
-		88C4E881226EFB870008382C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E880226EFB870008382C /* SecondViewController.swift */; };
+		88C4E87F226EFB870008382C /* LearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E87E226EFB870008382C /* LearnVC.swift */; };
+		88C4E881226EFB870008382C /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E880226EFB870008382C /* TestVC.swift */; };
 		88C4E884226EFB870008382C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C4E882226EFB870008382C /* Main.storyboard */; };
 		88C4E886226EFB880008382C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88C4E885226EFB880008382C /* Assets.xcassets */; };
 		88C4E889226EFB880008382C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C4E887226EFB880008382C /* LaunchScreen.storyboard */; };
@@ -37,8 +37,8 @@
 /* Begin PBXFileReference section */
 		88C4E879226EFB870008382C /* VocabularyLearningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VocabularyLearningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C4E87C226EFB870008382C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		88C4E87E226EFB870008382C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		88C4E880226EFB870008382C /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		88C4E87E226EFB870008382C /* LearnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnVC.swift; sourceTree = "<group>"; };
+		88C4E880226EFB870008382C /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		88C4E883226EFB870008382C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		88C4E885226EFB880008382C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88C4E888226EFB880008382C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +49,7 @@
 		88C4E89A226EFB890008382C /* VocabularyLearningAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabularyLearningAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C4E89E226EFB890008382C /* VocabularyLearningAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyLearningAppUITests.swift; sourceTree = "<group>"; };
 		88C4E8A0226EFB890008382C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88C4E901226F06F60008382C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +100,10 @@
 		88C4E87B226EFB870008382C /* VocabularyLearningApp */ = {
 			isa = PBXGroup;
 			children = (
-				88C4E87C226EFB870008382C /* AppDelegate.swift */,
-				88C4E87E226EFB870008382C /* FirstViewController.swift */,
-				88C4E880226EFB870008382C /* SecondViewController.swift */,
-				88C4E882226EFB870008382C /* Main.storyboard */,
-				88C4E885226EFB880008382C /* Assets.xcassets */,
-				88C4E887226EFB880008382C /* LaunchScreen.storyboard */,
-				88C4E88A226EFB880008382C /* Info.plist */,
+				88C4E902226F06FB0008382C /* Resource */,
+				88C4E905226F07270008382C /* Views */,
+				88C4E906226F07300008382C /* Controllers */,
+				88C4E907226F07420008382C /* Medias */,
 			);
 			path = VocabularyLearningApp;
 			sourceTree = "<group>";
@@ -126,6 +124,42 @@
 				88C4E8A0226EFB890008382C /* Info.plist */,
 			);
 			path = VocabularyLearningAppUITests;
+			sourceTree = "<group>";
+		};
+		88C4E902226F06FB0008382C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				88C4E87C226EFB870008382C /* AppDelegate.swift */,
+				88C4E88A226EFB880008382C /* Info.plist */,
+				88C4E901226F06F60008382C /* GoogleService-Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		88C4E905226F07270008382C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88C4E882226EFB870008382C /* Main.storyboard */,
+				88C4E887226EFB880008382C /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		88C4E906226F07300008382C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				88C4E87E226EFB870008382C /* LearnVC.swift */,
+				88C4E880226EFB870008382C /* TestVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		88C4E907226F07420008382C /* Medias */ = {
+			isa = PBXGroup;
+			children = (
+				88C4E885226EFB880008382C /* Assets.xcassets */,
+			);
+			path = Medias;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +293,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88C4E881226EFB870008382C /* SecondViewController.swift in Sources */,
+				88C4E881226EFB870008382C /* TestVC.swift in Sources */,
 				88C4E87D226EFB870008382C /* AppDelegate.swift in Sources */,
-				88C4E87F226EFB870008382C /* FirstViewController.swift in Sources */,
+				88C4E87F226EFB870008382C /* LearnVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
