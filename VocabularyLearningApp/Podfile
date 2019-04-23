@@ -1,0 +1,20 @@
+# Pod files for VocabularyLearningApp
+
+platform :ios, '11.0'
+workspace 'VocabularyLearningApp'
+target 'VocabularyLearningApp' do
+
+xcodeproj 'VocabularyLearningApp/VocabularyLearningApp.project'
+use_frameworks!
+
+pod 'BulletinBoard'
+pod 'CBFlashyTabBarController'
+pod 'IQKeyboardManagerSwift'
+pod "SkeletonView"
+end
+
+target 'VocabularyLearningAppAPI' do
+  xcodeproj 'VocabularyLearningAppAPI/VocabularyLearningAppAPI.project'
+  use_frameworks!
+
+end
