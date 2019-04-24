@@ -20,3 +20,50 @@
 "FIREBASE_SUCCES" = "Word successfully added, thank you.";
 "FIREBASE_ALERT_TITLE" = "ALERT";
 "PLEASE_WAIT" = "Please Wait";
+
+
+
+//BLTNBoradSigninExt
+
+"USER_NAME" = "Kullanıcı Adı";
+"USER_PASSWORD" = "Şifre";
+"PLEASE_WRITE_SOMETHING" = "Gerekli yerleri doldurmanız gerekmektedir.";
+
+
+//BLTNBoradSignupExt
+
+"USER_PASSWORD" = "Password";
+"USER_EMAIL" = "E-Mail";
+"PASSWORD_REPETITION" = "Repeat Password";
+"PLEASE_WRITE_SOMETHING" = "Please write something";
+"PASSWORDS_DO_NOT_MATCH" = "Passwords do not match";
+
+
+// BulletinDataSource
+// .splashBoard
+
+"SPLASH_BOARD_TITLE" = "Welcome";
+"SPLASH_BOARD_DESC" = "Log in to get more out of the app";
+"SPLASH_BOARD_SIGNIN" = "Sign in";
+"SPLASH_BOARD_SIGNUP" = "Sign up";
+
+
+// .signinBoard
+
+"SIGNIN" = "Sign in";
+"SIGNIN_DESC" = "You can log in by entering your username and password";
+
+
+
+// .signupBoard
+
+"SIGNUP_DESC" = "Please enter your details to sign up";
+"SIGNUP" = "Sign up";
+"SIGNIN" = "Sign in";
+
+
+// .notificationPermissionBoard
+
+"NOTIFICATION" = "Allow Notification";
+"NOTIFICATION_BOARD_DESC" = "Turn on notifications to send you notifications";
+"NOTIFICATION_PERMISSION_BUTTON_TITLE" = "Allow notifications";

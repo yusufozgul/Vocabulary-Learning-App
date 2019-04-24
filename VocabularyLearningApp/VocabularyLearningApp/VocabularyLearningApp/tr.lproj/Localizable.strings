@@ -21,3 +21,54 @@
 "FIREBASE_ALERT_TITLE" = "UYARI";
 "PLEASE_WAIT" = "Lütfen Bekleyin";
 "INFO_TITLE" = "Bilgi";
+
+
+
+
+
+//BLTNBoradSigninExt
+
+"USER_EMAIL" = "E-Mail";
+"USER_PASSWORD" = "Şifre";
+"PLEASE_WRITE_SOMETHING" = "Gerekli yerleri doldurmanız gerekmektedir.";
+
+
+//BLTNBoradSignupExt
+
+"USER_NAME" = "Kullanıcı Adı";
+"USER_PASSWORD" = "Şifre";
+"USER_EMAIL" = "E-Posta";
+"PASSWORD_REPETITION" = "Şifre Tekrarı";
+"PLEASE_WRITE_SOMETHING" = "Lütfen bir şeyler yazın";
+"PASSWORDS_DO_NOT_MATCH" = "Parolalar uyuşmuyor";
+
+
+// BulletinDataSource
+// .splashBoard
+
+"SPLASH_BOARD_TITLE" = "Hoşgeldiniz";
+"SPLASH_BOARD_DESC" = "Uygulamadan daha iyi yararlanabilmek için giriş yapın";
+"SPLASH_BOARD_SIGNIN" = "Giriş Yap";
+"SPLASH_BOARD_SIGNUP" = "Kaydol";
+
+
+// .signinBoard
+
+"SIGNIN" = "Giriş Yap";
+"SIGNIN_DESC" = "Kullanıcı adınız ve şifrenizi girerek giriş yapabilirsiniz";
+"FORGET_PASSWORD" = "Şifremi unuttum";
+
+
+
+// .signupBoard
+
+"SIGNUP_DESC" = "Kaydolmak için lütfen bilgilerinizi girin";
+"SIGNUP" = "Kaydol";
+"SIGNIN" = "Giriş Yap";
+
+
+// .notificationPermissionBoard
+
+"NOTIFICATION" = "Bildirim İzin Verin";
+"NOTIFICATION_BOARD_DESC" = "Size bildirimler göndermemiz için bildirimleri açın";
+"NOTIFICATION_PERMISSION_BUTTON_TITLE" = "Bildirimlere izin ver";

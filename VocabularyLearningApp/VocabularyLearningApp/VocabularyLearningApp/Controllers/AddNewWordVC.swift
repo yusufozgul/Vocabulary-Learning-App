@@ -21,7 +21,6 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     let categoryPickerView = UIPickerView()
     let categories = [NSLocalizedString("CATEGORY_BUTTON", comment: ""),"İsim","Fiil","Sıfat", "Zamir","Zarf","Bağlaç","Ünlem"]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,7 +50,6 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             self.present(emptyAlert, animated: true, completion: nil)
             self.addButtonLabel.text = NSLocalizedString("ADD_BUTTON", comment: "")
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -93,6 +91,8 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             wordTranslate.text = ""
             wordDescription.text = ""
             categoryTextField.text = ""
+            wordDescription.text = NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "")
+            wordDescription.textColor = .lightGray
             view.endEditing(true)
             addButtonLabel.text = NSLocalizedString("PLEASE_WAIT", comment: "")
         }
@@ -150,7 +150,8 @@ extension AddNewWordVC: UITextViewDelegate
 }
 extension AddNewWordVC
 {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
         return 1
     }
     
@@ -174,28 +175,19 @@ extension AddNewWordVC
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         return 150.0
     }
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 60.0
-    }
-    
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
         var label:UILabel
-        
         if let category = view as? UILabel{
             label = category
         }
         else{
             label = UILabel()
         }
-        
         label.textColor = UIColor.black
         label.textAlignment = .left
         label.font = UIFont(name: "Helvetica", size: 17)
-        
         label.text = categories[row]
-        
         return label
     }
 }

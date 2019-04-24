@@ -7,14 +7,27 @@
 //
 
 import UIKit
+import BLTNBoard
 
 class LearnVC: UIViewController {
+    var bltnBoard = BLTNItemManager(rootItem: BulletinDataSource.splashBoard())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        showBulletin()
+        
+        if let data: [String] = (UserDefaults.standard.object(forKey: "currentUser") as? [String])
+        {
+            print(data[0])
+            print(data[1])
+        }
     }
 
+    func showBulletin()
+    {
+        bltnBoard.backgroundViewStyle = BLTNBackgroundViewStyle.dimmed
+        bltnBoard.showBulletin(above: self)
+    }
 
 }
 
