@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  VocabularyLearningApp
+
+  Created by Yusuf Özgül on 23.04.2019.
+  Copyright © 2019 Yusuf Özgül. All rights reserved.
+*/
+
+// Add New Word ViewController
+"ADD_WORD_TITLE" = "Kelime Ekle";
+"WORD_TEXTFILED_PLACEHOLDER" = " Eklenecek Kelimeyi Girin";
+"WORD_TRANSLATE_TEXTFILED_PLACEHOLDER" = " Kelimenin Türkçesini Girin";
+"WORD_DESC_TEXTVIEW_PLACEHOLDER" = "Kelimeyi İçeren Bir Cümle Girin";
+"ADD_BUTTON" = "EKLE";
+"EMPTY_ALERT_TITLE" = "Uyarı";
+"EMPTY_ALERT_MESSAGE" = "Lütfen gerekli alanları boş bırakmayın";
+"OKAY" = "Tamam";

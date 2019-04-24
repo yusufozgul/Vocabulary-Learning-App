@@ -7,13 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		886D412F226F57230016527B /* AddWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D412E226F57230016527B /* AddWord.swift */; };
+		886D4147226F58820016527B /* ConfigureFireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D4146226F58820016527B /* ConfigureFireBase.swift */; };
 		88C4E8ED226EFCDD0008382C /* VocabularyLearningAppAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C4E8E3226EFCDD0008382C /* VocabularyLearningAppAPI.framework */; };
 		88C4E8F2226EFCDD0008382C /* VocabularyLearningAppAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E8F1226EFCDD0008382C /* VocabularyLearningAppAPITests.swift */; };
 		88C4E8F4226EFCDD0008382C /* VocabularyLearningAppAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 88C4E8E6226EFCDD0008382C /* VocabularyLearningAppAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88C4E904226F070B0008382C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88C4E903226F070B0008382C /* GoogleService-Info.plist */; };
+		F615514C52520F2092FF6C23 /* Pods_VocabularyLearningAppAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE8C19CECC68751987D734 /* Pods_VocabularyLearningAppAPI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		886D4171226FCD710016527B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 886D416B226FCD710016527B /* VocabularyLearningApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88C4E879226EFB870008382C;
+			remoteInfo = VocabularyLearningApp;
+		};
+		886D4173226FCD710016527B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 886D416B226FCD710016527B /* VocabularyLearningApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88C4E88F226EFB880008382C;
+			remoteInfo = VocabularyLearningAppTests;
+		};
+		886D4175226FCD710016527B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 886D416B226FCD710016527B /* VocabularyLearningApp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88C4E89A226EFB890008382C;
+			remoteInfo = VocabularyLearningAppUITests;
+		};
 		88C4E8EE226EFCDD0008382C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 88C4E8DA226EFCDD0008382C /* Project object */;
@@ -24,6 +48,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		182672478F85272AA3378A8C /* Pods-VocabularyLearningAppAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyLearningAppAPI.release.xcconfig"; path = "Target Support Files/Pods-VocabularyLearningAppAPI/Pods-VocabularyLearningAppAPI.release.xcconfig"; sourceTree = "<group>"; };
+		2F36631B57013707270D74A8 /* Pods-VocabularyLearningAppAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyLearningAppAPI.debug.xcconfig"; path = "Target Support Files/Pods-VocabularyLearningAppAPI/Pods-VocabularyLearningAppAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		886D412E226F57230016527B /* AddWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWord.swift; sourceTree = "<group>"; };
+		886D4146226F58820016527B /* ConfigureFireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureFireBase.swift; sourceTree = "<group>"; };
+		886D4159226FC7D70016527B /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		886D415B226FC8060016527B /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		886D4162226FC8630016527B /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		886D416B226FCD710016527B /* VocabularyLearningApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VocabularyLearningApp.xcodeproj; path = ../VocabularyLearningApp/VocabularyLearningApp.xcodeproj; sourceTree = "<group>"; };
 		88C4E8E3226EFCDD0008382C /* VocabularyLearningAppAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VocabularyLearningAppAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C4E8E6226EFCDD0008382C /* VocabularyLearningAppAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VocabularyLearningAppAPI.h; sourceTree = "<group>"; };
 		88C4E8E7226EFCDD0008382C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +63,7 @@
 		88C4E8F1226EFCDD0008382C /* VocabularyLearningAppAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyLearningAppAPITests.swift; sourceTree = "<group>"; };
 		88C4E8F3226EFCDD0008382C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88C4E903226F070B0008382C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../VocabularyLearningApp/VocabularyLearningApp/Resource/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C2EE8C19CECC68751987D734 /* Pods_VocabularyLearningAppAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabularyLearningAppAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F615514C52520F2092FF6C23 /* Pods_VocabularyLearningAppAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +86,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3AE5EAE76587FDC3E50E7E28 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				886D4162226FC8630016527B /* GTMSessionFetcher.framework */,
+				886D415B226FC8060016527B /* FirebaseCore.framework */,
+				886D4159226FC7D70016527B /* FirebaseDatabase.framework */,
+				C2EE8C19CECC68751987D734 /* Pods_VocabularyLearningAppAPI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		58293C0F280DCDF0BBCB6E7B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2F36631B57013707270D74A8 /* Pods-VocabularyLearningAppAPI.debug.xcconfig */,
+				182672478F85272AA3378A8C /* Pods-VocabularyLearningAppAPI.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		886D416C226FCD710016527B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				886D4172226FCD710016527B /* VocabularyLearningApp.app */,
+				886D4174226FCD710016527B /* VocabularyLearningAppTests.xctest */,
+				886D4176226FCD710016527B /* VocabularyLearningAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		88C4E8D9226EFCDD0008382C = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +124,9 @@
 				88C4E8E5226EFCDD0008382C /* VocabularyLearningAppAPI */,
 				88C4E8F0226EFCDD0008382C /* VocabularyLearningAppAPITests */,
 				88C4E8E4226EFCDD0008382C /* Products */,
+				58293C0F280DCDF0BBCB6E7B /* Pods */,
+				3AE5EAE76587FDC3E50E7E28 /* Frameworks */,
+				886D416B226FCD710016527B /* VocabularyLearningApp.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +142,8 @@
 		88C4E8E5226EFCDD0008382C /* VocabularyLearningAppAPI */ = {
 			isa = PBXGroup;
 			children = (
+				886D4146226F58820016527B /* ConfigureFireBase.swift */,
+				886D412E226F57230016527B /* AddWord.swift */,
 				88C4E8E6226EFCDD0008382C /* VocabularyLearningAppAPI.h */,
 				88C4E8E7226EFCDD0008382C /* Info.plist */,
 			);
@@ -107,6 +177,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88C4E8F7226EFCDD0008382C /* Build configuration list for PBXNativeTarget "VocabularyLearningAppAPI" */;
 			buildPhases = (
+				F7834FD91D27EC6574650067 /* [CP] Check Pods Manifest.lock */,
 				88C4E8DE226EFCDD0008382C /* Headers */,
 				88C4E8DF226EFCDD0008382C /* Sources */,
 				88C4E8E0226EFCDD0008382C /* Frameworks */,
@@ -151,6 +222,7 @@
 				TargetAttributes = {
 					88C4E8E2226EFCDD0008382C = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 					88C4E8EB226EFCDD0008382C = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -163,10 +235,17 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 88C4E8D9226EFCDD0008382C;
 			productRefGroup = 88C4E8E4226EFCDD0008382C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 886D416C226FCD710016527B /* Products */;
+					ProjectRef = 886D416B226FCD710016527B /* VocabularyLearningApp.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				88C4E8E2226EFCDD0008382C /* VocabularyLearningAppAPI */,
@@ -174,6 +253,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		886D4172226FCD710016527B /* VocabularyLearningApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = VocabularyLearningApp.app;
+			remoteRef = 886D4171226FCD710016527B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		886D4174226FCD710016527B /* VocabularyLearningAppTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VocabularyLearningAppTests.xctest;
+			remoteRef = 886D4173226FCD710016527B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		886D4176226FCD710016527B /* VocabularyLearningAppUITests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VocabularyLearningAppUITests.xctest;
+			remoteRef = 886D4175226FCD710016527B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		88C4E8E1226EFCDD0008382C /* Resources */ = {
@@ -193,11 +296,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F7834FD91D27EC6574650067 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VocabularyLearningAppAPI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		88C4E8DF226EFCDD0008382C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				886D412F226F57230016527B /* AddWord.swift in Sources */,
+				886D4147226F58820016527B /* ConfigureFireBase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +474,9 @@
 		};
 		88C4E8F8226EFCDD0008382C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F36631B57013707270D74A8 /* Pods-VocabularyLearningAppAPI.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -361,6 +493,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yusufozgul.VocabularyLearningAppAPI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -368,7 +501,9 @@
 		};
 		88C4E8F9226EFCDD0008382C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 182672478F85272AA3378A8C /* Pods-VocabularyLearningAppAPI.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -393,6 +528,7 @@
 		88C4E8FB226EFCDD0008382C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = VocabularyLearningAppAPITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -410,6 +546,7 @@
 		88C4E8FC226EFCDD0008382C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = VocabularyLearningAppAPITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

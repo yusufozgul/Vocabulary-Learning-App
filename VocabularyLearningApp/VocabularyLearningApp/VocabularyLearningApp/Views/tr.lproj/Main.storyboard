@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--LearnVC-->
+        <scene sceneID="hNz-n2-bh7">
+            <objects>
+                <viewController id="9pv-A4-QxB" customClass="LearnVC" customModule="VocabularyLearningApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kmO-M3-9vX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="977" y="789"/>
+        </scene>
+        <!--Add New WordVC-->
+        <scene sceneID="MIY-q5-oz8">
+            <objects>
+                <viewController id="Kr2-1W-1p8" customClass="AddNewWordVC" customModule="VocabularyLearningApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Avy-Tm-2Xb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="gZh-lU-jmQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="rO9-WF-Ki9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uhz-Ac-XGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2710" y="789"/>
+        </scene>
+        <!--TestVC-->
+        <scene sceneID="wg7-f3-ORb">
+            <objects>
+                <viewController id="8rJ-Kc-sve" customClass="TestVC" customModule="VocabularyLearningApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rnb-pG-fi4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845" y="789"/>
+        </scene>
+        <!--Flashy Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" customClass="CBFlashyTabBarController" customModule="CBFlashyTabBarController" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA" customClass="CBFlashyTabBar" customModule="CBFlashyTabBarController">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="W7j-ug-gKy" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="R1f-Tk-o3b" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="jnF-gN-ZU3" kind="relationship" relationship="viewControllers" id="Hpa-UV-1mi"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--title-->
+        <scene sceneID="rWu-EH-3q4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W7j-ug-gKy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="title" image="learnIcon" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2WU-fX-Wry">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="lUT-m8-qkU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cXB-gN-XoH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="976.81159420289862" y="0.0"/>
+        </scene>
+        <!--title-->
+        <scene sceneID="ljy-ew-uMU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="R1f-Tk-o3b" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="title" image="test Icon" id="cPa-gy-q4n"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="olE-Xm-pGk">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="EMn-FQ-JFn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yHm-MH-wXH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1846" y="0.0"/>
+        </scene>
+        <!--title-->
+        <scene sceneID="t6I-Ri-E4B">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jnF-gN-ZU3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="title" image="addWordIcon" id="VHK-jR-kFD"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="YqS-wg-Xvm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Kr2-1W-1p8" kind="relationship" relationship="rootViewController" id="vGb-tP-v8N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CE8-sE-qg9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2710" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="addWordIcon" width="35" height="29"/>
+        <image name="learnIcon" width="35" height="35"/>
+        <image name="test Icon" width="35" height="38"/>
+    </resources>
+</document>

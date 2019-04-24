@@ -16,5 +16,8 @@ end
 target 'VocabularyLearningAppAPI' do
   xcodeproj 'VocabularyLearningAppAPI/VocabularyLearningAppAPI.project'
   use_frameworks!
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
 end
