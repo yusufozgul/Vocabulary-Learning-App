@@ -22,10 +22,12 @@ public class AddWord
             if errorDB != nil
             {
                 print(errorDB!.localizedDescription)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FireBaseMessage"), object: errorDB!.localizedDescription)
             }
             else
             {
                 print(DBRef)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FireBaseMessage"), object: true)
             }
         }
     }

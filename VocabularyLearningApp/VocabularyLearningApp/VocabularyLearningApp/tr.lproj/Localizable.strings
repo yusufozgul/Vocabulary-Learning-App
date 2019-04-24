@@ -8,10 +8,16 @@
 
 // Add New Word ViewController
 "ADD_WORD_TITLE" = "Kelime Ekle";
-"WORD_TEXTFILED_PLACEHOLDER" = " Eklenecek Kelimeyi Girin";
-"WORD_TRANSLATE_TEXTFILED_PLACEHOLDER" = " Kelimenin Türkçesini Girin";
+"WORD_TEXTFILED_PLACEHOLDER" = "Eklenecek Kelimeyi Girin";
+"WORD_TRANSLATE_TEXTFILED_PLACEHOLDER" = "Kelimenin Türkçesini Girin";
 "WORD_DESC_TEXTVIEW_PLACEHOLDER" = "Kelimeyi İçeren Bir Cümle Girin";
 "ADD_BUTTON" = "EKLE";
 "EMPTY_ALERT_TITLE" = "Uyarı";
-"EMPTY_ALERT_MESSAGE" = "Lütfen gerekli alanları boş bırakmayın";
+"EMPTY_ALERT_MESSAGE" = "Lütfen gerekli alanları boş bırakmayın.";
 "OKAY" = "Tamam";
+"CATEGORY_BUTTON" = "Kategori Seçin";
+"FIREBASE_SUCCES_TITLE" = "BİLGİ";
+"FIREBASE_SUCCES" = "Kelime başarılı şekilde eklendi, teşekkür ederim.";
+"FIREBASE_ALERT_TITLE" = "UYARI";
+"PLEASE_WAIT" = "Lütfen Bekleyin";
+"INFO_TITLE" = "Bilgi";

@@ -8,10 +8,15 @@
 
 // Add New Word ViewController
 "ADD_WORD_TITLE" = "Add Word";
-"WORD_TEXTFILED_PLACEHOLDER" = " Enter the word to add";
-"WORD_TRANSLATE_TEXTFILED_PLACEHOLDER" = " Enter the Turkish translation of the word";
+"WORD_TEXTFILED_PLACEHOLDER" = "Enter the word to add";
+"WORD_TRANSLATE_TEXTFILED_PLACEHOLDER" = "Enter the Turkish translation of the word";
 "WORD_DESC_TEXTVIEW_PLACEHOLDER" = "Enter a Sentence with a Word";
 "ADD_BUTTON" = "ADD";
 "EMPTY_ALERT_TITLE" = "Alert";
-"EMPTY_ALERT_MESSAGE" = "Please do not leave the required fields empty";
+"EMPTY_ALERT_MESSAGE" = "Please do not leave the required fields empty.";
 "OKAY" = "Ok";
+"CATEGORY_BUTTON" = "Select Category";
+"FIREBASE_SUCCES_TITLE" = "INFO";
+"FIREBASE_SUCCES" = "Word successfully added, thank you.";
+"FIREBASE_ALERT_TITLE" = "ALERT";
+"PLEASE_WAIT" = "Please Wait";
