@@ -49,7 +49,7 @@ open class CBFlashyTabBarController: UITabBarController {
         super.viewDidAppear(animated)
     }
 
-    private var _barHeight: CGFloat = 74
+    private var _barHeight: CGFloat = 49
     open var barHeight: CGFloat {
         get {
             if #available(iOS 11.0, *) {

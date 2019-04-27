@@ -12,6 +12,10 @@
 		8840CB3C2270F79900A837FD /* BulletinBoardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840CB3B2270F79900A837FD /* BulletinBoardDataSource.swift */; };
 		8840CB3E2270F7C900A837FD /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840CB3D2270F7C900A837FD /* UserData.swift */; };
 		8840CB452270FEED00A837FD /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840CB442270FEED00A837FD /* AuthModel.swift */; };
+		8840CB4C2272530900A837FD /* WordPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8840CB4B2272530900A837FD /* WordPage.xib */; };
+		8840CB4E227482A100A837FD /* WordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840CB4D227482A100A837FD /* WordPage.swift */; };
+		8840CB5022749AAE00A837FD /* WordDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840CB4F22749AAE00A837FD /* WordDataParser.swift */; };
+		8840CB522274B6E900A837FD /* AnsweredDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840CB512274B6E900A837FD /* AnsweredDelegate.swift */; };
 		8850BA20226F32F800FFCE3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8850BA22226F32F800FFCE3D /* Main.storyboard */; };
 		8850BA29226F336B00FFCE3D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8850BA2B226F336B00FFCE3D /* Localizable.strings */; };
 		8850BA30226F473E00FFCE3D /* WordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8850BA2F226F473E00FFCE3D /* WordData.swift */; };
@@ -90,6 +94,10 @@
 		8840CB3B2270F79900A837FD /* BulletinBoardDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BulletinBoardDataSource.swift; sourceTree = "<group>"; };
 		8840CB3D2270F7C900A837FD /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserData.swift; path = ../../VocabularyLearningAppAPI/VocabularyLearningAppAPI/UserData.swift; sourceTree = "<group>"; };
 		8840CB442270FEED00A837FD /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		8840CB4B2272530900A837FD /* WordPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordPage.xib; sourceTree = "<group>"; };
+		8840CB4D227482A100A837FD /* WordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPage.swift; sourceTree = "<group>"; };
+		8840CB4F22749AAE00A837FD /* WordDataParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDataParser.swift; sourceTree = "<group>"; };
+		8840CB512274B6E900A837FD /* AnsweredDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnsweredDelegate.swift; sourceTree = "<group>"; };
 		8850BA23226F332600FFCE3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8850BA24226F332D00FFCE3D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
 		8850BA2A226F336B00FFCE3D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -175,6 +183,15 @@
 			path = BLTNBoardExtension;
 			sourceTree = "<group>";
 		};
+		8840CB4822710CFA00A837FD /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				886D4134226F57B90016527B /* VocabularyLearningAppAPI.xcodeproj */,
+			);
+			name = Vendor;
+			path = VocabularyLearningApp;
+			sourceTree = "<group>";
+		};
 		8850BA18226F31A300FFCE3D /* LocalizedFile */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +203,7 @@
 		8850BA2E226F472600FFCE3D /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				8840CB512274B6E900A837FD /* AnsweredDelegate.swift */,
 				8840CB3D2270F7C900A837FD /* UserData.swift */,
 				8840CB3B2270F79900A837FD /* BulletinBoardDataSource.swift */,
 				8850BA2F226F473E00FFCE3D /* WordData.swift */,
@@ -218,7 +236,7 @@
 				88C4E892226EFB880008382C /* VocabularyLearningAppTests */,
 				88C4E89D226EFB890008382C /* VocabularyLearningAppUITests */,
 				88C4E87A226EFB870008382C /* Products */,
-				886D4134226F57B90016527B /* VocabularyLearningAppAPI.xcodeproj */,
+				8840CB4822710CFA00A837FD /* Vendor */,
 				29EB1977B34451D4786AF54C /* Pods */,
 				6031C984224BB80FE89D8DCD /* Frameworks */,
 			);
@@ -241,6 +259,7 @@
 				88C4E905226F07270008382C /* Views */,
 				88C4E906226F07300008382C /* Controllers */,
 				8840CB3A2270F77000A837FD /* BLTNBoardExtension */,
+				8840CB4F22749AAE00A837FD /* WordDataParser.swift */,
 				8850BA2E226F472600FFCE3D /* DTOs */,
 				88C4E907226F07420008382C /* Medias */,
 				8850BA18226F31A300FFCE3D /* LocalizedFile */,
@@ -281,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				8850BA22226F32F800FFCE3D /* Main.storyboard */,
+				8840CB4B2272530900A837FD /* WordPage.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +311,7 @@
 				88C4E87E226EFB870008382C /* LearnVC.swift */,
 				88C4E880226EFB870008382C /* TestVC.swift */,
 				88C4E90A226F0B560008382C /* AddNewWordVC.swift */,
+				8840CB4D227482A100A837FD /* WordPage.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -436,6 +457,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8840CB4C2272530900A837FD /* WordPage.xib in Resources */,
 				88C4E886226EFB880008382C /* Assets.xcassets in Resources */,
 				8850BA29226F336B00FFCE3D /* Localizable.strings in Resources */,
 				8850BA20226F32F800FFCE3D /* Main.storyboard in Resources */,
@@ -531,10 +553,13 @@
 				8850BA30226F473E00FFCE3D /* WordData.swift in Sources */,
 				8840CB392270F76C00A837FD /* BLTNBoradSigninExt.swift in Sources */,
 				8840CB382270F76C00A837FD /* BLTNBoradSignupExt.swift in Sources */,
+				8840CB4E227482A100A837FD /* WordPage.swift in Sources */,
 				88C4E87F226EFB870008382C /* LearnVC.swift in Sources */,
 				886D4169226FCCDA0016527B /* addWordModel.swift in Sources */,
+				8840CB522274B6E900A837FD /* AnsweredDelegate.swift in Sources */,
 				8840CB3E2270F7C900A837FD /* UserData.swift in Sources */,
 				8840CB3C2270F79900A837FD /* BulletinBoardDataSource.swift in Sources */,
+				8840CB5022749AAE00A837FD /* WordDataParser.swift in Sources */,
 				8840CB452270FEED00A837FD /* AuthModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

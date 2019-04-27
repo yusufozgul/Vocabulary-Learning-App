@@ -16,7 +16,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBOutlet weak var wordDescription: UITextView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var addButtonLabel: UILabel!
-    @IBOutlet weak var categoryTextField: UITextField!
+    @IBOutlet weak var categoryTextField: UITextField! 
     
     let categoryPickerView = UIPickerView()
     let categories = [NSLocalizedString("CATEGORY_BUTTON", comment: ""),"İsim","Fiil","Sıfat", "Zamir","Zarf","Bağlaç","Ünlem"]

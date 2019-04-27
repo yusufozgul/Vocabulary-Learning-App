@@ -17,14 +17,39 @@
                     <view key="view" contentMode="scaleToFill" id="MYf-ku-yJA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VCBackground" translatesAutoresizingMaskIntoConstraints="NO" id="eUj-81-4pb">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUh-Ep-Fbu">
+                                <rect key="frame" x="36" y="101" width="342" height="641"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eQw-ua-e5B" id="EWZ-t9-kXm"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eUj-81-4pb" firstAttribute="leading" secondItem="QvY-8v-Gh8" secondAttribute="leading" id="0Zr-4G-ihL"/>
+                            <constraint firstItem="jUh-Ep-Fbu" firstAttribute="centerX" secondItem="eUj-81-4pb" secondAttribute="centerX" id="24X-Cl-T0a"/>
+                            <constraint firstItem="eUj-81-4pb" firstAttribute="trailing" secondItem="QvY-8v-Gh8" secondAttribute="trailing" id="3Gw-RL-RUT"/>
+                            <constraint firstItem="jUh-Ep-Fbu" firstAttribute="leading" secondItem="QvY-8v-Gh8" secondAttribute="leading" constant="36" id="4MK-nI-MH8"/>
+                            <constraint firstItem="jUh-Ep-Fbu" firstAttribute="top" secondItem="QvY-8v-Gh8" secondAttribute="top" constant="13" id="D23-OP-Ugz"/>
+                            <constraint firstItem="eUj-81-4pb" firstAttribute="bottom" secondItem="QvY-8v-Gh8" secondAttribute="bottom" id="OVW-B6-bRd"/>
+                            <constraint firstItem="eUj-81-4pb" firstAttribute="top" secondItem="QvY-8v-Gh8" secondAttribute="top" id="TgK-JY-0MV"/>
+                            <constraint firstItem="QvY-8v-Gh8" firstAttribute="bottom" secondItem="jUh-Ep-Fbu" secondAttribute="bottom" constant="71" id="qns-6Z-11i"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QvY-8v-Gh8"/>
                     </view>
                     <navigationItem key="navigationItem" id="Vko-Mz-dwW"/>
+                    <connections>
+                        <outlet property="wordPageScroll" destination="jUh-Ep-Fbu" id="NHG-ma-lQj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KvO-7z-YVU" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="789"/>
+            <point key="canvasLocation" x="976.81159420289862" y="788.83928571428567"/>
         </scene>
         <!--Add New WordVC-->
         <scene sceneID="gsI-zF-eEL">
@@ -314,6 +339,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="VCBackground" width="375" height="507"/>
         <image name="addButton" width="228" height="45"/>
         <image name="addWordIcon" width="35" height="29"/>
         <image name="descTextView" width="286" height="112"/>

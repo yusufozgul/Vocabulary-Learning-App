@@ -15,3 +15,12 @@ struct WordData
     var sentence: String
     var category: String
 }
+
+struct WordPageData {
+    var wordInfo: WordData
+    var option1: String
+    var option2: String
+    var option3: String
+    var option4: String
+    var correctAnswer: Int
+}
