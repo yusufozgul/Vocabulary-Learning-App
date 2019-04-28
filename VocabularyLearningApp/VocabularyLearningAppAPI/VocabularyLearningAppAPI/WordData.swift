@@ -14,6 +14,7 @@ struct WordData
     var translate: String
     var sentence: String
     var category: String
+    var uid: String
 }
 
 struct WordPageData {

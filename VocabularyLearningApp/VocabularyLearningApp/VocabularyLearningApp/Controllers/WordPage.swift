@@ -11,7 +11,8 @@ import UIKit
 class WordPage: UIView
 {
     weak var delegate: AnsweredDelegate?
-    
+
+    @IBOutlet weak var pageBackground: UIImageView!
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var wordCategoryLabel: UILabel!
     @IBOutlet weak var wordSentence: UITextView!

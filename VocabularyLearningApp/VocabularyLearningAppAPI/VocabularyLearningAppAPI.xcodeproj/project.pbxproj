@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88283A52227515C100ECB72F /* FetchWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88283A51227515C100ECB72F /* FetchWord.swift */; };
+		88283A5B22759B2900ECB72F /* WordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88283A5A22759B2900ECB72F /* WordData.swift */; };
+		88283A5D2275BE7800ECB72F /* SaveUserProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88283A5C2275BE7800ECB72F /* SaveUserProgress.swift */; };
 		8840CB402270FB7200A837FD /* AuthenticateFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840CB3F2270FB7200A837FD /* AuthenticateFirebase.swift */; };
 		8840CB472271016A00A837FD /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840CB462271016A00A837FD /* UserData.swift */; };
 		886D412F226F57230016527B /* AddWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D412E226F57230016527B /* AddWord.swift */; };
@@ -52,6 +55,9 @@
 /* Begin PBXFileReference section */
 		182672478F85272AA3378A8C /* Pods-VocabularyLearningAppAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyLearningAppAPI.release.xcconfig"; path = "Target Support Files/Pods-VocabularyLearningAppAPI/Pods-VocabularyLearningAppAPI.release.xcconfig"; sourceTree = "<group>"; };
 		2F36631B57013707270D74A8 /* Pods-VocabularyLearningAppAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyLearningAppAPI.debug.xcconfig"; path = "Target Support Files/Pods-VocabularyLearningAppAPI/Pods-VocabularyLearningAppAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		88283A51227515C100ECB72F /* FetchWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchWord.swift; sourceTree = "<group>"; };
+		88283A5A22759B2900ECB72F /* WordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordData.swift; sourceTree = "<group>"; };
+		88283A5C2275BE7800ECB72F /* SaveUserProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserProgress.swift; sourceTree = "<group>"; };
 		8840CB3F2270FB7200A837FD /* AuthenticateFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateFirebase.swift; sourceTree = "<group>"; };
 		8840CB462271016A00A837FD /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		886D412E226F57230016527B /* AddWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWord.swift; sourceTree = "<group>"; };
@@ -149,8 +155,11 @@
 				886D4146226F58820016527B /* ConfigureFireBase.swift */,
 				8840CB3F2270FB7200A837FD /* AuthenticateFirebase.swift */,
 				886D412E226F57230016527B /* AddWord.swift */,
+				88283A51227515C100ECB72F /* FetchWord.swift */,
+				88283A5C2275BE7800ECB72F /* SaveUserProgress.swift */,
 				88C4E8E6226EFCDD0008382C /* VocabularyLearningAppAPI.h */,
 				88C4E8E7226EFCDD0008382C /* Info.plist */,
+				88283A5A22759B2900ECB72F /* WordData.swift */,
 				8840CB462271016A00A837FD /* UserData.swift */,
 			);
 			path = VocabularyLearningAppAPI;
@@ -334,8 +343,11 @@
 			files = (
 				8840CB402270FB7200A837FD /* AuthenticateFirebase.swift in Sources */,
 				886D412F226F57230016527B /* AddWord.swift in Sources */,
+				88283A5D2275BE7800ECB72F /* SaveUserProgress.swift in Sources */,
 				8840CB472271016A00A837FD /* UserData.swift in Sources */,
 				886D4147226F58820016527B /* ConfigureFireBase.swift in Sources */,
+				88283A52227515C100ECB72F /* FetchWord.swift in Sources */,
+				88283A5B22759B2900ECB72F /* WordData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

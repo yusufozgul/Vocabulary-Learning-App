@@ -67,3 +67,7 @@
 "NOTIFICATION" = "Allow Notification";
 "NOTIFICATION_BOARD_DESC" = "Turn on notifications to send you notifications";
 "NOTIFICATION_PERMISSION_BUTTON_TITLE" = "Allow notifications";
+
+
+//  LearnVC
+"LEARN_VC_TITLE" = "Learn";

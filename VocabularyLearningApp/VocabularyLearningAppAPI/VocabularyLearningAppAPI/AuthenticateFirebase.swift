@@ -55,6 +55,7 @@ public final class AuthenticateFirebase: AuthenticateFirebaseProtocol
             }
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
+        
     }
 }
 

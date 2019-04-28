@@ -19,7 +19,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBOutlet weak var categoryTextField: UITextField! 
     
     let categoryPickerView = UIPickerView()
-    let categories = [NSLocalizedString("CATEGORY_BUTTON", comment: ""),"İsim","Fiil","Sıfat", "Zamir","Zarf","Bağlaç","Ünlem"]
+    let categories = [NSLocalizedString("CATEGORY_BUTTON", comment: ""),"İsim","Fiil","Sıfat", "Zamir","Zarf","Edat","Bağlaç","Ünlem"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,6 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         addButtonLabel.text = NSLocalizedString("ADD_BUTTON", comment: "")
         categoryTextField.placeholder = NSLocalizedString("CATEGORY_BUTTON", comment: "")
         createPickerView()
-        createToolbar()
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "FireBaseMessage"), object: nil, queue: .main) { (notification) in
             let emptyAlert: UIAlertController
@@ -51,11 +50,6 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             self.addButtonLabel.text = NSLocalizedString("ADD_BUTTON", comment: "")
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
-        navigationItem.largeTitleDisplayMode = .always
-    }
     func createPickerView()
     {
         categoryPickerView.delegate = self
@@ -63,23 +57,9 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         categoryPickerView.delegate?.pickerView?(categoryPickerView, didSelectRow: 0, inComponent: 0)
         categoryTextField.inputView = categoryPickerView
     }
-    func createToolbar()
-    {
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        toolbar.tintColor = UIColor.red
-        toolbar.backgroundColor = UIColor.blue
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(closePickerView))
-        toolbar.setItems([doneButton], animated: false)
-        toolbar.isUserInteractionEnabled = true
-    }
-    @objc func closePickerView()
-    {
-        view.endEditing(true)
-    }
     func addWord()
     {
-        var wordData: WordData = WordData(word: "", translate: "", sentence: "", category: "")
+        var wordData: WordData = WordData(word: "", translate: "", sentence: "", category: "", uid: "")
         if !wordTextFiled.text!.isEmpty && !wordTranslate.text!.isEmpty && wordDescription.text != NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "") && !categoryTextField.text!.isEmpty
         {
             wordData.word = wordTextFiled.text!
@@ -91,6 +71,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             wordTranslate.text = ""
             wordDescription.text = ""
             categoryTextField.text = ""
+            categoryPickerView.selectedRow(inComponent: 0)
             wordDescription.text = NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "")
             wordDescription.textColor = .lightGray
             view.endEditing(true)

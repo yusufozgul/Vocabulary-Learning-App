@@ -69,7 +69,6 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - SkeletonView (1.4.2)
 
 DEPENDENCIES:
   - BulletinBoard
@@ -78,7 +77,6 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - IQKeyboardManagerSwift
-  - SkeletonView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -97,7 +95,6 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - leveldb-library
     - nanopb
-    - SkeletonView
 
 SPEC CHECKSUMS:
   BulletinBoard: 927f4f9fd22503ceecd71bfc830fd65d5996593a
@@ -115,8 +112,7 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  SkeletonView: c2523c3c8c6510e273e49a3bf364a434744c3914
 
-PODFILE CHECKSUM: 78d7fa94d36e4e5400ab35eb17dad691a30bf494
+PODFILE CHECKSUM: cfd893dbb3f846397e26d2b71a79666737861e79
 
 COCOAPODS: 1.6.1

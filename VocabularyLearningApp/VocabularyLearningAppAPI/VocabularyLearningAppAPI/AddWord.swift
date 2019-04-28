@@ -17,8 +17,9 @@ public class AddWord
     {
         var dbRef: DatabaseReference!
         dbRef = Database.database().reference()
+        let uid = NSUUID().uuidString
         
-        dbRef.child("Words").childByAutoId().setValue(["word": word, "translate": translate, "sentence": sentence, "category": category]) { (errorDB, DBRef) in
+        dbRef.child("Words").child(uid).setValue(["word": word, "translate": translate, "sentence": sentence, "category": category, "uid": uid]) { (errorDB, DBRef) in
             if errorDB != nil
             {
                 print(errorDB!.localizedDescription)

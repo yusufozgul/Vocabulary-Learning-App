@@ -72,3 +72,7 @@
 "NOTIFICATION" = "Bildirim İzin Verin";
 "NOTIFICATION_BOARD_DESC" = "Size bildirimler göndermemiz için bildirimleri açın";
 "NOTIFICATION_PERMISSION_BUTTON_TITLE" = "Bildirimlere izin ver";
+
+
+//  LearnVC
+"LEARN_VC_TITLE" = "Öğren";
