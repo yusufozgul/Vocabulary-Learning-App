@@ -12,15 +12,24 @@ import VocabularyLearningAppAPI
 class WordDataParser
 {
     private var wordArray: [WordData] = []
-    private var solvedWords = [""]
+    var solvedWords = [""]
+    
     func fetchWord()
     {
-        if UserDefaults.standard.value(forKey: "correctAnswer") != nil
+        if UserDefaults.standard.value(forKey: "SolvedWords") != nil
         {
+            solvedWords.removeAll()
             solvedWords = UserDefaults.standard.value(forKey: "correctAnswer") as! [String]
         }
+        FetchWords().fetch()
+        fetchedWord()
+    }
+    
+    func fetchedWord()
+    {
         var isMatch: Bool = false
-        _ = FetchWords.init().fetch()
+        var count = 0
+        var current = 0
         
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FetchWordData"), object: nil, queue: OperationQueue.main, using: { (firebaseData) in
             let words = firebaseData.object! as! [String:String]
@@ -38,20 +47,42 @@ class WordDataParser
                 let word: WordData = WordData(word: words["word"]!, translate: words["translate"]!, sentence: words["sentence"]!, category: words["category"]!, uid: words["uid"]!)
                 self.wordArray.append(word)
             }
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "FetchWords"), object: nil)
+            count += 1
+            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.2 , execute: {
+                current += 1
+                if current == count
+                {
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "FetchWords"), object: nil)
+                }
+            })
         })
     }
     
     func getword() -> WordPageData
     {
+        DispatchQueue.main.async
+        {
+            if UserDefaults.standard.value(forKey: "correctAnswer") != nil
+            {
+                let correctAnswerArray = UserDefaults.standard.value(forKey: "correctAnswer") as! [String]
+                if self.wordArray.count - correctAnswerArray.count < 30
+                {
+                    self.fetchWord()
+                }
+            }
+        }
         if !wordArray.isEmpty
         {
             let randomIndex = Int.random(in: 0 ... (wordArray.count - 1))
             var randomOptions = [0,0,0,0]
-            randomOptions[0] = Int.random(in: 0 ... (wordArray.count - 1))
-            randomOptions[1] = Int.random(in: 0 ... (wordArray.count - 1))
-            randomOptions[2] = Int.random(in: 0 ... (wordArray.count - 1))
-            randomOptions[3] = Int.random(in: 0 ... (wordArray.count - 1))
+            
+            repeat
+            {
+                randomOptions[0] = Int.random(in: 0 ... (wordArray.count - 1))
+                randomOptions[1] = Int.random(in: 0 ... (wordArray.count - 1))
+                randomOptions[2] = Int.random(in: 0 ... (wordArray.count - 1))
+                randomOptions[3] = Int.random(in: 0 ... (wordArray.count - 1))
+            } while(randomIndex == randomOptions[0] || randomIndex == randomOptions[1] || randomIndex == randomOptions[2] || randomIndex == randomOptions[3])
             
             let word = wordArray[randomIndex]
             
@@ -63,7 +94,6 @@ class WordDataParser
                                                           option3: wordArray[randomOptions[2]].translate,
                                                           option4: wordArray[randomOptions[3]].translate,
                                                           correctAnswer: Int.random(in: 1 ... 4))
-            
             switch wordPageData.correctAnswer
             {
             case 1:

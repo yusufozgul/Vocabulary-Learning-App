@@ -8,39 +8,42 @@
 
 import UIKit
 import BLTNBoard
-import SkeletonView
 
-class LearnVC: UIViewController
+class LearnVC: UIViewController, WordScrollViewProtocol
 {
     @IBOutlet weak var counterStack: UIStackView!
     @IBOutlet weak var correctCounter: UILabel!
     @IBOutlet weak var wrongCounter: UILabel!
     let wordPageScroll: UIScrollView = UIScrollView()
     
-    var wordPage: [WordPage] = { ( ) -> [WordPage] in
+    var wordPages: [WordPage] = { () -> [WordPage] in // ScrollView sayfalarının oluşturulmasu
         let wordPage0: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Previous Page
         let wordPage1: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Current Page
         let wordPage2: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Next Page
         return [wordPage0, wordPage1, wordPage2] }()
     
-    var wordDataArray: [WordPageData] = []
-    let wordDataParser = WordDataParser()
-    var correctAnswer: [String] = []
-    var wrongAnswer: [String] = []
-
-    private var dragging = false
+    var wordDatas: [WordPageData] = [] // sayfalardaki verilerimiz
+    let wordDataParser = WordDataParser() // Api'daki kelimeyi işleyip veren sınıf
+    var dayCorrectAnswer: [String] = [] // günlük bilinen doğru kelimeler
+    var dayWrongAnswer: [String] = [] // günlük yanlış bilinen kelimeler
+    var solvedWords: [String] = [] // toplamda bilinen kelimeler
+    
+    private var isDragging = false
     private var scrollViewSize: CGSize = .zero
-    let bltnBoard = BLTNItemManager(rootItem: BulletinDataSource.splashBoard())
-    let skeletonGradient = SkeletonGradient(baseColor: .asbestos, secondaryColor: .silver)
+    
+    let authBoard = BLTNItemManager(rootItem: BulletinDataSource.splashBoard())
+    let blurredEffectView = UIVisualEffectView()
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
+
         navigationItem.title = NSLocalizedString("LEARN_VC_TITLE", comment: "")
         wordPageScroll.delegate = self
         wordPageScroll.isPagingEnabled = true
         wordPageScroll.showsHorizontalScrollIndicator = false
         wordPageScroll.showsVerticalScrollIndicator = false
+        view.addSubview(wordPageScroll)
         
         wordDataParser.fetchWord()
         prepareScrollView()
@@ -48,62 +51,83 @@ class LearnVC: UIViewController
 //        Giriş yapılıp yapılmadığının kontrolü. Giriş yapılmamışsa yönlendiriliyor.
         if UserDefaults.standard.object(forKey: "currentUser") == nil
         { showBulletin() }
-        if Date().currentDate() == UserDefaults.standard.value(forKey: "day") as? String
-        {
-            correctAnswer = UserDefaults.standard.value(forKey: "correctAnswer") as! [String]
-            wrongAnswer = UserDefaults.standard.value(forKey: "wrongAnswer") as! [String]
-        }
+        
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FetchWords"), object: nil, queue: OperationQueue.main, using: { _ in
             self.prepareScrollView()
-            self.showHideSketlon()
+            self.loadingView()
             self.counterStack.isHidden = false
-            self.correctCounter.text = String(describing: self.correctAnswer.count)
-            self.wrongCounter.text =  String(describing: self.wrongAnswer.count)
+            self.correctCounter.text = String(describing: self.dayCorrectAnswer.count)
+            self.wrongCounter.text =  String(describing: self.dayWrongAnswer.count)
         })
     }
     override func viewWillAppear(_ animated: Bool)
     {
-        showHideSketlon()
+        loadingView()
     }
-    func showHideSketlon()
+    internal func loadingView()
     {
         if wordDataParser.getArrayCount() == 0
         {
+            let blurEffect = UIBlurEffect(style: .extraLight)
+            blurredEffectView.effect = blurEffect
+            blurredEffectView.frame = view.frame
+            let loadingIndicator = UIActivityIndicatorView()
+            loadingIndicator.style = .whiteLarge
+            loadingIndicator.color = .black
+            loadingIndicator.center = view.center
+            loadingIndicator.startAnimating()
+            blurredEffectView.contentView.addSubview(loadingIndicator)
+            view.addSubview(blurredEffectView)
         }
         else
         {
+            blurredEffectView.removeFromSuperview()
         }
     }
-    private func prepareScrollView()
+    internal func recoverData()
     {
-        for page in wordPage {
+        if Date().currentDate() == UserDefaults.standard.value(forKey: "day") as? String
+        {
+            dayCorrectAnswer = UserDefaults.standard.value(forKey: "correctAnswer") as! [String]
+            dayWrongAnswer = UserDefaults.standard.value(forKey: "wrongAnswer") as! [String]
+        }
+        if UserDefaults.standard.value(forKey: "SolvedWords") != nil
+        {
+            solvedWords = UserDefaults.standard.value(forKey: "SolvedWords")  as! [String]
+        }
+    }
+    internal func prepareScrollView()
+    {
+        var wordData = wordDataParser.getword()
+        for page in wordPages
+        {
             page.frame.size.width = view.frame.width / 1.2
             page.frame.size.height = view.frame.height / 1.5
         }
+        wordDatas.removeAll()
         
-        wordDataArray.removeAll()
-        (0..<3).forEach { i in
-            let wordData = wordDataParser.getword()
-            wordDataArray.append(wordData)
-            wordPage[i].wordLabel.text = wordData.wordInfo.word
-            wordPageScroll.addSubview(wordPage[i])
+        for i in 0 ..< 3
+        {
+            wordData = wordDataParser.getword()
+            wordDatas.append(wordData)
+            wordPageScroll.addSubview(wordPages[i])
         }
-        scrollViewSize = (wordPage.first?.frame.size)!
+        scrollViewSize = (wordPages.first?.frame.size)!
         wordPageScroll.frame.size = scrollViewSize
         wordPageScroll.center = CGPoint(x: view.frame.size.width  / 2, y: view.frame.size.height / 2)
         wordPageScroll.contentSize = CGSize(width: scrollViewSize.width * 3, height: scrollViewSize.height)
         wordPageScroll.contentOffset = CGPoint(x: scrollViewSize.width, y: 0)
-        view.addSubview(wordPageScroll)
         layoutPages()
     }
-    private func layoutPages()
+    internal func layoutPages()
     {
         var index = 0
-        for page in wordPage
+        for page in wordPages
         {
-            let wordData = wordDataArray[index]
+            let wordData = wordDatas[index]
             page.delegate = self
             
+//            Sayfaların oluşturulmasında varsayılan ayarları yapılıyorç
             page.answerBox1Image.image = UIImage(named: "BoxBackground")
             page.answerBox2Image.image = UIImage(named: "BoxBackground")
             page.answerBox3Image.image = UIImage(named: "BoxBackground")
@@ -128,33 +152,24 @@ class LearnVC: UIViewController
 //    Giriş yapma, kaydolma, bildirim izinleri sayfaları başlatılıyor.
     func showBulletin()
     {
-        bltnBoard.backgroundViewStyle = BLTNBackgroundViewStyle.dimmed
-        bltnBoard.showBulletin(above: self)
+        authBoard.backgroundViewStyle = BLTNBackgroundViewStyle.dimmed
+        authBoard.showBulletin(above: self)
     }
 }
-extension LearnVC
-{
-    func saveData()
-    {
-        UserDefaults.standard.setValue(Date().currentDate(), forKey: "day")
-        UserDefaults.standard.setValue(correctAnswer, forKey: "correctAnswer")
-        UserDefaults.standard.setValue(wrongAnswer, forKey: "wrongAnswer")
-        UserProgress().saveProgress(day: Date().currentDate(), correctData: correctAnswer, wrongData: wrongAnswer)
-    }
-}
+
 extension LearnVC: UIScrollViewDelegate
 {
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView)
     {
-        dragging = true
+        isDragging = true
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
     {
-        dragging = false
+        isDragging = false
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
-        if !dragging {
+        if !isDragging {
             return
         }
         let offsetX = scrollView.contentOffset.x
@@ -162,8 +177,8 @@ extension LearnVC: UIScrollViewDelegate
         if (offsetX > scrollView.frame.size.width * 1.5)
         {
             let wordData = wordDataParser.getword()
-            wordDataArray.remove(at: 0)
-            wordDataArray.append(wordData)
+            wordDatas.remove(at: 0)
+            wordDatas.append(wordData)
             layoutPages()
             scrollView.contentOffset.x -= scrollViewSize.width
         }
@@ -171,8 +186,8 @@ extension LearnVC: UIScrollViewDelegate
         if (offsetX < scrollView.frame.size.width * 0.5)
         {
             let wordData = wordDataParser.getword()
-            wordDataArray.removeLast()
-            wordDataArray.insert(wordData, at: 0)
+            wordDatas.removeLast()
+            wordDatas.insert(wordData, at: 0)
             layoutPages()
             scrollView.contentOffset.x += scrollViewSize.width
         }
@@ -182,8 +197,8 @@ extension LearnVC: UIScrollViewDelegate
         DispatchQueue.main.asyncAfter(deadline: .now() + delay)
         {
             let wordData = self.wordDataParser.getword()
-            self.wordDataArray.remove(at: 0)
-            self.wordDataArray.append(wordData)
+            self.wordDatas.remove(at: 0)
+            self.wordDatas.append(wordData)
             self.layoutPages()
             self.wordPageScroll.scrollToPage(index: 2, animated: true)
         }

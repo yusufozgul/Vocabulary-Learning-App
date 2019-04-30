@@ -15,5 +15,4 @@ public class ConfigureFireBase
     {
         FirebaseApp.configure()
     }
-    
 }

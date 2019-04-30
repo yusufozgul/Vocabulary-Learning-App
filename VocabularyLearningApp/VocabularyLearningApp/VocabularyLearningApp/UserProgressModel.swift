@@ -11,8 +11,14 @@ import VocabularyLearningAppAPI
 
 class UserProgress
 {
-    func saveProgress(day: String, correctData: [String], wrongData: [String])
+    func saveLearnProgress(child: String, day: String, correctData: [String], wrongData: [String], solvedWords: [String])
     {
-        SaveUserProgress.init().saveProgress(day: day, correctData: correctData, wrongData: wrongData)
+        SaveUserProgress.init().saveProgress(child: child, day: day, correctData: correctData, wrongData: wrongData, solvedWords: solvedWords)
     }
+    
+    func saveTestProgress(child: String, askDay: String, word: String, level: Int)
+    {
+        SaveUserProgress.init().saveTestedProgress(child: child, askDay: askDay, word: word, level: level)
+    }
+    
 }

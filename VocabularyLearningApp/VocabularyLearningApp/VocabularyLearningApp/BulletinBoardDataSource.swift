@@ -14,7 +14,6 @@ protocol BullettinDataSourceProtocol
     static func splashBoard() -> BLTNPageItem
     static func signinBoard() -> BLTNBoradSignin
     static func signupBoard() -> BLTNBoradSignup
-    static func notificationPermissionBoard() -> BLTNPageItem
 }
 
 //    Signin - login, notification, Photos, Microphone permission Boards in BulletinBoard
@@ -44,7 +43,6 @@ enum BulletinDataSource: BullettinDataSourceProtocol
     {
         var userData = userRegisterData.init(userEmail: "", userPassowrd: "")
         let signinBoard = BLTNBoradSignin(title: NSLocalizedString("SIGNIN", comment: ""))
-        signinBoard.next = notificationPermissionBoard()
         signinBoard.descriptionText = NSLocalizedString("SIGNIN_DESC", comment: "")
         
         signinBoard.userMailHandler = { (item, text) in
@@ -69,7 +67,7 @@ enum BulletinDataSource: BullettinDataSourceProtocol
                     }
                     else
                     {
-                        item.manager?.displayNextItem()
+                        item.manager?.dismissBulletin()
                     }
                 })
             }
@@ -82,7 +80,6 @@ enum BulletinDataSource: BullettinDataSourceProtocol
         var userData = userRegisterData(userEmail: "", userPassowrd: "")
         
         let signupBoard = BLTNBoradSignup(title: NSLocalizedString("SIGNUP", comment: ""))
-        signupBoard.next = notificationPermissionBoard()
         signupBoard.descriptionText = NSLocalizedString("SIGNUP_DESC", comment: "")
         
         signupBoard.userMailHandler = { (item, text) in
@@ -108,7 +105,7 @@ enum BulletinDataSource: BullettinDataSourceProtocol
                     }
                     else
                     {
-                        item.manager?.displayNextItem()
+                        item.manager?.dismissBulletin()
                     }
                 })
             }
@@ -119,19 +116,5 @@ enum BulletinDataSource: BullettinDataSourceProtocol
             item.manager?.displayNextItem()
         }
         return signupBoard
-    }
-    
-    static func notificationPermissionBoard() -> BLTNPageItem
-    {
-        let notificationPermissionBoard = BLTNPageItem(title: NSLocalizedString("NOTIFICATION", comment: ""))
-        notificationPermissionBoard.descriptionText = NSLocalizedString("NOTIFICATION_BOARD_DESC", comment: "")
-        notificationPermissionBoard.image = UIImage(named: "PermissionNotificationIcon")
-        notificationPermissionBoard.actionButtonTitle = NSLocalizedString("NOTIFICATION_PERMISSION_BUTTON_TITLE", comment: "")
-        notificationPermissionBoard.actionHandler = {(item: BLTNActionItem) in
-//            TODO
-            
-            item.manager?.dismissBulletin()
-        }
-        return notificationPermissionBoard
     }
 }

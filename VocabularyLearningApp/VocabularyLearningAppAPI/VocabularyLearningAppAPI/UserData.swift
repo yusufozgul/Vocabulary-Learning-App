@@ -27,7 +27,6 @@ public struct currentUserData
         }
     }
 }
-
 public struct userRegisterData
 {
     var userEmail:String

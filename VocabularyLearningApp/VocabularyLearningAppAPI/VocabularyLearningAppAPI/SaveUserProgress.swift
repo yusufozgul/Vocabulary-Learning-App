@@ -11,26 +11,34 @@ import FirebaseDatabase
 
 public class SaveUserProgress
 {
+    var dbRef: DatabaseReference!
     public init() { }
     
-    public func saveProgress(day: String, correctData: [String], wrongData: [String])
+    public func saveProgress(child: String, day: String, correctData: [String], wrongData: [String], solvedWords: [String])
     {
-        var dbRef: DatabaseReference!
-        dbRef = Database.database().reference()
         if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
         {
-            dbRef.child("UserData").child(currentUserId[1]).child(String(describing: day)).setValue(["Coreect": correctData, "Wrong": wrongData]) { (errorDB, DBRef) in
+            dbRef = Database.database().reference().child("UserData").child(currentUserId[1])
+            dbRef.child(child).child(String(describing: day)).setValue(["Correct": correctData, "Wrong": wrongData]) { (errorDB, DBRef) in
                 if errorDB != nil
                 {
-                    print(errorDB?.localizedDescription as Any)
-                    //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FireBaseMessage"), object: errorDB!.localizedDescription)
+                    print("FireBase Save Error")
                 }
-                else
-                {
-                    
-                    //                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FireBaseMessage"), object: true)
-                }
+            }
         }
+    }
+    public func saveTestedProgress(child: String, askDay: String, word: String, level: Int)
+    {
+        if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
+        {
+            dbRef = Database.database().reference().child("UserData").child(currentUserId[1])
+            
+            dbRef.child(child).child(String(describing: askDay)).child(word).setValue(["WordID": word, "level": level]) { (errorDB, DBRef) in
+                if errorDB != nil
+                {
+                    print("FireBase Save Error")
+                }
+            }
         }
     }
 }

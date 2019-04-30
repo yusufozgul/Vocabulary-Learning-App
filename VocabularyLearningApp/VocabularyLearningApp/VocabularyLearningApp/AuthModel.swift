@@ -17,11 +17,11 @@ private protocol firebaseAuthProtocol: class {
 class FirebaseAuthModel: firebaseAuthProtocol {
     static func firebaseSignin(userData: userRegisterData)
     {
-        _ = AuthenticateFirebase.signin(userEmail: userData.userEmail, userPassword: userData.userPassowrd)
+        AuthenticateFirebase.signin(userEmail: userData.userEmail, userPassword: userData.userPassowrd)
     }
     
     static func firebaseSignup(userData: userRegisterData)
     {
-        _ = AuthenticateFirebase.signup(userEmail: userData.userEmail, userPassword: userData.userPassowrd)
+        AuthenticateFirebase.signup(userEmail: userData.userEmail, userPassword: userData.userPassowrd)
     }
 }

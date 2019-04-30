@@ -12,64 +12,73 @@ extension LearnVC: AnsweredDelegate
 {
     func selectAnswer(selected: Int)
     {
-        let page = wordPage[1]
-        let wordData = wordDataArray[1]
+        let page = wordPages[1]
+        let wordData = wordDatas[1]
+        var isKnown: Bool = false
         
         switch selected {
         case 1:
             if selected == wordData.correctAnswer
             {
                 page.answerBox1Image.image = UIImage(named: "correctBoxBackground")
-                correctAnswer.append(wordData.wordInfo.uid)
+                solvedWords.append(wordData.wordInfo.uid)
+                dayCorrectAnswer.append(wordData.wordInfo.uid)
+                isKnown = true
             }
             else
             {
                 page.answerBox1Image.image = UIImage(named: "WrongBoxBackground")
-                wrongAnswer.append(wordData.wordInfo.uid)
+                dayWrongAnswer.append(wordData.wordInfo.uid)
             }
             break
         case 2:
             if selected == wordData.correctAnswer
             {
                 page.answerBox2Image.image = UIImage(named: "correctBoxBackground")
-                correctAnswer.append(wordData.wordInfo.uid)
+                solvedWords.append(wordData.wordInfo.uid)
+                dayCorrectAnswer.append(wordData.wordInfo.uid)
+                isKnown = true
             }
             else
             {
                 page.answerBox2Image.image = UIImage(named: "WrongBoxBackground")
-                wrongAnswer.append(wordData.wordInfo.uid)
+                dayWrongAnswer.append(wordData.wordInfo.uid)
             }
             break
         case 3:
             if selected == wordData.correctAnswer
             {
                 page.answerBox3Image.image = UIImage(named: "correctBoxBackground")
-                correctAnswer.append(wordData.wordInfo.uid)
+                solvedWords.append(wordData.wordInfo.uid)
+                dayCorrectAnswer.append(wordData.wordInfo.uid)
+                isKnown = true
             }
             else
             {
                 page.answerBox3Image.image = UIImage(named: "WrongBoxBackground")
-                wrongAnswer.append(wordData.wordInfo.uid)
+                dayWrongAnswer.append(wordData.wordInfo.uid)
             }
             break
         case 4:
             if selected == wordData.correctAnswer
             {
                 page.answerBox4Image.image = UIImage(named: "correctBoxBackground")
-                correctAnswer.append(wordData.wordInfo.uid)
+                solvedWords.append(wordData.wordInfo.uid)
+                dayCorrectAnswer.append(wordData.wordInfo.uid)
+                isKnown = true
             }
             else
             {
                 page.answerBox4Image.image = UIImage(named: "WrongBoxBackground")
-                wrongAnswer.append(wordData.wordInfo.uid)
+                dayWrongAnswer.append(wordData.wordInfo.uid)
             }
             break
         default:
             break
         }
-        correctCounter.text = String(describing: correctAnswer.count)
-        wrongCounter.text =  String(describing: wrongAnswer.count)
-        saveData()
+        correctCounter.text = String(describing: dayCorrectAnswer.count)
+        wrongCounter.text =  String(describing: dayWrongAnswer.count)
+        saveData(isKnown: isKnown)
         goNextPage(delay: 0.6)
     }
 }

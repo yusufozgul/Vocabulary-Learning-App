@@ -27,7 +27,31 @@ extension Date
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .none
         dateFormatter.dateFormat = "dd-MM-yyyy"
-        print(dateFormatter.string(from: now as Date))
         return dateFormatter.string(from: now as Date)
+    }
+    func addCurrentDate(value: Int, byAdding: String) -> String
+    {
+        var dateComponent = DateComponents()
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        
+        switch byAdding {
+        case "month":
+            dateComponent.month = value
+            break
+        case "day":
+            dateComponent.day = value
+            break
+        case "year":
+            dateComponent.year = value
+            break
+        default:
+            print("Date component error")
+            break
+        }
+        let dateAdding = Calendar.current.date(byAdding: dateComponent, to: Date())
+        
+        return dateFormatter.string(from: dateAdding! as Date)
     }
 }

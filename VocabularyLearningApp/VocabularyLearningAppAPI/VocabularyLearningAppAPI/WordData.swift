@@ -17,7 +17,8 @@ struct WordData
     var uid: String
 }
 
-struct WordPageData {
+struct WordPageData
+{
     var wordInfo: WordData
     var option1: String
     var option2: String
@@ -25,3 +26,10 @@ struct WordPageData {
     var option4: String
     var correctAnswer: Int
 }
+
+struct TestedWordData
+{
+    var wordInfo: WordData
+    var level: Int
+}
+

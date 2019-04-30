@@ -19,7 +19,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBOutlet weak var categoryTextField: UITextField! 
     
     let categoryPickerView = UIPickerView()
-    let categories = [NSLocalizedString("CATEGORY_BUTTON", comment: ""),"İsim","Fiil","Sıfat", "Zamir","Zarf","Edat","Bağlaç","Ünlem"]
+    let categories = [NSLocalizedString("CATEGORY_BUTTON", comment: ""),"İsim","Fiil","Sıfat", "Zamir","Zarf","Edat","Bağlaç"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,19 +34,19 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         createPickerView()
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "FireBaseMessage"), object: nil, queue: .main) { (notification) in
-            let emptyAlert: UIAlertController
+            let firebaseResultAlert: UIAlertController
             
             if String(describing: notification.object!) == "1"
             {
-                emptyAlert = UIAlertController(title: NSLocalizedString("FIREBASE_SUCCES_TITLE", comment: ""), message: NSLocalizedString("FIREBASE_SUCCES", comment: ""), preferredStyle: .alert)
+                firebaseResultAlert = UIAlertController(title: NSLocalizedString("FIREBASE_SUCCES_TITLE", comment: ""), message: NSLocalizedString("FIREBASE_SUCCES", comment: ""), preferredStyle: .alert)
             }
             else
             {
-                emptyAlert = UIAlertController(title: NSLocalizedString("FIREBASE_ALERT_TITLE", comment: ""), message: String(describing: notification.object!), preferredStyle: .alert)
+                firebaseResultAlert = UIAlertController(title: NSLocalizedString("FIREBASE_ALERT_TITLE", comment: ""), message: String(describing: notification.object!), preferredStyle: .alert)
             }
-            let emptyAlertButton = UIAlertAction(title: NSLocalizedString("OKAY", comment: ""), style: .cancel, handler: nil)
-            emptyAlert.addAction(emptyAlertButton)
-            self.present(emptyAlert, animated: true, completion: nil)
+            let alertButton = UIAlertAction(title: NSLocalizedString("OKAY", comment: ""), style: .cancel, handler: nil)
+            firebaseResultAlert.addAction(alertButton)
+            self.present(firebaseResultAlert, animated: true, completion: nil)
             self.addButtonLabel.text = NSLocalizedString("ADD_BUTTON", comment: "")
         }
     }
@@ -62,11 +62,13 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         var wordData: WordData = WordData(word: "", translate: "", sentence: "", category: "", uid: "")
         if !wordTextFiled.text!.isEmpty && !wordTranslate.text!.isEmpty && wordDescription.text != NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "") && !categoryTextField.text!.isEmpty
         {
+            let addWord: AddNewWord = AddNewWord()
             wordData.word = wordTextFiled.text!
             wordData.translate = wordTranslate.text!
             wordData.category = categoryTextField.text!
             wordData.sentence = wordDescription.text!
-            AddNewWord.init().AddNewWord(data: wordData)
+            addWord.AddNewWord(data: wordData)
+            
             wordTextFiled.text = ""
             wordTranslate.text = ""
             wordDescription.text = ""
@@ -91,23 +93,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     }
     @IBAction func infoButton(_ sender: Any)
     {
-        let emptyAlert = UIAlertController(title: NSLocalizedString("INFO_TITLE", comment: ""), message: """
-Kelimenizin Türünden emin değilseniz aşağıdaki bilgilere göre girebilirsiniz.
-
-• İsim (Ad): Canlı ve cansız varlıkları, duygu ve düşünceleri, durumları, bütün bunların birbiriyle ilgilerini karşılayan sözcüklerdir: kuş, ağaç, ağlama, düşünce, yargı, bilgi gibi.
-
-• Sıfat (Önad): Adların niteliklerini, ne durumda olduklarını sayılarını, ölçülerini, gösteren, soran ya da belirten sözcüklerdir.
-
-• Fiil (Eylem): Oluş, kılınış, durum gösteren sözcüklerdir.
-
-• Zamir (Adıl): Adların yerini tutan, bu görevi yerine getirirken kişi, soru, gösterme ve belgisizlik kavramları da taşıyan sözcüklerdir.
-
-• Zarf (Belirteç): Eylemlerin, sıfatların ya da görevce kendisi ne benzeyen sözcüklerin anlamlarını zaman bildirerek, güçlendirerek ya da kısıtlayarak etkileyen sözcüklerdir.
-
-• Bağlaç: Eş görevli ya da birbiriyle ilgili sözcükleri, sözcük öbeklerini, özellikle cümleleri bağlamaya yarayan; bunlar arasında anlam ve biçim bakımından bağlantı kuran sözcüklerdir.
-
-• Ünlem: Sevinme, kızma, korku, acıma, şaşma, gibi ansızın beliren duyguları yansıtmaya yarayan sözcüklerdir.
-""", preferredStyle: .alert)
+        let emptyAlert = UIAlertController(title: NSLocalizedString("INFO_TITLE", comment: ""), message: NSLocalizedString("WORD_INFO", comment: ""), preferredStyle: .alert)
         let emptyAlertButton = UIAlertAction(title: NSLocalizedString("OKAY", comment: ""), style: .cancel, handler: nil)
         emptyAlert.addAction(emptyAlertButton)
         present(emptyAlert, animated: true, completion: nil)

@@ -17,7 +17,7 @@
 		88C4E8ED226EFCDD0008382C /* VocabularyLearningAppAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C4E8E3226EFCDD0008382C /* VocabularyLearningAppAPI.framework */; };
 		88C4E8F2226EFCDD0008382C /* VocabularyLearningAppAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E8F1226EFCDD0008382C /* VocabularyLearningAppAPITests.swift */; };
 		88C4E8F4226EFCDD0008382C /* VocabularyLearningAppAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 88C4E8E6226EFCDD0008382C /* VocabularyLearningAppAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		88C4E904226F070B0008382C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88C4E903226F070B0008382C /* GoogleService-Info.plist */; };
+		88F4C0D4227747F7002D1C44 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88F4C0D3227747F7002D1C44 /* GoogleService-Info.plist */; };
 		F615514C52520F2092FF6C23 /* Pods_VocabularyLearningAppAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2EE8C19CECC68751987D734 /* Pods_VocabularyLearningAppAPI.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,20 +28,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 88C4E879226EFB870008382C;
 			remoteInfo = VocabularyLearningApp;
-		};
-		886D4173226FCD710016527B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 886D416B226FCD710016527B /* VocabularyLearningApp.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 88C4E88F226EFB880008382C;
-			remoteInfo = VocabularyLearningAppTests;
-		};
-		886D4175226FCD710016527B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 886D416B226FCD710016527B /* VocabularyLearningApp.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 88C4E89A226EFB890008382C;
-			remoteInfo = VocabularyLearningAppUITests;
 		};
 		88C4E8EE226EFCDD0008382C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -72,7 +58,7 @@
 		88C4E8EC226EFCDD0008382C /* VocabularyLearningAppAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabularyLearningAppAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C4E8F1226EFCDD0008382C /* VocabularyLearningAppAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyLearningAppAPITests.swift; sourceTree = "<group>"; };
 		88C4E8F3226EFCDD0008382C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88C4E903226F070B0008382C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../VocabularyLearningApp/VocabularyLearningApp/Resource/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		88F4C0D3227747F7002D1C44 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../VocabularyLearningApp/VocabularyLearningApp/Resource/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C2EE8C19CECC68751987D734 /* Pods_VocabularyLearningAppAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabularyLearningAppAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,8 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				886D4172226FCD710016527B /* VocabularyLearningApp.app */,
-				886D4174226FCD710016527B /* VocabularyLearningAppTests.xctest */,
-				886D4176226FCD710016527B /* VocabularyLearningAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,7 +114,7 @@
 		88C4E8D9226EFCDD0008382C = {
 			isa = PBXGroup;
 			children = (
-				88C4E903226F070B0008382C /* GoogleService-Info.plist */,
+				88F4C0D3227747F7002D1C44 /* GoogleService-Info.plist */,
 				88C4E8E5226EFCDD0008382C /* VocabularyLearningAppAPI */,
 				88C4E8F0226EFCDD0008382C /* VocabularyLearningAppAPITests */,
 				88C4E8E4226EFCDD0008382C /* Products */,
@@ -277,20 +261,6 @@
 			remoteRef = 886D4171226FCD710016527B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		886D4174226FCD710016527B /* VocabularyLearningAppTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = VocabularyLearningAppTests.xctest;
-			remoteRef = 886D4173226FCD710016527B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		886D4176226FCD710016527B /* VocabularyLearningAppUITests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = VocabularyLearningAppUITests.xctest;
-			remoteRef = 886D4175226FCD710016527B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -298,7 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88C4E904226F070B0008382C /* GoogleService-Info.plist in Resources */,
+				88F4C0D4227747F7002D1C44 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

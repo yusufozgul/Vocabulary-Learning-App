@@ -13,6 +13,7 @@ class AddNewWord
 {
     func AddNewWord(data: WordData)
     {
-        AddWord.init().AddNewWord(word: data.word, translate: data.translate, sentence: data.sentence, category: data.category)
+        let addWord: AddWord = AddWord()
+        addWord.AddNewWord(word: data.word, translate: data.translate, sentence: data.sentence, category: data.category)
     }
 }
