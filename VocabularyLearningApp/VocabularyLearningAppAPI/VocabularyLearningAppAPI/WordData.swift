@@ -30,6 +30,6 @@ struct WordPageData
 struct TestedWordData
 {
     var wordInfo: WordData
-    var level: Int
+    var level: String
 }
 

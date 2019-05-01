@@ -16,7 +16,7 @@ class UserProgress
         SaveUserProgress.init().saveProgress(child: child, day: day, correctData: correctData, wrongData: wrongData, solvedWords: solvedWords)
     }
     
-    func saveTestProgress(child: String, askDay: String, word: String, level: Int)
+    func saveTestProgress(child: String, askDay: String, word: String, level: String)
     {
         SaveUserProgress.init().saveTestedProgress(child: child, askDay: askDay, word: word, level: level)
     }

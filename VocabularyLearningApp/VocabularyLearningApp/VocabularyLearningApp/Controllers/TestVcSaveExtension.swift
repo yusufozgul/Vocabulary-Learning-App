@@ -1,5 +1,5 @@
 //
-//  LearnVcSaveExtension.swift
+//  TestVcSaveExtension.swift
 //  VocabularyLearningApp
 //
 //  Created by Yusuf Özgül on 30.04.2019.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-extension LearnVC
+extension TestVC
 {
     func saveData(isKnown: Bool)
     {
-//        Verileri lokalde ve Firebasede kaydetme adımları.
+        //        Verileri lokalde ve Firebasede kaydetme adımları.
         UserDefaults.standard.setValue(Date().currentDate(), forKey: "day")
         UserDefaults.standard.setValue(dayCorrectAnswer, forKey: "correctAnswer")
         UserDefaults.standard.setValue(dayWrongAnswer, forKey: "wrongAnswer")

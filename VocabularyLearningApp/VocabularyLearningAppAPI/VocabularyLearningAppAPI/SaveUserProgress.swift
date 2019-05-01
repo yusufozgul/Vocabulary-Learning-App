@@ -27,7 +27,7 @@ public class SaveUserProgress
             }
         }
     }
-    public func saveTestedProgress(child: String, askDay: String, word: String, level: Int)
+    public func saveTestedProgress(child: String, askDay: String, word: String, level: String)
     {
         if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
         {

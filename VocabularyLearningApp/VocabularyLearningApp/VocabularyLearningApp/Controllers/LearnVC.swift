@@ -23,7 +23,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         return [wordPage0, wordPage1, wordPage2] }()
     
     var wordDatas: [WordPageData] = [] // sayfalardaki verilerimiz
-    let wordDataParser = WordDataParser() // Api'daki kelimeyi işleyip veren sınıf
+    let wordDataParser = LearnWordDataParser() // Api'daki kelimeyi işleyip veren sınıf
     var dayCorrectAnswer: [String] = [] // günlük bilinen doğru kelimeler
     var dayWrongAnswer: [String] = [] // günlük yanlış bilinen kelimeler
     var solvedWords: [String] = [] // toplamda bilinen kelimeler

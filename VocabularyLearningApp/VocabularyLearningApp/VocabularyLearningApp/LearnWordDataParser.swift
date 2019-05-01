@@ -9,32 +9,36 @@
 import Foundation
 import VocabularyLearningAppAPI
 
-class WordDataParser
+class LearnWordDataParser: DataParserProtocol
 {
-    private var wordArray: [WordData] = []
-    var solvedWords = [""]
+    internal var wordArray: [WordData] = []
+    internal var testArray: [TestedWordData] = []
     
     func fetchWord()
     {
+        FetchWords().fetchLearnWords()
+        fetchedLearnWord()
+        FetchWords().fetchTestWords()
+        fetchedTestDataWord()
+    }
+    
+    func fetchedLearnWord()
+    {
+        var solvedWords = [""]
+        var isMatch: Bool = false
+        var count = 0
+        var current = 0
+        
         if UserDefaults.standard.value(forKey: "SolvedWords") != nil
         {
             solvedWords.removeAll()
             solvedWords = UserDefaults.standard.value(forKey: "correctAnswer") as! [String]
         }
-        FetchWords().fetch()
-        fetchedWord()
-    }
-    
-    func fetchedWord()
-    {
-        var isMatch: Bool = false
-        var count = 0
-        var current = 0
         
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FetchWordData"), object: nil, queue: OperationQueue.main, using: { (firebaseData) in
             let words = firebaseData.object! as! [String:String]
             isMatch = false
-            for word in self.solvedWords
+            for word in solvedWords
             {
                 if word == words["uid"]!
                 {
@@ -53,6 +57,36 @@ class WordDataParser
                 if current == count
                 {
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "FetchWords"), object: nil)
+                }
+            })
+        })
+    }
+    func fetchedTestDataWord()
+    {
+        var count = 0
+        var current = 0
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "testableWordData"), object: nil, queue: OperationQueue.main, using: { (firebaseData) in
+            
+            let words = firebaseData.object! as! [String]
+            
+            
+            print("")
+            print(words.count)
+            print("")
+            
+            
+//            let testableWord: WordData = WordData(word: word.word, translate: word.translate, sentence: word.sentence, category: word.category, uid: word.uid)
+//            let testWord: TestedWordData = TestedWordData(wordInfo: testableWord, level: words["level"]!)
+//            self.testArray.append(testWord)
+            
+            count += 1
+            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.2 , execute: {
+                current += 1
+                if current == count
+                {
+//                    NotificationCenter.default.post(name: Notification.Name(rawValue: "FetchTestWord"), object: nil)
+                    print(self.testArray)
                 }
             })
         })
