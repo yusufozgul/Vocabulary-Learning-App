@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseDatabase
 
+//  Gelen kelimeyi Firebase'e ekler
 public class AddWord
 {
     public init() { }
@@ -27,7 +28,6 @@ public class AddWord
             }
             else
             {
-                print(DBRef)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FireBaseMessage"), object: true)
             }
         }

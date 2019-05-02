@@ -10,7 +10,9 @@ import UIKit
 import BLTNBoard
 
 
-class BLTNBoradSignup: BLTNPageItem {
+class BLTNBoradSignup: BLTNPageItem
+{
+//    Kaydolma kartı oluşturulması
     
     @objc private var userMail: UITextField!
     @objc public var userPassword: UITextField!

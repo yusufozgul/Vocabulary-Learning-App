@@ -16,7 +16,7 @@ protocol BullettinDataSourceProtocol
     static func signupBoard() -> BLTNBoradSignup
 }
 
-//    Signin - login, notification, Photos, Microphone permission Boards in BulletinBoard
+//    Signin - login Boards in BulletinBoard
 enum BulletinDataSource: BullettinDataSourceProtocol
 {
     static func splashBoard() -> BLTNPageItem

@@ -10,7 +10,7 @@ import UIKit
 
 class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
-
+//  View elemanları
     @IBOutlet weak var wordTextFiled: UITextField!
     @IBOutlet weak var wordTranslate: UITextField!
     @IBOutlet weak var wordDescription: UITextView!
@@ -18,12 +18,13 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBOutlet weak var addButtonLabel: UILabel!
     @IBOutlet weak var categoryTextField: UITextField! 
     
-    let categoryPickerView = UIPickerView()
+    let categoryPickerView = UIPickerView() // Kategori seçici
     let categories = [NSLocalizedString("CATEGORY_BUTTON", comment: ""),"İsim","Fiil","Sıfat", "Zamir","Zarf","Edat","Bağlaç"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        View ayarlamaları
+        
         navigationItem.title = NSLocalizedString("ADD_WORD_TITLE", comment: "")
         wordTextFiled.placeholder = NSLocalizedString("WORD_TEXTFILED_PLACEHOLDER", comment: "")
         wordTranslate.placeholder = NSLocalizedString("WORD_TRANSLATE_TEXTFILED_PLACEHOLDER", comment: "")
@@ -33,9 +34,9 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         categoryTextField.placeholder = NSLocalizedString("CATEGORY_BUTTON", comment: "")
         createPickerView()
         
+//        Bir kelime eklendiğinde işlem sonucu ekranda gösterilir.
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "FireBaseMessage"), object: nil, queue: .main) { (notification) in
             let firebaseResultAlert: UIAlertController
-            
             if String(describing: notification.object!) == "1"
             {
                 firebaseResultAlert = UIAlertController(title: NSLocalizedString("FIREBASE_SUCCES_TITLE", comment: ""), message: NSLocalizedString("FIREBASE_SUCCES", comment: ""), preferredStyle: .alert)
@@ -50,14 +51,14 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
             self.addButtonLabel.text = NSLocalizedString("ADD_BUTTON", comment: "")
         }
     }
-    func createPickerView()
+    func createPickerView() // Kategori seçim ekranı
     {
         categoryPickerView.delegate = self
         categoryPickerView.dataSource = self
         categoryPickerView.delegate?.pickerView?(categoryPickerView, didSelectRow: 0, inComponent: 0)
         categoryTextField.inputView = categoryPickerView
     }
-    func addWord()
+    func addWord() // Girilen kelime verilerini alıp model'e iletiyor. Eğer veriler boş ise hata mesajı çıkartıyor.
     {
         var wordData: WordData = WordData(word: "", translate: "", sentence: "", category: "", uid: "")
         if !wordTextFiled.text!.isEmpty && !wordTranslate.text!.isEmpty && wordDescription.text != NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "") && !categoryTextField.text!.isEmpty
@@ -91,7 +92,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     {
         addWord()
     }
-    @IBAction func infoButton(_ sender: Any)
+    @IBAction func infoButton(_ sender: Any) // Kelime kategori detayları bilgilendirmesi
     {
         let emptyAlert = UIAlertController(title: NSLocalizedString("INFO_TITLE", comment: ""), message: NSLocalizedString("WORD_INFO", comment: ""), preferredStyle: .alert)
         let emptyAlertButton = UIAlertAction(title: NSLocalizedString("OKAY", comment: ""), style: .cancel, handler: nil)
@@ -115,7 +116,7 @@ extension AddNewWordVC: UITextViewDelegate
         wordDescription.textColor = .black
     }
 }
-extension AddNewWordVC
+extension AddNewWordVC // Kategori seçici ayarları
 {
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {

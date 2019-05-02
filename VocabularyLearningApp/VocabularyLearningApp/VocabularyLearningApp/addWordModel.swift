@@ -9,7 +9,12 @@
 import Foundation
 import VocabularyLearningAppAPI
 
-class AddNewWord
+protocol AddNewWordProtocol
+{
+    func AddNewWord(data: WordData)
+}
+
+class AddNewWord: AddNewWordProtocol
 {
     func AddNewWord(data: WordData)
     {

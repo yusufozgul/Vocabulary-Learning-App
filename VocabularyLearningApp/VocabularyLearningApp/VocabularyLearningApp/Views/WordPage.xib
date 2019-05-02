@@ -261,6 +261,10 @@
                 <outlet property="answerBox3Label" destination="PA5-Ni-nTr" id="yQS-xB-BYg"/>
                 <outlet property="answerBox4Image" destination="JbL-Uw-cC1" id="v5b-q2-cBb"/>
                 <outlet property="answerBox4Label" destination="Eei-jL-HcL" id="0Cx-2g-vNw"/>
+                <outlet property="answerButton1" destination="0UJ-R5-n7E" id="UM4-UP-yVi"/>
+                <outlet property="answerButton2" destination="WNT-HS-kE3" id="sq8-07-V6g"/>
+                <outlet property="answerButton3" destination="9oi-vz-Irr" id="1Si-p4-mlI"/>
+                <outlet property="answerButton4" destination="zTd-7e-NWQ" id="d2f-2b-VwD"/>
                 <outlet property="pageBackground" destination="Wm0-1p-RaV" id="096-NA-VMc"/>
                 <outlet property="wordCategoryLabel" destination="v0m-8O-Cw3" id="nm0-xA-9bf"/>
                 <outlet property="wordLabel" destination="TSM-qs-5kf" id="Jx7-2G-cMq"/>

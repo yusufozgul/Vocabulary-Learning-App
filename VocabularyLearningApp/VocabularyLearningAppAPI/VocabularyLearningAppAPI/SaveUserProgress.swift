@@ -11,6 +11,7 @@ import FirebaseDatabase
 
 public class SaveUserProgress
 {
+    // Kullanıcının ilerlemesini kaydeder. Günlük çözülen kelimeler ve test verileri.
     var dbRef: DatabaseReference!
     public init() { }
     

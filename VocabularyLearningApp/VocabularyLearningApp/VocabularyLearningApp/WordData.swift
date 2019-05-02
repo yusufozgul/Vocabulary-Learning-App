@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Kelime verileri yapıları. Gereken sayfaya göre oluşturulur.
 public struct WordData
 {
     public var word: String

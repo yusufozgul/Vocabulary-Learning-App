@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol AnsweredDelegate: class
+protocol AnsweredDelegate: class // Butona tıklandığında veri taşımada görev alan interface.
 {
     func selectAnswer(selected: Int)
 }

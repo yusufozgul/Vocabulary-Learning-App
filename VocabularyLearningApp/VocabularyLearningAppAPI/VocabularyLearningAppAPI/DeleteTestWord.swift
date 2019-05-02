@@ -11,6 +11,7 @@ import FirebaseDatabase
 
 public class FireBaseDelete
 {
+    //  Firebase'den test edilmiş kelimeyi siler.
     let firebaseService = FetchWords.fetchWords
     var dbRef: DatabaseReference!
     public init() {}

@@ -10,6 +10,8 @@ import UIKit
 
 extension LearnVC: AnsweredDelegate
 {
+//    Interface yardımıyla kelime kartından herhangi bir seçeneğe tıklanıldığında LearnVC delegate olduğundan haberdar oluyor.
+//    Tıklanıldığı indisle gereken kontroller yapılıyor ve işlem devam ediyor.
     func selectAnswer(selected: Int)
     {
         let page = wordPages[1]
@@ -76,9 +78,9 @@ extension LearnVC: AnsweredDelegate
         default:
             break
         }
-        correctCounter.text = String(describing: dayCorrectAnswer.count)
-        wrongCounter.text =  String(describing: dayWrongAnswer.count)
-        saveData(isKnown: isKnown)
-        goNextPage(delay: 0.6)
+        correctCounter.text = String(describing: dayCorrectAnswer.count) // doğru sayacının arttırılması
+        wrongCounter.text =  String(describing: dayWrongAnswer.count) // yanlış sayacının arttırılması
+        saveData(isKnown: isKnown) // cevap verisinin kaydedilmesi
+        goNextPage(delay: 0.6) // Otomatik sayfa geçişi
     }
 }

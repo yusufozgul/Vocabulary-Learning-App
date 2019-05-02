@@ -9,7 +9,13 @@
 import Foundation
 import VocabularyLearningAppAPI
 
-class UserProgress
+protocol UserProgressProtocol
+{
+    func saveLearnProgress(child: String, day: String, correctData: [String], wrongData: [String], solvedWords: [String])
+    func saveTestProgress(askDay: String, level: String, word: String, translate: String, sentence: String, category: String, id: String)
+    func deleteSolvedTest(uid: String)
+}
+class UserProgress: UserProgressProtocol
 {
     func saveLearnProgress(child: String, day: String, correctData: [String], wrongData: [String], solvedWords: [String])
     {
@@ -25,5 +31,4 @@ class UserProgress
     {
         FireBaseDelete.init().deteleteChil(uid: uid)
     }
-    
 }

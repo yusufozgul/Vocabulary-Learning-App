@@ -9,6 +9,8 @@
 import Foundation
 import FirebaseDatabase
 
+// Firebase'den kelime çeker ve parse edip gönderir.
+
 public protocol fetchServiceProtocol
 {
     func fetchAllWord(completion: @escaping (Result<FetchWordResponse>) -> Void)

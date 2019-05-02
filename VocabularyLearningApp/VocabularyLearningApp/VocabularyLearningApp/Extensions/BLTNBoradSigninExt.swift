@@ -9,9 +9,9 @@
 import UIKit
 import BLTNBoard
 
-
-class BLTNBoradSignin: BLTNPageItem {
-    
+class BLTNBoradSignin: BLTNPageItem
+{
+//    Giriş yapma kartı oluşturulması
     @objc public var userMail: UITextField!
     @objc public var userPassword: UITextField!
     
@@ -24,7 +24,7 @@ class BLTNBoradSignin: BLTNPageItem {
         userMail = interfaceBuilder.makeTextField(placeholder: NSLocalizedString("USER_EMAIL", comment: ""), returnKey: .done, delegate: self)
         userPassword = interfaceBuilder.makeTextField(placeholder: NSLocalizedString("USER_PASSWORD", comment: ""), returnKey: .done, delegate: self)
         
-        //        Password hider  ------ Add extension?
+//        Password hider  ------ Add extension?
         visibilityButton.setImage(UIImage(named: "visibility_on"), for: .normal)
         visibilityButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
         visibilityButton.frame = CGRect(x: CGFloat(userPassword.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))

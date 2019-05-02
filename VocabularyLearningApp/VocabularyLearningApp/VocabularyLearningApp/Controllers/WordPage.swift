@@ -10,6 +10,7 @@ import UIKit
 
 class WordPage: UIView
 {
+//    Kelime kartları, bir kelime gösterilirken buradan oluşturulan sayfa gösterilir.
     weak var delegate: AnsweredDelegate?
 
     @IBOutlet weak var pageBackground: UIImageView!
@@ -27,15 +28,41 @@ class WordPage: UIView
     @IBOutlet weak var answerBox3Label: UILabel!
     @IBOutlet weak var answerBox4Label: UILabel!
     
+    @IBOutlet weak var answerButton1: UIButton!
+    @IBOutlet weak var answerButton2: UIButton!
+    @IBOutlet weak var answerButton3: UIButton!
+    @IBOutlet weak var answerButton4: UIButton!
+    
+    
     @IBAction func answerBox1Button(_ sender: Any)
-    { delegate?.selectAnswer(selected: 1) }
+    {
+        delegate?.selectAnswer(selected: 1)
+        buttonSet()
+    }
     
     @IBAction func answerBox2Button(_ sender: Any)
-    { delegate?.selectAnswer(selected: 2) }
+    {
+        delegate?.selectAnswer(selected: 2)
+        buttonSet()
+    }
     
     @IBAction func answerBox3Button(_ sender: Any)
-    { delegate?.selectAnswer(selected: 3) }
+    {
+        delegate?.selectAnswer(selected: 3)
+        buttonSet()
+    }
     
     @IBAction func answerBox4Button(_ sender: Any)
-    { delegate?.selectAnswer(selected: 4) }
+    {
+        delegate?.selectAnswer(selected: 4)
+        buttonSet()
+    }
+    
+    func buttonSet()
+    {
+        answerButton1.isHidden = !answerButton1.isHidden
+        answerButton2.isHidden = !answerButton2.isHidden
+        answerButton3.isHidden = !answerButton3.isHidden
+        answerButton4.isHidden = !answerButton4.isHidden
+    }
 }

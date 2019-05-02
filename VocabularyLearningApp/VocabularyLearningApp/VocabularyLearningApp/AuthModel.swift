@@ -9,7 +9,9 @@
 import Foundation
 import VocabularyLearningAppAPI
 
-private protocol firebaseAuthProtocol: class {
+// Firebase giriş ve login kontrolleri model'i
+private protocol firebaseAuthProtocol: class
+{
     static func firebaseSignin(userData: userRegisterData)
     static func firebaseSignup(userData: userRegisterData)
 }

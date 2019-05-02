@@ -12,7 +12,7 @@ extension LearnVC
 {
     func saveData(isKnown: Bool)
     {
-//        Verileri lokalde ve Firebasede kaydetme adımları.
+//        Bir soru çözüldüğünde bugünün tarihine göre kelime Firebase'de ilgili yere kaydedilir. Eğer doğru bilinmişse test için gerekli yerede kayıt işlemini yapıyor.
         UserDefaults.standard.setValue(Date().currentDate(), forKey: "day")
         UserDefaults.standard.setValue(dayCorrectAnswer, forKey: "correctAnswer")
         UserDefaults.standard.setValue(dayWrongAnswer, forKey: "wrongAnswer")

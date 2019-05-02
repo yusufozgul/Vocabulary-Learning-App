@@ -10,6 +10,8 @@ import UIKit
 
 extension TestVC: AnsweredDelegate
 {
+//    Interface yardımıyla kelime kartından herhangi bir seçeneğe tıklanıldığında TestVC delegate olduğundan haberdar oluyor.
+//    Tıklanıldığı indisle gereken kontroller yapılıyor ve işlem devam ediyor.
     func selectAnswer(selected: Int)
     {
         let page = wordPages[1]
@@ -64,7 +66,7 @@ extension TestVC: AnsweredDelegate
         default:
             break
         }
-        saveData(isKnown: isKnown)
-        goNextPage(delay: 0.6)
+        saveData(isKnown: isKnown) // cevap verisinin kaydedilmesi
+        goNextPage(delay: 0.6) // Otomatik sayfa geçişi
     }
 }

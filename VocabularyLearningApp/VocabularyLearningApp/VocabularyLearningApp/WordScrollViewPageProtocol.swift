@@ -7,7 +7,7 @@
 //
 
 import Foundation
-protocol WordScrollViewProtocol
+protocol WordScrollViewProtocol // Kelime kartı için interface
 {
     func prepareScrollView()
     func layoutPages()

@@ -10,6 +10,8 @@ import Foundation
 
 extension TestVC
 {
+//    Bir kelime test edildiğinde eğer doğru bilindiyse kelime şimdiki yerinden alınıp bir sonraki test edilecek tarihe eklenir.
+//    Bir kelime eğer yanlış bilindiyse yarın tekrar test etmek için level'i 1 yapılır.
     func saveData(isKnown: Bool)
     {
         let wordData = wordDatas[1]
@@ -34,7 +36,7 @@ extension TestVC
                 break
             }
         }
-        if !isKnown
+        else
         {
             userProgressModel.deleteSolvedTest(uid: wordData.wordPage.wordInfo.uid)
             userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 1, byAdding: "day"), level: "1", word: wordData.wordPage.wordInfo.word, translate: wordData.wordPage.wordInfo.translate, sentence: wordData.wordPage.wordInfo.sentence, category: wordData.wordPage.wordInfo.category, id: wordData.wordPage.wordInfo.uid)

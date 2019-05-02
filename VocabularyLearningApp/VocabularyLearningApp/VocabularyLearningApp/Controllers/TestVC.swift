@@ -10,9 +10,9 @@ import UIKit
 
 class TestVC: UIViewController, WordScrollViewProtocol
 {
-    let wordPageScroll: UIScrollView = UIScrollView()
-    let blurredEffectView = UIVisualEffectView()
-    let wordDataParser = LearnWordDataParser.parser // Api'daki kelimeyi işleyip veren static sınıf
+    let wordPageScroll: UIScrollView = UIScrollView() // kaydırılabilir sayfamız
+    let blurredEffectView = UIVisualEffectView() // loading view'u
+    let wordDataParser = WordDataParser.parser // Api'daki kelimeyi işleyip veren static sınıf
     var wordDatas: [WordTestPageData] = [] // sayfalardaki verilerimiz
     
     var wordPages: [WordPage] = { () -> [WordPage] in // ScrollView sayfalarının oluşturulmasu
@@ -20,13 +20,15 @@ class TestVC: UIViewController, WordScrollViewProtocol
         let wordPage1: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Current Page
         let wordPage2: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Next Page
         return [wordPage0, wordPage1, wordPage2] }()
-    private var isDragging = false
+    
+    private var isDragging = false // kaydırma kontrolü
     private var scrollViewSize: CGSize = .zero
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+//        View ayarlamaları
         navigationItem.title = NSLocalizedString("TEST_VC_TITLE", comment: "")
         wordPageScroll.delegate = self
         wordPageScroll.isPagingEnabled = true
@@ -34,9 +36,11 @@ class TestVC: UIViewController, WordScrollViewProtocol
         wordPageScroll.showsVerticalScrollIndicator = false
         view.addSubview(wordPageScroll)
         
+//        Verilerin çekilmesi, parse edilmesi ve local verilerin çekilmesi
         wordDataParser.fetchedTestWord()
         prepareScrollView()
         
+//        Kelime geldiği zaman bilgi mesajını yakalayıp işlem yapımı
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FetchTestWords"), object: nil, queue: OperationQueue.main, using: { _ in
             self.prepareScrollView()
             self.loadingView()
@@ -47,7 +51,7 @@ class TestVC: UIViewController, WordScrollViewProtocol
     {
         loadingView()
     }
-    internal func loadingView()
+    internal func loadingView() // Loading sayfası gösterimi ve kontrolü
     {
         if wordDataParser.getTestArrayCount() == 0
         {
@@ -67,7 +71,7 @@ class TestVC: UIViewController, WordScrollViewProtocol
             blurredEffectView.removeFromSuperview()
         }
     }
-    internal func prepareScrollView()
+    internal func prepareScrollView() // ScrollView'un ayarlanması ve kelimelerin yerleştirilmesi
     {
         var wordData = wordDataParser.getTestWord()
         for page in wordPages
@@ -90,7 +94,7 @@ class TestVC: UIViewController, WordScrollViewProtocol
         wordPageScroll.contentOffset = CGPoint(x: scrollViewSize.width, y: 0)
         layoutPages()
     }
-    internal func layoutPages()
+    internal func layoutPages() // ScrollView'a kelimelerin verilmesi
     {
         var index = 0
         for page in wordPages
@@ -98,12 +102,13 @@ class TestVC: UIViewController, WordScrollViewProtocol
             let wordData = wordDatas[index]
             page.delegate = self
             
-            //            Sayfaların oluşturulmasında varsayılan ayarları yapılıyorç
+//            Sayfaların oluşturulmasında varsayılan ayarları yapılıyorç
             page.answerBox1Image.image = UIImage(named: "BoxBackground")
             page.answerBox2Image.image = UIImage(named: "BoxBackground")
             page.answerBox3Image.image = UIImage(named: "BoxBackground")
             page.answerBox4Image.image = UIImage(named: "BoxBackground")
             
+//            Kelimeleri ve şıkları yerleştirme
             page.wordLabel.text = wordData.wordPage.wordInfo.word
             page.wordCategoryLabel.text = wordData.wordPage.wordInfo.category
             page.wordSentence.text = wordData.wordPage.wordInfo.sentence
@@ -124,15 +129,15 @@ class TestVC: UIViewController, WordScrollViewProtocol
 
 extension TestVC: UIScrollViewDelegate
 {
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView)
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) // Kaydırma başladı
     {
         isDragging = true
     }
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) // Kaydırma sonlandırıldı
     {
         isDragging = false
     }
-    func scrollViewDidScroll(_ scrollView: UIScrollView)
+    func scrollViewDidScroll(_ scrollView: UIScrollView) // kaydırma bitince kaydırma sonlandırılmışsa sayfa geçiş işlemleri yapılıyor
     {
         if !isDragging {
             return
@@ -157,7 +162,7 @@ extension TestVC: UIScrollViewDelegate
             scrollView.contentOffset.x += scrollViewSize.width
         }
     }
-    func goNextPage(delay: TimeInterval)
+    func goNextPage(delay: TimeInterval) // Otomatik sayfa geçiş fonksiyonu, gönderilen zamana göre geçiş yapılıyor.
     {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay)
         {

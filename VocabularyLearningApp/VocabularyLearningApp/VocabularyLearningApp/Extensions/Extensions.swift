@@ -8,6 +8,7 @@
 
 import UIKit
 
+//  Sayfa geçişi ve Tarih formatlama için gerekli genişletmeler
 extension UIScrollView
 {
     func scrollToPage(index: UInt8, animated: Bool)

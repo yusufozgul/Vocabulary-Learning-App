@@ -9,17 +9,18 @@
 import Foundation
 import VocabularyLearningAppAPI
 
+// API'dan gelen kelimeleri uygun şartlara göre parse eden singleton kullanılan static bir sınıf.
 
-
-class LearnWordDataParser: DataParserProtocol
+class WordDataParser: DataParserProtocol
 {
-    internal var wordArray: [WordData] = []
-    internal var testArray: [TestedWordData] = []
-    let firebaseService: fetchServiceProtocol = FetchWords.fetchWords
-    static let parser = LearnWordDataParser()
+    internal var wordArray: [WordData] = [] // Sorulacak kelime dizisi
+    internal var testArray: [TestedWordData] = [] // Test edilecek kelime dizisi
+    let firebaseService: fetchServiceProtocol = FetchWords.fetchWords // Firebase service
+    
+    static let parser = WordDataParser() // Singleton sağlamak için kendi nesnesini oluşturması.
     private init() { }
     
-    func fetchedLearnWord()
+    func fetchedLearnWord() // Öğrenilcek kelimelerin çekilmesi
     {
         wordArray.removeAll()
         firebaseService.fetchAllWord { result in
@@ -37,11 +38,11 @@ class LearnWordDataParser: DataParserProtocol
                 }
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "FetchWords"), object: nil)
             case .failure:
-                print("HATA")
+                print("HATAAAAAAAAAAAAAAAAAAAAAAA")
             }
         }
     }
-    func fetchedTestWord()
+    func fetchedTestWord() // Test edilecek kelimelerin çekilmesi
     {
         firebaseService.fetchTestWord { (result) in
             switch result {
@@ -65,7 +66,7 @@ class LearnWordDataParser: DataParserProtocol
         }
     }
     
-    func getLearnWord() -> WordPageData
+    func getLearnWord() -> WordPageData // Random öğrenilecek kelime sayfasını oluşturup gönderir
     {
         DispatchQueue.main.async
         {
@@ -124,7 +125,7 @@ class LearnWordDataParser: DataParserProtocol
         return WordPageData(wordInfo: WordData(word: "", translate: "", sentence: "", category: "", uid: ""), option1: "", option2: "", option3: "", option4: "", correctAnswer: 0)
     }
     
-    func getTestWord() -> WordTestPageData
+    func getTestWord() -> WordTestPageData // Random test edilecek kelime sayfası oluşturup gönderir.
     {
         if !testArray.isEmpty
         {
@@ -178,6 +179,7 @@ class LearnWordDataParser: DataParserProtocol
         
     }
     
+//    Öğrenilecek ve test edilecek kaç kelime olduğunu döndürür
     func getLearnArrayCount() -> Int
     {
         return wordArray.count
