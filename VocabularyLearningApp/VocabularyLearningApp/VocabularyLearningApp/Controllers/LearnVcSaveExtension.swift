@@ -20,7 +20,8 @@ extension LearnVC
         UserProgress().saveLearnProgress(child: "LearnedWords", day: Date().currentDate(), correctData: dayCorrectAnswer, wrongData: dayWrongAnswer, solvedWords: solvedWords)
         if isKnown
         {
-            UserProgress().saveTestProgress(child: "TestWords", askDay: Date().addCurrentDate(value: 1, byAdding: "day"), word: dayCorrectAnswer.last!, level: "1")
+            let wordData = wordDatas[1]
+            UserProgress().saveTestProgress(askDay: Date().addCurrentDate(value: 1, byAdding: "day"), level: "1", word: wordData.wordInfo.word, translate: wordData.wordInfo.translate, sentence: wordData.wordInfo.sentence, category: wordData.wordInfo.category, id: wordData.wordInfo.uid)
         }
     }
 }

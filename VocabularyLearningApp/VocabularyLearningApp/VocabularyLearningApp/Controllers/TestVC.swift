@@ -12,37 +12,44 @@ class TestVC: UIViewController, WordScrollViewProtocol
 {
     let wordPageScroll: UIScrollView = UIScrollView()
     let blurredEffectView = UIVisualEffectView()
+    let wordDataParser = LearnWordDataParser.parser // Api'daki kelimeyi işleyip veren static sınıf
+    var wordDatas: [WordTestPageData] = [] // sayfalardaki verilerimiz
     
     var wordPages: [WordPage] = { () -> [WordPage] in // ScrollView sayfalarının oluşturulmasu
         let wordPage0: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Previous Page
         let wordPage1: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Current Page
         let wordPage2: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Next Page
         return [wordPage0, wordPage1, wordPage2] }()
-    
-    var wordDatas: [WordPageData] = [] // sayfalardaki verilerimiz
-    let wordDataParser = LearnWordDataParser() // Api'daki kelimeyi işleyip veren sınıf
-    var dayCorrectAnswer: [String] = [] // günlük bilinen doğru kelimeler
-    var dayWrongAnswer: [String] = [] // günlük yanlış bilinen kelimeler
-    var solvedWords: [String] = [] // toplamda bilinen kelimeler
-    
     private var isDragging = false
     private var scrollViewSize: CGSize = .zero
-
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        navigationItem.title = NSLocalizedString("LEARN_VC_TITLE", comment: "")
+        navigationItem.title = NSLocalizedString("TEST_VC_TITLE", comment: "")
         wordPageScroll.delegate = self
         wordPageScroll.isPagingEnabled = true
         wordPageScroll.showsHorizontalScrollIndicator = false
         wordPageScroll.showsVerticalScrollIndicator = false
         view.addSubview(wordPageScroll)
+        
+        wordDataParser.fetchedTestWord()
+        prepareScrollView()
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FetchTestWords"), object: nil, queue: OperationQueue.main, using: { _ in
+            self.prepareScrollView()
+            self.loadingView()
+        })
+        
     }
-    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        loadingView()
+    }
     internal func loadingView()
     {
-        if wordDataParser.getArrayCount() == 0
+        if wordDataParser.getTestArrayCount() == 0
         {
             let blurEffect = UIBlurEffect(style: .extraLight)
             blurredEffectView.effect = blurEffect
@@ -62,7 +69,7 @@ class TestVC: UIViewController, WordScrollViewProtocol
     }
     internal func prepareScrollView()
     {
-        var wordData = wordDataParser.getword()
+        var wordData = wordDataParser.getTestWord()
         for page in wordPages
         {
             page.frame.size.width = view.frame.width / 1.2
@@ -72,7 +79,7 @@ class TestVC: UIViewController, WordScrollViewProtocol
         
         for i in 0 ..< 3
         {
-            wordData = wordDataParser.getword()
+            wordData = wordDataParser.getTestWord()
             wordDatas.append(wordData)
             wordPageScroll.addSubview(wordPages[i])
         }
@@ -83,7 +90,6 @@ class TestVC: UIViewController, WordScrollViewProtocol
         wordPageScroll.contentOffset = CGPoint(x: scrollViewSize.width, y: 0)
         layoutPages()
     }
-    
     internal func layoutPages()
     {
         var index = 0
@@ -98,14 +104,14 @@ class TestVC: UIViewController, WordScrollViewProtocol
             page.answerBox3Image.image = UIImage(named: "BoxBackground")
             page.answerBox4Image.image = UIImage(named: "BoxBackground")
             
-            page.wordLabel.text = wordData.wordInfo.word
-            page.wordCategoryLabel.text = wordData.wordInfo.category
-            page.wordSentence.text = wordData.wordInfo.sentence
+            page.wordLabel.text = wordData.wordPage.wordInfo.word
+            page.wordCategoryLabel.text = wordData.wordPage.wordInfo.category
+            page.wordSentence.text = wordData.wordPage.wordInfo.sentence
             
-            page.answerBox1Label.text = wordData.option1
-            page.answerBox2Label.text = wordData.option2
-            page.answerBox3Label.text = wordData.option3
-            page.answerBox4Label.text = wordData.option4
+            page.answerBox1Label.text = wordData.wordPage.option1
+            page.answerBox2Label.text = wordData.wordPage.option2
+            page.answerBox3Label.text = wordData.wordPage.option3
+            page.answerBox4Label.text = wordData.wordPage.option4
             
             page.frame = CGRect(x: wordPageScroll.frame.width * CGFloat(index),
                                 y: 0,
@@ -114,9 +120,8 @@ class TestVC: UIViewController, WordScrollViewProtocol
             index += 1
         }
     }
-
-
 }
+
 extension TestVC: UIScrollViewDelegate
 {
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView)
@@ -136,7 +141,7 @@ extension TestVC: UIScrollViewDelegate
         
         if (offsetX > scrollView.frame.size.width * 1.5)
         {
-            let wordData = wordDataParser.getword()
+            let wordData = wordDataParser.getTestWord()
             wordDatas.remove(at: 0)
             wordDatas.append(wordData)
             layoutPages()
@@ -145,7 +150,7 @@ extension TestVC: UIScrollViewDelegate
         
         if (offsetX < scrollView.frame.size.width * 0.5)
         {
-            let wordData = wordDataParser.getword()
+            let wordData = wordDataParser.getTestWord()
             wordDatas.removeLast()
             wordDatas.insert(wordData, at: 0)
             layoutPages()
@@ -156,7 +161,7 @@ extension TestVC: UIScrollViewDelegate
     {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay)
         {
-            let wordData = self.wordDataParser.getword()
+            let wordData = self.wordDataParser.getTestWord()
             self.wordDatas.remove(at: 0)
             self.wordDatas.append(wordData)
             self.layoutPages()
@@ -164,5 +169,3 @@ extension TestVC: UIScrollViewDelegate
         }
     }
 }
-
-

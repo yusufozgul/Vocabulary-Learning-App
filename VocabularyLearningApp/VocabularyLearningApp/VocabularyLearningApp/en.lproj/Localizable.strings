@@ -71,3 +71,6 @@
 
 //  LearnVC
 "LEARN_VC_TITLE" = "Learn";
+
+// TestVC
+"TEST_VC_TITLE" = "Test";

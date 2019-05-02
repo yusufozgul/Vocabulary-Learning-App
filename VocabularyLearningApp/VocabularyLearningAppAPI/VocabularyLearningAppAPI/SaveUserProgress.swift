@@ -27,13 +27,15 @@ public class SaveUserProgress
             }
         }
     }
-    public func saveTestedProgress(child: String, askDay: String, word: String, level: String)
+    public func saveTestedProgress(askDay: String, level: String, word: String, translate: String, sentence: String, category: String, id: String)
     {
         if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
         {
             dbRef = Database.database().reference().child("UserData").child(currentUserId[1])
             
-            dbRef.child(child).child(String(describing: askDay)).child(word).setValue(["WordID": word, "level": level]) { (errorDB, DBRef) in
+            print(String(describing: askDay))            
+            
+            dbRef.child("TestableWords").child(String(describing: askDay)).child(id).setValue(["word": word, "translate": translate, "sentence": sentence, "category": category, "uid": id, "level": level]) { (errorDB, DBRef) in
                 if errorDB != nil
                 {
                     print("FireBase Save Error")

@@ -13,8 +13,10 @@ protocol DataParserProtocol
     var wordArray: [WordData] { get set }
     var testArray: [TestedWordData] { get set }
     
-    func fetchWord()
     func fetchedLearnWord()
-    func getword() -> WordPageData
-    func getArrayCount() -> Int
+    func fetchedTestWord()
+    func getLearnWord() -> WordPageData
+    func getTestWord() -> WordTestPageData
+    func getLearnArrayCount() -> Int
+    func getTestArrayCount() -> Int
 }

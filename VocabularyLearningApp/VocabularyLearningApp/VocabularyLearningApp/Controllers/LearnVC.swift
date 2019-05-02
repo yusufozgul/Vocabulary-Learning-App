@@ -14,7 +14,9 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     @IBOutlet weak var counterStack: UIStackView!
     @IBOutlet weak var correctCounter: UILabel!
     @IBOutlet weak var wrongCounter: UILabel!
+    
     let wordPageScroll: UIScrollView = UIScrollView()
+    let blurredEffectView = UIVisualEffectView()
     
     var wordPages: [WordPage] = { () -> [WordPage] in // ScrollView sayfalarının oluşturulmasu
         let wordPage0: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Previous Page
@@ -23,7 +25,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         return [wordPage0, wordPage1, wordPage2] }()
     
     var wordDatas: [WordPageData] = [] // sayfalardaki verilerimiz
-    let wordDataParser = LearnWordDataParser() // Api'daki kelimeyi işleyip veren sınıf
+    let wordDataParser = LearnWordDataParser.parser // Api'daki kelimeyi işleyip veren static sınıf
     var dayCorrectAnswer: [String] = [] // günlük bilinen doğru kelimeler
     var dayWrongAnswer: [String] = [] // günlük yanlış bilinen kelimeler
     var solvedWords: [String] = [] // toplamda bilinen kelimeler
@@ -32,7 +34,6 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     private var scrollViewSize: CGSize = .zero
     
     let authBoard = BLTNItemManager(rootItem: BulletinDataSource.splashBoard())
-    let blurredEffectView = UIVisualEffectView()
 
     override func viewDidLoad()
     {
@@ -45,8 +46,9 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         wordPageScroll.showsVerticalScrollIndicator = false
         view.addSubview(wordPageScroll)
         
-        wordDataParser.fetchWord()
+        wordDataParser.fetchedLearnWord()
         prepareScrollView()
+        recoverData()
         
 //        Giriş yapılıp yapılmadığının kontrolü. Giriş yapılmamışsa yönlendiriliyor.
         if UserDefaults.standard.object(forKey: "currentUser") == nil
@@ -66,7 +68,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     }
     internal func loadingView()
     {
-        if wordDataParser.getArrayCount() == 0
+        if wordDataParser.getLearnArrayCount() == 0
         {
             let blurEffect = UIBlurEffect(style: .extraLight)
             blurredEffectView.effect = blurEffect
@@ -98,7 +100,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     }
     internal func prepareScrollView()
     {
-        var wordData = wordDataParser.getword()
+        var wordData = wordDataParser.getLearnWord()
         for page in wordPages
         {
             page.frame.size.width = view.frame.width / 1.2
@@ -108,7 +110,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         
         for i in 0 ..< 3
         {
-            wordData = wordDataParser.getword()
+            wordData = wordDataParser.getLearnWord()
             wordDatas.append(wordData)
             wordPageScroll.addSubview(wordPages[i])
         }
@@ -176,7 +178,7 @@ extension LearnVC: UIScrollViewDelegate
         
         if (offsetX > scrollView.frame.size.width * 1.5)
         {
-            let wordData = wordDataParser.getword()
+            let wordData = wordDataParser.getLearnWord()
             wordDatas.remove(at: 0)
             wordDatas.append(wordData)
             layoutPages()
@@ -185,7 +187,7 @@ extension LearnVC: UIScrollViewDelegate
         
         if (offsetX < scrollView.frame.size.width * 0.5)
         {
-            let wordData = wordDataParser.getword()
+            let wordData = wordDataParser.getLearnWord()
             wordDatas.removeLast()
             wordDatas.insert(wordData, at: 0)
             layoutPages()
@@ -196,7 +198,7 @@ extension LearnVC: UIScrollViewDelegate
     {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay)
         {
-            let wordData = self.wordDataParser.getword()
+            let wordData = self.wordDataParser.getLearnWord()
             self.wordDatas.remove(at: 0)
             self.wordDatas.append(wordData)
             self.layoutPages()

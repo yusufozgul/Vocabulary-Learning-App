@@ -23,10 +23,9 @@ extension Date
     func currentDate() -> String
     {
         let now = NSDate()
-        
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .none
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: now as Date)
     }
     func addCurrentDate(value: Int, byAdding: String) -> String
@@ -34,7 +33,7 @@ extension Date
         var dateComponent = DateComponents()
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .none
-        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
         switch byAdding {
         case "month":

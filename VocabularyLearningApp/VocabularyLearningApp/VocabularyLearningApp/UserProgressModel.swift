@@ -16,9 +16,14 @@ class UserProgress
         SaveUserProgress.init().saveProgress(child: child, day: day, correctData: correctData, wrongData: wrongData, solvedWords: solvedWords)
     }
     
-    func saveTestProgress(child: String, askDay: String, word: String, level: String)
+    func saveTestProgress(askDay: String, level: String, word: String, translate: String, sentence: String, category: String, id: String)
     {
-        SaveUserProgress.init().saveTestedProgress(child: child, askDay: askDay, word: word, level: level)
+        SaveUserProgress.init().saveTestedProgress(askDay: askDay, level: level, word: word, translate: translate, sentence: sentence, category: category, id: id)
+    }
+    
+    func deleteSolvedTest(uid: String)
+    {
+        FireBaseDelete.init().deteleteChil(uid: uid)
     }
     
 }
