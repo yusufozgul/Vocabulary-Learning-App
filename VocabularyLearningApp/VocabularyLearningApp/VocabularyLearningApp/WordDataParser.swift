@@ -60,8 +60,8 @@ class WordDataParser: DataParserProtocol
                     self.testArray.append(word)
                 }
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "FetchTestWords"), object: nil)
-            case .failure:
-                print("HATA")
+            case .failure(let message):
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "FailAlert"), object: message)
             }
         }
     }
@@ -72,7 +72,7 @@ class WordDataParser: DataParserProtocol
         {
             if UserDefaults.standard.value(forKey: "correctAnswer") != nil
             {
-                let correctAnswerArray = UserDefaults.standard.value(forKey: "correctAnswer") as! [String]
+                let correctAnswerArray = LoadLocalData().loadCorrectAnswers()
                 if self.wordArray.count - correctAnswerArray.count < 30
                 {
                     self.fetchedLearnWord()

@@ -54,7 +54,7 @@ public class FetchWords: fetchServiceProtocol
             }
             else
             {
-                completion(.failure)
+                completion(.failure("Kelime Bulunamadı"))
             }
         })
     }
@@ -69,6 +69,10 @@ public class FetchWords: fetchServiceProtocol
             let testRef = wordDbRef.queryOrderedByKey()
             testRef.observe(.value, with: { snapshot in
                 
+                if snapshot.children.allObjects.count == 0
+                {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchedChildERROR"), object: nil)
+                }
                 if let result = snapshot.children.allObjects as? [DataSnapshot]
                 {
                     for child in result
@@ -83,7 +87,7 @@ public class FetchWords: fetchServiceProtocol
                         {
                             self.childs.append(child.key)
                             count += 1
-                            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.2 , execute:
+                            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.2 , execute: // bekletme sebebi tüm veriler geldikten sonra notification atmasını sağlamak.
                                 {
                                     current += 1
                                     if current == count
@@ -92,6 +96,10 @@ public class FetchWords: fetchServiceProtocol
                                     }
                             })
                         }
+                    }
+                    if self.childs.count == 0
+                    {
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchedChildERROR"), object: nil)
                     }
                 }
             })
@@ -139,15 +147,18 @@ public class FetchWords: fetchServiceProtocol
                         }
                         else
                         {
-                            completion(.failure)
+                            completion(.failure("Test verilerinde hata"))
                         }
                     })
                 }
             }
             else
             {
-                completion(.failure)
+                completion(.failure("Kayıtlı kullanıcı değilsiniz"))
             }
+        })
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fetchedChildERROR"), object: nil, queue: OperationQueue.main, using: { (_) in
+            completion(.failure(NSLocalizedString("NULL_TEST_WORDS", comment: "")))
         })
     }
 }

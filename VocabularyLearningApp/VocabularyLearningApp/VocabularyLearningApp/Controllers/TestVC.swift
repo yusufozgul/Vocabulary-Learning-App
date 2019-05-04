@@ -11,7 +11,9 @@ import UIKit
 class TestVC: UIViewController, WordScrollViewProtocol
 {
     let wordPageScroll: UIScrollView = UIScrollView() // kaydırılabilir sayfamız
-    let blurredEffectView = UIVisualEffectView() // loading view'u
+    var blurredEffectView = UIVisualEffectView() // loading view'u
+    let blurEffect = UIBlurEffect(style: .extraLight)
+    let loadingIndicator = UIActivityIndicatorView()
     let wordDataParser = WordDataParser.parser // Api'daki kelimeyi işleyip veren static sınıf
     var wordDatas: [WordTestPageData] = [] // sayfalardaki verilerimiz
     
@@ -36,29 +38,28 @@ class TestVC: UIViewController, WordScrollViewProtocol
         wordPageScroll.showsVerticalScrollIndicator = false
         view.addSubview(wordPageScroll)
         
-//        Verilerin çekilmesi, parse edilmesi ve local verilerin çekilmesi
-        wordDataParser.fetchedTestWord()
-        prepareScrollView()
-        
 //        Kelime geldiği zaman bilgi mesajını yakalayıp işlem yapımı
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FetchTestWords"), object: nil, queue: OperationQueue.main, using: { _ in
             self.prepareScrollView()
             self.loadingView()
         })
-        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FailAlert"), object: nil, queue: OperationQueue.main, using: { (alert) in
+            self.alertView(alert: alert.object as! String)
+        })
     }
     override func viewWillAppear(_ animated: Bool)
     {
+//        Verilerin çekilmesi, parse edilmesi ve local verilerin çekilmesi
+        wordDataParser.fetchedTestWord()
+        prepareScrollView()
         loadingView()
     }
     internal func loadingView() // Loading sayfası gösterimi ve kontrolü
     {
         if wordDataParser.getTestArrayCount() == 0
         {
-            let blurEffect = UIBlurEffect(style: .extraLight)
             blurredEffectView.effect = blurEffect
             blurredEffectView.frame = view.frame
-            let loadingIndicator = UIActivityIndicatorView()
             loadingIndicator.style = .whiteLarge
             loadingIndicator.color = .black
             loadingIndicator.center = view.center
@@ -70,6 +71,13 @@ class TestVC: UIViewController, WordScrollViewProtocol
         {
             blurredEffectView.removeFromSuperview()
         }
+    }
+    internal func alertView(alert: String)
+    {
+        let emptyAlert = UIAlertController(title: NSLocalizedString("ALERT_TITLE", comment: ""), message: alert, preferredStyle: .alert)
+        let emptyAlertButton = UIAlertAction(title: NSLocalizedString("OKAY", comment: ""), style: .cancel, handler: nil)
+        emptyAlert.addAction(emptyAlertButton)
+        present(emptyAlert, animated: true, completion: nil)
     }
     internal func prepareScrollView() // ScrollView'un ayarlanması ve kelimelerin yerleştirilmesi
     {

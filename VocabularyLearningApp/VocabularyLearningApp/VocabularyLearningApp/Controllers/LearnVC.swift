@@ -51,7 +51,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
 //        Verilerin çekilmesi, parse edilmesi ve local verilerin çekilmesi
         wordDataParser.fetchedLearnWord()
         prepareScrollView()
-        recoverData()
+        loadData()
         
 //        Giriş yapılıp yapılmadığının kontrolü. Giriş yapılmamışsa yönlendiriliyor.
         if UserDefaults.standard.object(forKey: "currentUser") == nil
@@ -90,17 +90,15 @@ class LearnVC: UIViewController, WordScrollViewProtocol
             blurredEffectView.removeFromSuperview()
         }
     }
-    internal func recoverData() // Cihazdaki günlük doğru yanlış değerlerini çekme
+    internal func loadData()
     {
-        if Date().currentDate() == UserDefaults.standard.value(forKey: "day") as? String
-        {
-            dayCorrectAnswer = UserDefaults.standard.value(forKey: "correctAnswer") as! [String]
-            dayWrongAnswer = UserDefaults.standard.value(forKey: "wrongAnswer") as! [String]
-        }
-        if UserDefaults.standard.value(forKey: "SolvedWords") != nil
-        {
-            solvedWords = UserDefaults.standard.value(forKey: "SolvedWords")  as! [String]
-        }
+        let loader = LoadLocalData()
+        dayCorrectAnswer.removeAll()
+        dayWrongAnswer.removeAll()
+        solvedWords.removeAll()
+        dayCorrectAnswer = loader.loadCorrectAnswers()
+        dayWrongAnswer = loader.loadWrongAnswers()
+        solvedWords = loader.loadSolvedWords()
     }
     internal func prepareScrollView() // ScrollView'un ayarlanması ve kelimelerin yerleştirilmesi
     {

@@ -10,6 +10,7 @@ use_frameworks!
 pod 'BulletinBoard'
 pod 'CBFlashyTabBarController'
 pod 'IQKeyboardManagerSwift'
+
 end
 
 target 'VocabularyLearningAppAPI' do

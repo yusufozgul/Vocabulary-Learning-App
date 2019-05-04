@@ -29,6 +29,7 @@
 		88B5D0722278EC8D00A08E12 /* DataParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B5D0712278EC8D00A08E12 /* DataParserProtocol.swift */; };
 		88B5D07622798C1300A08E12 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B5D07522798C1300A08E12 /* UserData.swift */; };
 		88B5D07822798C3100A08E12 /* WordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B5D07722798C3000A08E12 /* WordData.swift */; };
+		88C3C97E227B89AE000E4206 /* LoadLocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3C97D227B89AE000E4206 /* LoadLocalData.swift */; };
 		88C4E87D226EFB870008382C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E87C226EFB870008382C /* AppDelegate.swift */; };
 		88C4E87F226EFB870008382C /* LearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E87E226EFB870008382C /* LearnVC.swift */; };
 		88C4E881226EFB870008382C /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E880226EFB870008382C /* TestVC.swift */; };
@@ -109,6 +110,7 @@
 		88B5D0712278EC8D00A08E12 /* DataParserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataParserProtocol.swift; sourceTree = "<group>"; };
 		88B5D07522798C1300A08E12 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		88B5D07722798C3000A08E12 /* WordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordData.swift; sourceTree = "<group>"; };
+		88C3C97D227B89AE000E4206 /* LoadLocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocalData.swift; sourceTree = "<group>"; };
 		88C4E879226EFB870008382C /* VocabularyLearningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VocabularyLearningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C4E87C226EFB870008382C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88C4E87E226EFB870008382C /* LearnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnVC.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				88283A602275C09700ECB72F /* UserProgressModel.swift */,
 				8840CB4F22749AAE00A837FD /* WordDataParser.swift */,
 				88B5D0712278EC8D00A08E12 /* DataParserProtocol.swift */,
+				88C3C97D227B89AE000E4206 /* LoadLocalData.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				8840CB392270F76C00A837FD /* BLTNBoradSigninExt.swift in Sources */,
 				8840CB382270F76C00A837FD /* BLTNBoradSignupExt.swift in Sources */,
 				8840CB4E227482A100A837FD /* WordPage.swift in Sources */,
+				88C3C97E227B89AE000E4206 /* LoadLocalData.swift in Sources */,
 				88283A612275C09700ECB72F /* UserProgressModel.swift in Sources */,
 				88C4E87F226EFB870008382C /* LearnVC.swift in Sources */,
 				886D4169226FCCDA0016527B /* addWordModel.swift in Sources */,

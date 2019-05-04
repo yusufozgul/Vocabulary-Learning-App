@@ -44,7 +44,7 @@
 // .splashBoard
 
 "SPLASH_BOARD_TITLE" = "Hoşgeldiniz";
-"SPLASH_BOARD_DESC" = "Uygulamadan daha iyi yararlanabilmek için giriş yapın";
+"SPLASH_BOARD_DESC" = "Uygulamadan daha iyi yararlanabilmek için giriş yapın \n Öğrenme verileriniz kaydeilerek test çözebilirsiniz.";
 "SPLASH_BOARD_SIGNIN" = "Giriş Yap";
 "SPLASH_BOARD_SIGNUP" = "Kaydol";
 
@@ -76,3 +76,9 @@
 
 // TestVC
 "TEST_VC_TITLE" = "Test Et";
+"ALERT_TITLE" = "Uyarı";
+
+
+
+// API
+"NULL_TEST_WORDS" = "Test edilecek veri bulunamadı, lütfen öğren sayfasından kelime öğrenin ardından buradan öğrendiklerinizi test edin.";
