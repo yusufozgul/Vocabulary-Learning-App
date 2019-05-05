@@ -30,6 +30,7 @@
 		88B5D07622798C1300A08E12 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B5D07522798C1300A08E12 /* UserData.swift */; };
 		88B5D07822798C3100A08E12 /* WordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B5D07722798C3000A08E12 /* WordData.swift */; };
 		88C3C97E227B89AE000E4206 /* LoadLocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3C97D227B89AE000E4206 /* LoadLocalData.swift */; };
+		88C3C9CD227E1394000E4206 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3C9CC227E1394000E4206 /* AccountVC.swift */; };
 		88C4E87D226EFB870008382C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E87C226EFB870008382C /* AppDelegate.swift */; };
 		88C4E87F226EFB870008382C /* LearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E87E226EFB870008382C /* LearnVC.swift */; };
 		88C4E881226EFB870008382C /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E880226EFB870008382C /* TestVC.swift */; };
@@ -83,7 +84,7 @@
 		5EB56743876A778BC207C2B9 /* Pods_VocabularyLearningApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocabularyLearningApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFF553E7220B4DD03AB4206 /* Pods-VocabularyLearningApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyLearningApp.debug.xcconfig"; path = "Target Support Files/Pods-VocabularyLearningApp/Pods-VocabularyLearningApp.debug.xcconfig"; sourceTree = "<group>"; };
 		80EEAC21364433BD57D7BD5B /* Pods-VocabularyLearningApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocabularyLearningApp.release.xcconfig"; path = "Target Support Files/Pods-VocabularyLearningApp/Pods-VocabularyLearningApp.release.xcconfig"; sourceTree = "<group>"; };
-		88283A5E2275BFCF00ECB72F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		88283A5E2275BFCF00ECB72F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = ../../../VocabularyLearningAppAPI/VocabularyLearningAppAPI/Extensions.swift; sourceTree = "<group>"; };
 		88283A602275C09700ECB72F /* UserProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProgressModel.swift; sourceTree = "<group>"; };
 		88283A642275CF8D00ECB72F /* LearnVcAnswerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnVcAnswerExtension.swift; sourceTree = "<group>"; };
 		8840CB352270F76C00A837FD /* BLTNBoradSignupExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLTNBoradSignupExt.swift; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 		88B5D07522798C1300A08E12 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		88B5D07722798C3000A08E12 /* WordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordData.swift; sourceTree = "<group>"; };
 		88C3C97D227B89AE000E4206 /* LoadLocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocalData.swift; sourceTree = "<group>"; };
+		88C3C9CC227E1394000E4206 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		88C4E879226EFB870008382C /* VocabularyLearningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VocabularyLearningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C4E87C226EFB870008382C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88C4E87E226EFB870008382C /* LearnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnVC.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				88853C46227A4E320095B2FE /* TestVcSaveExtension.swift */,
 				88C4E90A226F0B560008382C /* AddNewWordVC.swift */,
 				8840CB4D227482A100A837FD /* WordPage.swift */,
+				88C3C9CC227E1394000E4206 /* AccountVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-VocabularyLearningApp/Pods-VocabularyLearningApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BulletinBoard/BLTNBoard.framework",
 				"${BUILT_PRODUCTS_DIR}/CBFlashyTabBarController/CBFlashyTabBarController.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -446,6 +450,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BLTNBoard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CBFlashyTabBarController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -472,6 +477,7 @@
 				8840CB382270F76C00A837FD /* BLTNBoradSignupExt.swift in Sources */,
 				8840CB4E227482A100A837FD /* WordPage.swift in Sources */,
 				88C3C97E227B89AE000E4206 /* LoadLocalData.swift in Sources */,
+				88C3C9CD227E1394000E4206 /* AccountVC.swift in Sources */,
 				88283A612275C09700ECB72F /* UserProgressModel.swift in Sources */,
 				88C4E87F226EFB870008382C /* LearnVC.swift in Sources */,
 				886D4169226FCCDA0016527B /* addWordModel.swift in Sources */,

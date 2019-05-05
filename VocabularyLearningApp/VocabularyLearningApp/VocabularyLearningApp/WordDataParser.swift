@@ -38,7 +38,7 @@ class WordDataParser: DataParserProtocol
                 }
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "FetchWords"), object: nil)
             case .failure:
-                print("HATAAAAAAAAAAAAAAAAAAAAAAA")
+                print("HATA")
             }
         }
     }
@@ -101,7 +101,8 @@ class WordDataParser: DataParserProtocol
                                                           option2: wordArray[randomOptions[1]].translate,
                                                           option3: wordArray[randomOptions[2]].translate,
                                                           option4: wordArray[randomOptions[3]].translate,
-                                                          correctAnswer: Int.random(in: 1 ... 4))
+                                                          correctAnswer: Int.random(in: 1 ... 4),
+                                                          wordIndex: randomIndex)
             
             switch wordPageData.correctAnswer
             {
@@ -122,7 +123,7 @@ class WordDataParser: DataParserProtocol
             }
             return wordPageData
         }
-        return WordPageData(wordInfo: WordData(word: "", translate: "", sentence: "", category: "", uid: ""), option1: "", option2: "", option3: "", option4: "", correctAnswer: 0)
+        return WordPageData(wordInfo: WordData(word: "", translate: "", sentence: "", category: "", uid: ""), option1: "", option2: "", option3: "", option4: "", correctAnswer: 0, wordIndex: 0)
     }
     
     func getTestWord() -> WordTestPageData // Random test edilecek kelime sayfası oluşturup gönderir.
@@ -151,7 +152,8 @@ class WordDataParser: DataParserProtocol
                                                           option2: wordArray[randomOptions[1]].translate,
                                                           option3: wordArray[randomOptions[2]].translate,
                                                           option4: wordArray[randomOptions[3]].translate,
-                                                          correctAnswer: Int.random(in: 1 ... 4))
+                                                          correctAnswer: Int.random(in: 1 ... 4),
+                                                          wordIndex: randomIndex)
             
             var wordTestPageData: WordTestPageData = WordTestPageData(wordPage: wordPageData, level: testArray[randomIndex].level)
             
@@ -174,9 +176,18 @@ class WordDataParser: DataParserProtocol
             }
             return wordTestPageData
         }
-        let wordData = WordPageData(wordInfo: WordData(word: "", translate: "", sentence: "", category: "", uid: ""), option1: "", option2: "", option3: "", option4: "", correctAnswer: 0)
+        let wordData = WordPageData(wordInfo: WordData(word: "", translate: "", sentence: "", category: "", uid: ""), option1: "", option2: "", option3: "", option4: "", correctAnswer: 0, wordIndex: 0)
         return WordTestPageData(wordPage: wordData, level: "")
         
+    }
+    func deleteLearn(index: Int)
+    {
+        wordArray.remove(at: index)
+    }
+    
+    func deleteTest(index: Int)
+    {
+        testArray.remove(at: index)
     }
     
 //    Öğrenilecek ve test edilecek kaç kelime olduğunu döndürür

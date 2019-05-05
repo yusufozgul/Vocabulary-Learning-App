@@ -54,4 +54,14 @@ extension Date
         
         return dateFormatter.string(from: dateAdding! as Date)
     }
+    func getMonthDays() -> Int
+    {
+        let dateComponents = DateComponents()
+        let calendar = Calendar.current
+        let date = calendar.date(from: dateComponents)!
+        
+        let range = calendar.range(of: .day, in: .month, for: date)!
+        
+        return range.count
+    }
 }

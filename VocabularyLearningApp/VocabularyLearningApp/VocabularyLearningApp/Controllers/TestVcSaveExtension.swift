@@ -15,7 +15,8 @@ extension TestVC
     func saveData(isKnown: Bool)
     {
         let wordData = wordDatas[1]
-        let userProgressModel: UserProgress = UserProgress()
+        let userProgressModel: UserProgressModelProtocol = UserProgressModel()
+        wordDataParser.deleteTest(index: wordData.wordPage.wordIndex) // Test için gelen soru çözüldüğünde tekrar etmemesi için siliniyor
         if isKnown
         {
             switch wordData.level

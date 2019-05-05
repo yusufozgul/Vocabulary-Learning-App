@@ -9,15 +9,16 @@
 import FirebaseAuth
 import Firebase
 
-protocol AuthenticateFirebaseProtocol
+public protocol AuthenticateFirebaseProtocol
 {
-    static func signin(userEmail: String, userPassword: String)
-    static func signup(userEmail: String, userPassword: String)
+    func signin(userEmail: String, userPassword: String)
+    func signup(userEmail: String, userPassword: String)
 }
 
 public final class AuthenticateFirebase: AuthenticateFirebaseProtocol
 {
-    public static func signin(userEmail: String, userPassword: String)
+    public init() {}
+    public func signin(userEmail: String, userPassword: String)
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
@@ -37,7 +38,7 @@ public final class AuthenticateFirebase: AuthenticateFirebaseProtocol
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
-    public static func signup(userEmail: String, userPassword: String)
+    public func signup(userEmail: String, userPassword: String)
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Auth.auth().createUser(withEmail: userEmail, password: userPassword) { (authResult, error) in

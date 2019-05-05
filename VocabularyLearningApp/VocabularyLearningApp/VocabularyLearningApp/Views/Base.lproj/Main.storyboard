@@ -10,6 +10,36 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--AccountVC-->
+        <scene sceneID="s4z-Hi-JFD">
+            <objects>
+                <viewController id="k3X-Iw-LMg" customClass="AccountVC" customModule="VocabularyLearningApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Ju-Xi-Vhj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9V-cd-V1K" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="e3N-fc-0JW" firstAttribute="bottom" secondItem="u9V-cd-V1K" secondAttribute="bottom" id="Dsh-vY-SgS"/>
+                            <constraint firstItem="e3N-fc-0JW" firstAttribute="trailing" secondItem="u9V-cd-V1K" secondAttribute="trailing" id="OWf-yA-2MA"/>
+                            <constraint firstItem="u9V-cd-V1K" firstAttribute="leading" secondItem="e3N-fc-0JW" secondAttribute="leading" id="dTm-CN-ywC"/>
+                            <constraint firstItem="u9V-cd-V1K" firstAttribute="top" secondItem="e3N-fc-0JW" secondAttribute="top" id="wPV-nH-fY6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e3N-fc-0JW"/>
+                    </view>
+                    <connections>
+                        <outlet property="chartView" destination="u9V-cd-V1K" id="XFd-Ho-b6N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bug-Fu-adS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="67" y="771"/>
+        </scene>
         <!--LearnVC-->
         <scene sceneID="MQl-jS-H6c">
             <objects>
@@ -90,7 +120,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QvY-8v-Gh8"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Vko-Mz-dwW"/>
+                    <navigationItem key="navigationItem" id="Vko-Mz-dwW">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="elb-i8-Ngh">
+                            <connections>
+                                <segue destination="k3X-Iw-LMg" kind="show" id="CX3-n4-7NT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="correctCounter" destination="hCR-QF-FTK" id="czZ-d6-yCT"/>
                         <outlet property="counterStack" destination="lVY-B2-l61" id="3D0-LW-qdT"/>

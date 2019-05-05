@@ -58,7 +58,9 @@ enum BulletinDataSource: BullettinDataSourceProtocol
             if (userData.userEmail != "") && (userData.userPassowrd != "")
             {
                 item.manager?.displayActivityIndicator()
-                FirebaseAuthModel.firebaseSignin(userData: userData)
+                let authModel: firebaseAuthProtocol = FirebaseAuthModel()
+                authModel.firebaseSignin(userData: userData)
+                
                 NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fireBaseMessage"), object: nil, queue: OperationQueue.main, using: { (firebaseMessage) in
                     if String(describing: firebaseMessage.object!) != "succes"
                     {
@@ -95,7 +97,8 @@ enum BulletinDataSource: BullettinDataSourceProtocol
             if (userData.userEmail != "") && (userData.userEmail != "") && (userData.userPassowrd != "")
             {
                 item.manager?.displayActivityIndicator()
-                FirebaseAuthModel.firebaseSignup(userData: userData)
+                let authModel: firebaseAuthProtocol = FirebaseAuthModel()
+                authModel.firebaseSignup(userData: userData)
 
                 NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fireBaseMessage"), object: nil, queue: OperationQueue.main, using: { (firebaseMessage) in
                     if String(describing: firebaseMessage.object!) != "succes"

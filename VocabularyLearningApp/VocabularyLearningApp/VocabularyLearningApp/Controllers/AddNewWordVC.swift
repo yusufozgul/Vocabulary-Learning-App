@@ -63,7 +63,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         var wordData: WordData = WordData(word: "", translate: "", sentence: "", category: "", uid: "")
         if !wordTextFiled.text!.isEmpty && !wordTranslate.text!.isEmpty && wordDescription.text != NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "") && !categoryTextField.text!.isEmpty
         {
-            let addWord: AddNewWord = AddNewWord()
+            let addWord: AddNewWordProtocol = AddNewWord()
             wordData.word = wordTextFiled.text!
             wordData.translate = wordTranslate.text!
             wordData.category = categoryTextField.text!

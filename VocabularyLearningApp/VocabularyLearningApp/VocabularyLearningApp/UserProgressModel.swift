@@ -9,26 +9,28 @@
 import Foundation
 import VocabularyLearningAppAPI
 
-protocol UserProgressProtocol
+protocol UserProgressModelProtocol
 {
     func saveLearnProgress(child: String, day: String, correctData: [String], wrongData: [String], solvedWords: [String])
     func saveTestProgress(askDay: String, level: String, word: String, translate: String, sentence: String, category: String, id: String)
     func deleteSolvedTest(uid: String)
 }
-class UserProgress: UserProgressProtocol
+class UserProgressModel: UserProgressModelProtocol
 {
+    private let service: UserProgressProtocol = UserProgress()
     func saveLearnProgress(child: String, day: String, correctData: [String], wrongData: [String], solvedWords: [String])
     {
-        SaveUserProgress.init().saveProgress(child: child, day: day, correctData: correctData, wrongData: wrongData, solvedWords: solvedWords)
+        service.saveProgress(child: child, day: day, correctData: correctData, wrongData: wrongData, solvedWords: solvedWords)
     }
     
     func saveTestProgress(askDay: String, level: String, word: String, translate: String, sentence: String, category: String, id: String)
     {
-        SaveUserProgress.init().saveTestedProgress(askDay: askDay, level: level, word: word, translate: translate, sentence: sentence, category: category, id: id)
+        service.saveTestedProgress(askDay: askDay, level: level, word: word, translate: translate, sentence: sentence, category: category, id: id)
     }
     
     func deleteSolvedTest(uid: String)
     {
-        FireBaseDelete.init().deteleteChil(uid: uid)
+        let deleteService: FireBaseDeleteProtocol = FireBaseDelete()
+        deleteService.deteleteChil(uid: uid)
     }
 }

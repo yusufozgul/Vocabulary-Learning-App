@@ -9,7 +9,11 @@
 import Foundation
 import FirebaseDatabase
 
-public class FireBaseDelete
+public protocol FireBaseDeleteProtocol
+{
+    func deteleteChil(uid: String)
+}
+public class FireBaseDelete: FireBaseDeleteProtocol
 {
     //  Firebase'den test edilmiş kelimeyi siler.
     let firebaseService = FetchWords.fetchWords

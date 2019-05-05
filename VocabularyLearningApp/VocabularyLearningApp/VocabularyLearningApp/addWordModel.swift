@@ -9,16 +9,15 @@
 import Foundation
 import VocabularyLearningAppAPI
 
-protocol AddNewWordProtocol
+public protocol AddNewWordProtocol
 {
     func AddNewWord(data: WordData)
 }
-
 class AddNewWord: AddNewWordProtocol
 {
+    let addWord: AddWordProtocol = AddWord()
     func AddNewWord(data: WordData)
     {
-        let addWord: AddWord = AddWord()
         addWord.AddNewWord(word: data.word, translate: data.translate, sentence: data.sentence, category: data.category)
     }
 }

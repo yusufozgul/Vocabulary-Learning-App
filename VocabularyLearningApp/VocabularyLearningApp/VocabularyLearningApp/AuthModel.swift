@@ -10,20 +10,22 @@ import Foundation
 import VocabularyLearningAppAPI
 
 // Firebase giriş ve login kontrolleri model'i
-private protocol firebaseAuthProtocol: class
+public protocol firebaseAuthProtocol
 {
-    static func firebaseSignin(userData: userRegisterData)
-    static func firebaseSignup(userData: userRegisterData)
+    func firebaseSignin(userData: userRegisterData)
+    func firebaseSignup(userData: userRegisterData)
 }
 
-class FirebaseAuthModel: firebaseAuthProtocol {
-    static func firebaseSignin(userData: userRegisterData)
+class FirebaseAuthModel: firebaseAuthProtocol
+{
+    let authService: AuthenticateFirebaseProtocol = AuthenticateFirebase()
+    func firebaseSignin(userData: userRegisterData)
     {
-        AuthenticateFirebase.signin(userEmail: userData.userEmail, userPassword: userData.userPassowrd)
+        authService.signin(userEmail: userData.userEmail, userPassword: userData.userPassowrd)
     }
     
-    static func firebaseSignup(userData: userRegisterData)
+    func firebaseSignup(userData: userRegisterData)
     {
-        AuthenticateFirebase.signup(userEmail: userData.userEmail, userPassword: userData.userPassowrd)
+        authService.signup(userEmail: userData.userEmail, userPassword: userData.userPassowrd)
     }
 }

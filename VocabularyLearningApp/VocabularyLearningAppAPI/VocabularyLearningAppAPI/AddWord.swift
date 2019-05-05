@@ -9,8 +9,12 @@
 import Foundation
 import FirebaseDatabase
 
+public protocol AddWordProtocol
+{
+    func AddNewWord(word: String, translate: String, sentence: String, category: String)
+}
 //  Gelen kelimeyi Firebase'e ekler
-public class AddWord
+public class AddWord: AddWordProtocol
 {
     public init() { }
     

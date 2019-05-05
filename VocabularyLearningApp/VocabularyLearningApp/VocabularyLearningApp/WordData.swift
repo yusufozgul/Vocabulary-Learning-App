@@ -26,6 +26,7 @@ public struct WordPageData
     public var option3: String
     public var option4: String
     public var correctAnswer: Int
+    public var wordIndex: Int
 }
 public struct WordTestPageData
 {
