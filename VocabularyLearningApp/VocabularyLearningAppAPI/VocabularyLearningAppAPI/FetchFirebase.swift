@@ -14,8 +14,8 @@ import FirebaseDatabase
 public protocol fetchServiceProtocol
 {
     func fetchAllWord(completion: @escaping (Result<FetchWordResponse>) -> Void)
-    func fetchTestWord(completion: @escaping (Result<FetchTestWordReponse>) -> Void)
-    func fetchChilds()
+    func fetchTestWord(userID: String, completion: @escaping (Result<FetchTestWordReponse>) -> Void)
+    func fetchChilds(userID: String)
 }
 
 public class FetchWords: fetchServiceProtocol
@@ -54,61 +54,53 @@ public class FetchWords: fetchServiceProtocol
             }
             else
             {
-                completion(.failure("Kelime Bulunamadı"))
+                completion(.failure(NSLocalizedString("WORD_NOT_FOUND", comment: "")))
             }
         })
     }
-    public func fetchChilds()
+    public func fetchChilds(userID: String)
     {
         var count = 0
         var current = 0
         childs.removeAll()
-        if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
-        {
-            wordDbRef = Database.database().reference().child("UserData").child(currentUserId[1]).child("TestableWords")
-            let testRef = wordDbRef.queryOrderedByKey()
-            testRef.observe(.value, with: { snapshot in
-                
-                if snapshot.children.allObjects.count == 0
+
+        wordDbRef = Database.database().reference().child("UserData").child(userID).child("TestableWords")
+        let testRef = wordDbRef.queryOrderedByKey()
+        testRef.observe(.value, with: { snapshot in
+            
+            if snapshot.children.allObjects.count == 0
+            {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchedChildERROR"), object: nil)
+            }
+            if let result = snapshot.children.allObjects as? [DataSnapshot]
+            {
+                for child in result
+                {
+                    if Date().dateFormatter(date: child.key) <= NSDate() as Date
+                    {
+                        self.childs.append(child.key)
+                        count += 1
+                        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.2 , execute: // bekletme sebebi tüm veriler geldikten sonra notification atmasını sağlamak.
+                            {
+                                current += 1
+                                if current == count
+                                {
+                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchedChild"), object: nil) // Kelimeler çekilip hazır edildiğinde alt fonksiyon haberdar ediliyor.
+                                }
+                        })
+                    }
+                }
+                if self.childs.count == 0
                 {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchedChildERROR"), object: nil)
                 }
-                if let result = snapshot.children.allObjects as? [DataSnapshot]
-                {
-                    for child in result
-                    {
-                        let orderID = child.key
-                        
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd"
-                        let date = dateFormatter.date(from: orderID)!
-                        
-                        if date <= NSDate() as Date
-                        {
-                            self.childs.append(child.key)
-                            count += 1
-                            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.2 , execute: // bekletme sebebi tüm veriler geldikten sonra notification atmasını sağlamak.
-                                {
-                                    current += 1
-                                    if current == count
-                                    {
-                                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchedChild"), object: nil)
-                                    }
-                            })
-                        }
-                    }
-                    if self.childs.count == 0
-                    {
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchedChildERROR"), object: nil)
-                    }
-                }
-            })
-        }
+            }
+        })
     }
     
-    public func fetchTestWord(completion: @escaping (Result<FetchTestWordReponse>) -> Void)
+    public func fetchTestWord(userID: String, completion: @escaping (Result<FetchTestWordReponse>) -> Void)
     {
-        fetchChilds()
+        fetchChilds(userID: userID)
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fetchedChild"), object: nil, queue: OperationQueue.main, using: { (_) in
             var count = 0
             var current = 0
@@ -117,44 +109,37 @@ public class FetchWords: fetchServiceProtocol
             var testableWordData: TestedWordData = TestedWordData(word: wordDetail, level: "")
             
             var testableWords: FetchTestWordReponse = FetchTestWordReponse(results: [])
-            
-            if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
+
+            for child in self.childs
             {
-                for child in self.childs
-                {
-                    self.dbRef = Database.database().reference().child("UserData").child(currentUserId[1]).child("TestableWords").child(child)
-                    let testRef = self.dbRef.queryOrderedByKey()
-                    testRef.observe(.childAdded, with: { snaphot in
-                        if let firebaseData = snaphot.value! as? [String:String]
-                        {
-                            testableWordData.word.word = firebaseData["word"]!
-                            testableWordData.word.translate = firebaseData["translate"]!
-                            testableWordData.word.sentence = firebaseData["sentence"]!
-                            testableWordData.word.category = firebaseData["category"]!
-                            testableWordData.word.uid = firebaseData["uid"]!
-                            testableWordData.level = firebaseData["level"]!
-                            
-                            testableWords.results.append(testableWordData)
-                            count += 1
-                            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.2 , execute:
+                self.dbRef = Database.database().reference().child("UserData").child(userID).child("TestableWords").child(child)
+                let testRef = self.dbRef.queryOrderedByKey()
+                testRef.observe(.childAdded, with: { snaphot in
+                    if let firebaseData = snaphot.value! as? [String:String]
+                    {
+                        testableWordData.word.word = firebaseData["word"]!
+                        testableWordData.word.translate = firebaseData["translate"]!
+                        testableWordData.word.sentence = firebaseData["sentence"]!
+                        testableWordData.word.category = firebaseData["category"]!
+                        testableWordData.word.uid = firebaseData["uid"]!
+                        testableWordData.level = firebaseData["level"]!
+                        
+                        testableWords.results.append(testableWordData)
+                        count += 1
+                        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.2 , execute:
+                            {
+                                current += 1
+                                if current == count
                                 {
-                                    current += 1
-                                    if current == count
-                                    {
-                                        completion(.success(testableWords))
-                                    }
-                            })
-                        }
-                        else
-                        {
-                            completion(.failure("Test verilerinde hata"))
-                        }
-                    })
-                }
-            }
-            else
-            {
-                completion(.failure("Kayıtlı kullanıcı değilsiniz"))
+                                    completion(.success(testableWords))
+                                }
+                        })
+                    }
+                    else
+                    {
+                        completion(.failure(NSLocalizedString("TEST_DATA_ERROR", comment: "")))
+                    }
+                })
             }
         })
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fetchedChildERROR"), object: nil, queue: OperationQueue.main, using: { (_) in

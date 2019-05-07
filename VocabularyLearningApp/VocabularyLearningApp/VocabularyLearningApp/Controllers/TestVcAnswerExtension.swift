@@ -15,7 +15,7 @@ extension TestVC: AnsweredDelegate
     func selectAnswer(selected: Int)
     {
         let page = wordPages[1]
-        let wordData = wordDatas[1]
+        let wordData = wordDataArray[1]
         var isKnown: Bool = false
         
         switch selected {
@@ -68,5 +68,16 @@ extension TestVC: AnsweredDelegate
         }
         saveData(isKnown: isKnown) // cevap verisinin kaydedilmesi
         goNextPage(delay: 0.6) // Otomatik sayfa geçişi
+    }
+    func goNextPage(delay: TimeInterval) // Otomatik sayfa geçiş fonksiyonu, gönderilen zamana göre geçiş yapılıyor.
+    {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay)
+        {
+            let wordData = self.wordDataParser.getTestWord()
+            self.wordDataArray.remove(at: 0)
+            self.wordDataArray.append(wordData)
+            self.layoutWordPage()
+            self.wordPageScrollView.scrollToPage(index: 2, animated: true)
+        }
     }
 }

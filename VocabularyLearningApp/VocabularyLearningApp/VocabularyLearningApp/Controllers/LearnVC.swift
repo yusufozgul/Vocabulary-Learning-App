@@ -16,7 +16,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     @IBOutlet weak var correctCounter: UILabel!
     @IBOutlet weak var wrongCounter: UILabel!
     
-    let wordPageScroll: UIScrollView = UIScrollView() // kaydırılabilir sayfamız
+    let wordPageScrollView: UIScrollView = UIScrollView() // kaydırılabilir sayfamız
     let blurredEffectView = UIVisualEffectView() // loading view'u
     
     var wordPages: [WordPage] = { () -> [WordPage] in // ScrollView sayfalarının oluşturulmasu
@@ -26,7 +26,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         return [wordPage0, wordPage1, wordPage2] }()
     
     var wordDatas: [WordPageData] = [] // sayfalardaki verilerimiz
-    let wordDataParser = WordDataParser.parser // Api'daki kelimeyi işleyip veren static sınıf
+    let wordDataParser = LearnWordParser.parser // Api'daki kelimeyi işleyip veren static sınıf
     var dayCorrectAnswer: [String] = [] // günlük bilinen doğru kelimeler
     var dayWrongAnswer: [String] = [] // günlük yanlış bilinen kelimeler
     var solvedWords: [String] = [] // toplamda bilinen kelimeler
@@ -42,11 +42,11 @@ class LearnVC: UIViewController, WordScrollViewProtocol
 
 //        View ayarlamaları
         navigationItem.title = NSLocalizedString("LEARN_VC_TITLE", comment: "")
-        wordPageScroll.delegate = self
-        wordPageScroll.isPagingEnabled = true
-        wordPageScroll.showsHorizontalScrollIndicator = false
-        wordPageScroll.showsVerticalScrollIndicator = false
-        view.addSubview(wordPageScroll)
+        wordPageScrollView.delegate = self
+        wordPageScrollView.isPagingEnabled = true
+        wordPageScrollView.showsHorizontalScrollIndicator = false
+        wordPageScrollView.showsVerticalScrollIndicator = false
+        view.addSubview(wordPageScrollView)
         
 //        Verilerin çekilmesi, parse edilmesi ve local verilerin çekilmesi
         wordDataParser.fetchedLearnWord()
@@ -114,16 +114,16 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         {
             wordData = wordDataParser.getLearnWord()
             wordDatas.append(wordData)
-            wordPageScroll.addSubview(wordPages[i])
+            wordPageScrollView.addSubview(wordPages[i])
         }
         scrollViewSize = (wordPages.first?.frame.size)!
-        wordPageScroll.frame.size = scrollViewSize
-        wordPageScroll.center = CGPoint(x: view.frame.size.width  / 2, y: view.frame.size.height / 2)
-        wordPageScroll.contentSize = CGSize(width: scrollViewSize.width * 3, height: scrollViewSize.height)
-        wordPageScroll.contentOffset = CGPoint(x: scrollViewSize.width, y: 0)
-        layoutPages()
+        wordPageScrollView.frame.size = scrollViewSize
+        wordPageScrollView.center = CGPoint(x: view.frame.size.width  / 2, y: view.frame.size.height / 2)
+        wordPageScrollView.contentSize = CGSize(width: scrollViewSize.width * 3, height: scrollViewSize.height)
+        wordPageScrollView.contentOffset = CGPoint(x: scrollViewSize.width, y: 0)
+        layoutWordPage()
     }
-    internal func layoutPages() // ScrollView'a kelimelerin verilmesi
+    internal func layoutWordPage() // ScrollView'a kelimelerin verilmesi
     {
         var index = 0
         for page in wordPages
@@ -147,10 +147,10 @@ class LearnVC: UIViewController, WordScrollViewProtocol
             page.answerBox3Label.text = wordData.option3
             page.answerBox4Label.text = wordData.option4
             
-            page.frame = CGRect(x: wordPageScroll.frame.width * CGFloat(index), // frame ayarları
+            page.frame = CGRect(x: wordPageScrollView.frame.width * CGFloat(index), // frame ayarları
                                 y: 0,
-                                width: wordPageScroll.frame.width,
-                                height: wordPageScroll.frame.height)
+                                width: wordPageScrollView.frame.width,
+                                height: wordPageScrollView.frame.height)
             index += 1
         }
     }
@@ -174,9 +174,8 @@ extension LearnVC: UIScrollViewDelegate
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) // kaydırma bitince kaydırma sonlandırılmışsa sayfa geçiş işlemleri yapılıyor
     {
-        if !isDragging {
-            return
-        }
+        if !isDragging
+        { return }
         let offsetX = scrollView.contentOffset.x
         
         if (offsetX > scrollView.frame.size.width * 1.5)
@@ -184,7 +183,7 @@ extension LearnVC: UIScrollViewDelegate
             let wordData = wordDataParser.getLearnWord()
             wordDatas.remove(at: 0)
             wordDatas.append(wordData)
-            layoutPages()
+            layoutWordPage()
             scrollView.contentOffset.x -= scrollViewSize.width
         }
         
@@ -193,20 +192,8 @@ extension LearnVC: UIScrollViewDelegate
             let wordData = wordDataParser.getLearnWord()
             wordDatas.removeLast()
             wordDatas.insert(wordData, at: 0)
-            layoutPages()
+            layoutWordPage()
             scrollView.contentOffset.x += scrollViewSize.width
-        }
-    }
-    func goNextPage(delay: TimeInterval) // Otomatik sayfa geçiş fonksiyonu, gönderilen zamana göre geçiş yapılıyor.
-    {
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay)
-        {
-            self.wordPages[1].buttonSet()
-            let wordData = self.wordDataParser.getLearnWord()
-            self.wordDatas.remove(at: 0)
-            self.wordDatas.append(wordData)
-            self.layoutPages()
-            self.wordPageScroll.scrollToPage(index: 2, animated: true)
         }
     }
 }

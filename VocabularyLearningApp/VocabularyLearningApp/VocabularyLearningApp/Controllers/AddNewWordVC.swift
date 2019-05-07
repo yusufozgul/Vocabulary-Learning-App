@@ -16,7 +16,9 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBOutlet weak var wordDescription: UITextView!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var addButtonLabel: UILabel!
-    @IBOutlet weak var categoryTextField: UITextField! 
+    @IBOutlet weak var categoryTextField: UITextField!
+    
+    let addWordModel = AddNewWord()
     
     let categoryPickerView = UIPickerView() // Kategori seçici
     let categories = [NSLocalizedString("CATEGORY_BUTTON", comment: ""),"İsim","Fiil","Sıfat", "Zamir","Zarf","Edat","Bağlaç"]
@@ -35,22 +37,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         wordDescription.layer.cornerRadius = 6
         createPickerView()
         
-//        Bir kelime eklendiğinde işlem sonucu ekranda gösterilir.
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "FireBaseMessage"), object: nil, queue: .main) { (notification) in
-            let firebaseResultAlert: UIAlertController
-            if String(describing: notification.object!) == "1"
-            {
-                firebaseResultAlert = UIAlertController(title: NSLocalizedString("FIREBASE_SUCCES_TITLE", comment: ""), message: NSLocalizedString("FIREBASE_SUCCES", comment: ""), preferredStyle: .alert)
-            }
-            else
-            {
-                firebaseResultAlert = UIAlertController(title: NSLocalizedString("FIREBASE_ALERT_TITLE", comment: ""), message: String(describing: notification.object!), preferredStyle: .alert)
-            }
-            let alertButton = UIAlertAction(title: NSLocalizedString("OKAY", comment: ""), style: .cancel, handler: nil)
-            firebaseResultAlert.addAction(alertButton)
-            self.present(firebaseResultAlert, animated: true, completion: nil)
-            self.addButtonLabel.text = NSLocalizedString("ADD_BUTTON", comment: "")
-        }
+        addWordModel.delegate = self
     }
     func createPickerView() // Kategori seçim ekranı
     {
@@ -64,21 +51,11 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         var wordData: WordData = WordData(word: "", translate: "", sentence: "", category: "", uid: "")
         if !wordTextFiled.text!.isEmpty && !wordTranslate.text!.isEmpty && wordDescription.text != NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "") && !categoryTextField.text!.isEmpty
         {
-            let addWord: AddNewWordProtocol = AddNewWord()
             wordData.word = wordTextFiled.text!
             wordData.translate = wordTranslate.text!
             wordData.category = categoryTextField.text!
             wordData.sentence = wordDescription.text!
-            addWord.AddNewWord(data: wordData)
-            
-            wordTextFiled.text = ""
-            wordTranslate.text = ""
-            wordDescription.text = ""
-            categoryTextField.text = ""
-            categoryPickerView.selectedRow(inComponent: 0)
-            wordDescription.text = NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "")
-            wordDescription.textColor = .lightGray
-            view.endEditing(true)
+            addWordModel.AddNewWord(data: wordData)
             addButtonLabel.text = NSLocalizedString("PLEASE_WAIT", comment: "")
         }
         else
@@ -102,6 +79,27 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     }
 }
 
+extension AddNewWordVC: AddWordDelegate
+{
+    func addWordResult(result: Bool)
+    {
+        switch result {
+        case true:
+            wordTextFiled.text = ""
+            wordTranslate.text = ""
+            wordDescription.text = ""
+            categoryTextField.text = ""
+            categoryPickerView.selectedRow(inComponent: 0)
+            wordDescription.text = NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "")
+            wordDescription.textColor = .lightGray
+            view.endEditing(true)
+            self.addButtonLabel.text = NSLocalizedString("ADD_BUTTON", comment: "")
+        default:
+            break
+        }
+    }
+}
+
 extension AddNewWordVC: UITextViewDelegate
 {
     func textViewDidEndEditing(_ textView: UITextView)
@@ -112,7 +110,8 @@ extension AddNewWordVC: UITextViewDelegate
             wordDescription.textColor = .lightText
         }
     }
-    func textViewDidBeginEditing(_ textView: UITextView) {
+    func textViewDidBeginEditing(_ textView: UITextView)
+    {
         wordDescription.text = ""
         wordDescription.textColor = .black
     }
@@ -120,39 +119,29 @@ extension AddNewWordVC: UITextViewDelegate
 extension AddNewWordVC // Kategori seçici ayarları
 {
     func numberOfComponents(in pickerView: UIPickerView) -> Int
-    {
-        return 1
-    }
+    { return 1 }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        return categories.count
-    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    { return categories.count }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         if row == 0
-        {
-            categoryTextField.text = ""
-        }
+        { categoryTextField.text = "" }
         else
-        {
-            categoryTextField.text =  categories[row]
-        }
+        { categoryTextField.text =  categories[row] }
     }
     
-    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        return 150.0
-    }
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat
+    { return 150.0 }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
+    {
         var label:UILabel
-        if let category = view as? UILabel{
-            label = category
-        }
-        else{
-            label = UILabel()
-        }
+        if let category = view as? UILabel{ label = category }
+        else
+        { label = UILabel() }
+        
         label.textColor = UIColor.black
         label.textAlignment = .left
         label.font = UIFont(name: "Helvetica", size: 17)

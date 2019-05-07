@@ -11,7 +11,7 @@ import FirebaseDatabase
 
 public protocol FireBaseDeleteProtocol
 {
-    func deteleteChil(uid: String)
+    func deteleteChil(userID: String, uid: String)
 }
 public class FireBaseDelete: FireBaseDeleteProtocol
 {
@@ -19,15 +19,12 @@ public class FireBaseDelete: FireBaseDeleteProtocol
     let firebaseService = FetchWords.fetchWords
     var dbRef: DatabaseReference!
     public init() {}
-    public func deteleteChil(uid: String)
+    public func deteleteChil(userID: String, uid: String)
     {
-        if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
+        for child in firebaseService.childs
         {
-            for child in firebaseService.childs
-            {
-                dbRef = Database.database().reference().child("UserData").child(currentUserId[1]).child("TestableWords").child(child).child(uid)
-                dbRef.removeValue()
-            }
+            dbRef = Database.database().reference().child("UserData").child(userID).child("TestableWords").child(child).child(uid)
+            dbRef.removeValue()
         }
     }
 }

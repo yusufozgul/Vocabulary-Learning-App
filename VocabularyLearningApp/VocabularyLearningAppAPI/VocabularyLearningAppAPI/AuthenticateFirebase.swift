@@ -18,6 +18,7 @@ public protocol AuthenticateFirebaseProtocol
 public final class AuthenticateFirebase: AuthenticateFirebaseProtocol
 {
     public init() {}
+    
     public func signin(userEmail: String, userPassword: String)
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -38,6 +39,7 @@ public final class AuthenticateFirebase: AuthenticateFirebaseProtocol
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
+    
     public func signup(userEmail: String, userPassword: String)
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true

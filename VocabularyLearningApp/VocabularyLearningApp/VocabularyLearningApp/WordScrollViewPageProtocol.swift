@@ -10,7 +10,7 @@ import Foundation
 protocol WordScrollViewProtocol // Kelime kartı için interface
 {
     func prepareScrollView()
-    func layoutPages()
+    func layoutWordPage()
     func saveData(isKnown: Bool)
     func goNextPage(delay: TimeInterval)
 }

@@ -36,7 +36,6 @@ class BLTNBoradSignin: BLTNPageItem
         
         return [userMail, userPassword]
     }
-    
     @objc func changer()
     {
         userPassword.isSecureTextEntry = !userPassword.isSecureTextEntry
@@ -46,19 +45,18 @@ class BLTNBoradSignin: BLTNPageItem
         { visibilityButton.setImage(UIImage(named: "visibility_off"), for: .normal) }
     }
     
-    override func tearDown() {
+    override func tearDown()
+    {
         super.tearDown()
         userMail?.delegate = nil
         userPassword?.delegate = nil
     }
-    
     override func actionButtonTapped(sender: UIButton) {
         userMail.resignFirstResponder()
         userPassword.resignFirstResponder()
         super.actionButtonTapped(sender: sender)
     }
 }
-
 extension BLTNBoradSignin: UITextFieldDelegate
 {
     func textFieldDidEndEditing(_ textField: UITextField)
@@ -69,7 +67,7 @@ extension BLTNBoradSignin: UITextFieldDelegate
             userMailHandler?(self, userMail.text)
             userPassWordHAndler?(self, userPassword.text)
         }
-            //     Text issue alert
+//     Text issue alert
         else
         {
             descriptionLabel!.textColor = .red

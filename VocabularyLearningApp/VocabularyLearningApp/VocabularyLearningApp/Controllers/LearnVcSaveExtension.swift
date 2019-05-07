@@ -18,10 +18,14 @@ extension LearnVC
         UserDefaults.standard.setValue(dayCorrectAnswer, forKey: "correctAnswer")
         UserDefaults.standard.setValue(dayWrongAnswer, forKey: "wrongAnswer")
         UserDefaults.standard.setValue(solvedWords, forKey: "SolvedWords")
-        userProgressModel.saveLearnProgress(child: "LearnedWords", day: Date().currentDate(), correctData: dayCorrectAnswer, wrongData: dayWrongAnswer, solvedWords: solvedWords)
+        userProgressModel.saveLearnProgress(day: Date().currentDate(), correctData: dayCorrectAnswer, wrongData: dayWrongAnswer, solvedWords: solvedWords)
         if isKnown
         {
             let wordData = wordDatas[1]
+            
+            solvedWords.append(wordData.wordInfo.uid)
+            dayCorrectAnswer.append(wordData.wordInfo.uid)
+            
             wordDataParser.deleteLearn(index: wordData.wordIndex) // Bir kelime doğru bilindiyse tekrar etmemesi için siliniyor.
             userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 1, byAdding: "day"), level: "1", word: wordData.wordInfo.word, translate: wordData.wordInfo.translate, sentence: wordData.wordInfo.sentence, category: wordData.wordInfo.category, id: wordData.wordInfo.uid)
         }

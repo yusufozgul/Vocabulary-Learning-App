@@ -23,8 +23,6 @@ extension LearnVC: AnsweredDelegate
             if selected == wordData.correctAnswer
             {
                 page.answerBox1Image.image = UIImage(named: "correctBoxBackground")
-                solvedWords.append(wordData.wordInfo.uid)
-                dayCorrectAnswer.append(wordData.wordInfo.uid)
                 isKnown = true
             }
             else
@@ -37,8 +35,6 @@ extension LearnVC: AnsweredDelegate
             if selected == wordData.correctAnswer
             {
                 page.answerBox2Image.image = UIImage(named: "correctBoxBackground")
-                solvedWords.append(wordData.wordInfo.uid)
-                dayCorrectAnswer.append(wordData.wordInfo.uid)
                 isKnown = true
             }
             else
@@ -51,8 +47,6 @@ extension LearnVC: AnsweredDelegate
             if selected == wordData.correctAnswer
             {
                 page.answerBox3Image.image = UIImage(named: "correctBoxBackground")
-                solvedWords.append(wordData.wordInfo.uid)
-                dayCorrectAnswer.append(wordData.wordInfo.uid)
                 isKnown = true
             }
             else
@@ -65,8 +59,6 @@ extension LearnVC: AnsweredDelegate
             if selected == wordData.correctAnswer
             {
                 page.answerBox4Image.image = UIImage(named: "correctBoxBackground")
-                solvedWords.append(wordData.wordInfo.uid)
-                dayCorrectAnswer.append(wordData.wordInfo.uid)
                 isKnown = true
             }
             else
@@ -78,9 +70,21 @@ extension LearnVC: AnsweredDelegate
         default:
             break
         }
+        saveData(isKnown: isKnown) // cevap verisinin kaydedilmesi
         correctCounter.text = String(describing: dayCorrectAnswer.count) // doğru sayacının arttırılması
         wrongCounter.text =  String(describing: dayWrongAnswer.count) // yanlış sayacının arttırılması
-        saveData(isKnown: isKnown) // cevap verisinin kaydedilmesi
         goNextPage(delay: 0.6) // Otomatik sayfa geçişi
+    }
+    func goNextPage(delay: TimeInterval) // Otomatik sayfa geçiş fonksiyonu, gönderilen zamana göre geçiş yapılıyor.
+    {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay)
+        {
+            self.wordPages[1].buttonSet()
+            let wordData = self.wordDataParser.getLearnWord()
+            self.wordDatas.remove(at: 0)
+            self.wordDatas.append(wordData)
+            self.layoutWordPage()
+            self.wordPageScrollView.scrollToPage(index: 2, animated: true)
+        }
     }
 }

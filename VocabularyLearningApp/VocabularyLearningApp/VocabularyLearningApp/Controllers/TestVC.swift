@@ -10,12 +10,12 @@ import UIKit
 
 class TestVC: UIViewController, WordScrollViewProtocol
 {
-    let wordPageScroll: UIScrollView = UIScrollView() // kaydırılabilir sayfamız
+    let wordPageScrollView: UIScrollView = UIScrollView() // kaydırılabilir sayfamız
     var blurredEffectView = UIVisualEffectView() // loading view'u
     let blurEffect = UIBlurEffect(style: .extraLight)
     let loadingIndicator = UIActivityIndicatorView()
-    let wordDataParser = WordDataParser.parser // Api'daki kelimeyi işleyip veren static sınıf
-    var wordDatas: [WordTestPageData] = [] // sayfalardaki verilerimiz
+    let wordDataParser = TestWordParser.parser // Api'daki kelimeyi işleyip veren static sınıf
+    var wordDataArray: [WordTestPageData] = [] // sayfalardaki verilerimiz
     
     var wordPages: [WordPage] = { () -> [WordPage] in // ScrollView sayfalarının oluşturulmasu
         let wordPage0: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Previous Page
@@ -32,11 +32,11 @@ class TestVC: UIViewController, WordScrollViewProtocol
         
 //        View ayarlamaları
         navigationItem.title = NSLocalizedString("TEST_VC_TITLE", comment: "")
-        wordPageScroll.delegate = self
-        wordPageScroll.isPagingEnabled = true
-        wordPageScroll.showsHorizontalScrollIndicator = false
-        wordPageScroll.showsVerticalScrollIndicator = false
-        view.addSubview(wordPageScroll)
+        wordPageScrollView.delegate = self
+        wordPageScrollView.isPagingEnabled = true
+        wordPageScrollView.showsHorizontalScrollIndicator = false
+        wordPageScrollView.showsVerticalScrollIndicator = false
+        view.addSubview(wordPageScrollView)
         
 //        Kelime geldiği zaman bilgi mesajını yakalayıp işlem yapımı
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FetchTestWords"), object: nil, queue: OperationQueue.main, using: { _ in
@@ -44,7 +44,7 @@ class TestVC: UIViewController, WordScrollViewProtocol
             self.loadingView()
         })
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FailAlert"), object: nil, queue: OperationQueue.main, using: { (alert) in
-            self.alertView(alert: alert.object as! String)
+            self.showAlert(alert: alert.object as! String)
         })
     }
     override func viewWillAppear(_ animated: Bool)
@@ -69,10 +69,10 @@ class TestVC: UIViewController, WordScrollViewProtocol
         }
         else
         {
-            blurredEffectView.removeFromSuperview()
+            blurredEffectView.removeFromSuperview() // Kelime varsa Loading ekranı view'dan siliniyor.
         }
     }
-    internal func alertView(alert: String)
+    internal func showAlert(alert: String)
     {
         let emptyAlert = UIAlertController(title: NSLocalizedString("ALERT_TITLE", comment: ""), message: alert, preferredStyle: .alert)
         let emptyAlertButton = UIAlertAction(title: NSLocalizedString("OKAY", comment: ""), style: .cancel, handler: nil)
@@ -87,27 +87,27 @@ class TestVC: UIViewController, WordScrollViewProtocol
             page.frame.size.width = view.frame.width / 1.2
             page.frame.size.height = view.frame.height / 1.5
         }
-        wordDatas.removeAll()
+        wordDataArray.removeAll()
         
         for i in 0 ..< 3
         {
             wordData = wordDataParser.getTestWord()
-            wordDatas.append(wordData)
-            wordPageScroll.addSubview(wordPages[i])
+            wordDataArray.append(wordData)
+            wordPageScrollView.addSubview(wordPages[i])
         }
         scrollViewSize = (wordPages.first?.frame.size)!
-        wordPageScroll.frame.size = scrollViewSize
-        wordPageScroll.center = CGPoint(x: view.frame.size.width  / 2, y: view.frame.size.height / 2)
-        wordPageScroll.contentSize = CGSize(width: scrollViewSize.width * 3, height: scrollViewSize.height)
-        wordPageScroll.contentOffset = CGPoint(x: scrollViewSize.width, y: 0)
-        layoutPages()
+        wordPageScrollView.frame.size = scrollViewSize
+        wordPageScrollView.center = CGPoint(x: view.frame.size.width  / 2, y: view.frame.size.height / 2)
+        wordPageScrollView.contentSize = CGSize(width: scrollViewSize.width * 3, height: scrollViewSize.height)
+        wordPageScrollView.contentOffset = CGPoint(x: scrollViewSize.width, y: 0)
+        layoutWordPage()
     }
-    internal func layoutPages() // ScrollView'a kelimelerin verilmesi
+    internal func layoutWordPage() // ScrollView'a kelimelerin verilmesi
     {
         var index = 0
         for page in wordPages
         {
-            let wordData = wordDatas[index]
+            let wordData = wordDataArray[index]
             page.delegate = self
             
 //            Sayfaların oluşturulmasında varsayılan ayarları yapılıyorç
@@ -126,10 +126,10 @@ class TestVC: UIViewController, WordScrollViewProtocol
             page.answerBox3Label.text = wordData.wordPage.option3
             page.answerBox4Label.text = wordData.wordPage.option4
             
-            page.frame = CGRect(x: wordPageScroll.frame.width * CGFloat(index),
+            page.frame = CGRect(x: wordPageScrollView.frame.width * CGFloat(index),
                                 y: 0,
-                                width: wordPageScroll.frame.width,
-                                height: wordPageScroll.frame.height)
+                                width: wordPageScrollView.frame.width,
+                                height: wordPageScrollView.frame.height)
             index += 1
         }
     }
@@ -147,38 +147,27 @@ extension TestVC: UIScrollViewDelegate
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) // kaydırma bitince kaydırma sonlandırılmışsa sayfa geçiş işlemleri yapılıyor
     {
-        if !isDragging {
-            return
-        }
+        if !isDragging
+        { return }
+        
         let offsetX = scrollView.contentOffset.x
         
         if (offsetX > scrollView.frame.size.width * 1.5)
         {
             let wordData = wordDataParser.getTestWord()
-            wordDatas.remove(at: 0)
-            wordDatas.append(wordData)
-            layoutPages()
+            wordDataArray.remove(at: 0)
+            wordDataArray.append(wordData)
+            layoutWordPage()
             scrollView.contentOffset.x -= scrollViewSize.width
         }
         
         if (offsetX < scrollView.frame.size.width * 0.5)
         {
             let wordData = wordDataParser.getTestWord()
-            wordDatas.removeLast()
-            wordDatas.insert(wordData, at: 0)
-            layoutPages()
+            wordDataArray.removeLast()
+            wordDataArray.insert(wordData, at: 0)
+            layoutWordPage()
             scrollView.contentOffset.x += scrollViewSize.width
-        }
-    }
-    func goNextPage(delay: TimeInterval) // Otomatik sayfa geçiş fonksiyonu, gönderilen zamana göre geçiş yapılıyor.
-    {
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay)
-        {
-            let wordData = self.wordDataParser.getTestWord()
-            self.wordDatas.remove(at: 0)
-            self.wordDatas.append(wordData)
-            self.layoutPages()
-            self.wordPageScroll.scrollToPage(index: 2, animated: true)
         }
     }
 }

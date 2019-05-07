@@ -11,26 +11,42 @@ import VocabularyLearningAppAPI
 
 protocol UserProgressModelProtocol
 {
-    func saveLearnProgress(child: String, day: String, correctData: [String], wrongData: [String], solvedWords: [String])
+    func saveLearnProgress(day: String, correctData: [String], wrongData: [String], solvedWords: [String])
     func saveTestProgress(askDay: String, level: String, word: String, translate: String, sentence: String, category: String, id: String)
+    func saveLearnedWord(day: String, uid: String)
     func deleteSolvedTest(uid: String)
 }
 class UserProgressModel: UserProgressModelProtocol
 {
     private let service: UserProgressProtocol = UserProgress()
-    func saveLearnProgress(child: String, day: String, correctData: [String], wrongData: [String], solvedWords: [String])
+    func saveLearnProgress(day: String, correctData: [String], wrongData: [String], solvedWords: [String])
     {
-        service.saveProgress(child: child, day: day, correctData: correctData, wrongData: wrongData, solvedWords: solvedWords)
+        if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
+        {
+            service.saveProgress(userID: currentUserId[1], day: day, correctData: correctData, wrongData: wrongData, solvedWords: solvedWords)
+        }
     }
     
     func saveTestProgress(askDay: String, level: String, word: String, translate: String, sentence: String, category: String, id: String)
     {
-        service.saveTestedProgress(askDay: askDay, level: level, word: word, translate: translate, sentence: sentence, category: category, id: id)
+        if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
+        {
+            service.saveTestedProgress(userID: currentUserId[1], askDay: askDay, level: level, word: word, translate: translate, sentence: sentence, category: category, id: id)
+        }
     }
-    
+    public func saveLearnedWord(day: String, uid: String)
+    {
+        if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
+        {
+            service.saveLearnedWord(userID: currentUserId[1], day: day, uid: uid)
+        }
+    }
     func deleteSolvedTest(uid: String)
     {
-        let deleteService: FireBaseDeleteProtocol = FireBaseDelete()
-        deleteService.deteleteChil(uid: uid)
+        if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
+        {
+            let deleteService: FireBaseDeleteProtocol = FireBaseDelete()
+            deleteService.deteleteChil(userID: currentUserId[1], uid: uid)
+        }
     }
 }

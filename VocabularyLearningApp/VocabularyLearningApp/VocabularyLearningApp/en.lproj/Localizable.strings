@@ -18,6 +18,7 @@
 "CATEGORY_BUTTON" = "Select Category";
 "FIREBASE_SUCCES_TITLE" = "INFO";
 "FIREBASE_SUCCES" = "Word successfully added, thank you.";
+"A_ISSUE" = "Something went wrong";
 "FIREBASE_ALERT_TITLE" = "ALERT";
 "PLEASE_WAIT" = "Please Wait";
 

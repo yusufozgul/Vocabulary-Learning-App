@@ -14,7 +14,7 @@ extension TestVC
 //    Bir kelime eğer yanlış bilindiyse yarın tekrar test etmek için level'i 1 yapılır.
     func saveData(isKnown: Bool)
     {
-        let wordData = wordDatas[1]
+        let wordData = wordDataArray[1]
         let userProgressModel: UserProgressModelProtocol = UserProgressModel()
         wordDataParser.deleteTest(index: wordData.wordPage.wordIndex) // Test için gelen soru çözüldüğünde tekrar etmemesi için siliniyor
         if isKnown
@@ -31,7 +31,7 @@ extension TestVC
                 userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 6, byAdding: "month"), level: "4", word: wordData.wordPage.wordInfo.word, translate: wordData.wordPage.wordInfo.translate, sentence: wordData.wordPage.wordInfo.sentence, category: wordData.wordPage.wordInfo.category, id: wordData.wordPage.wordInfo.uid)
                 userProgressModel.deleteSolvedTest(uid: wordData.wordPage.wordInfo.uid)
             case "4":
-                userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 1, byAdding: "year"), level: "5", word: wordData.wordPage.wordInfo.word, translate: wordData.wordPage.wordInfo.translate, sentence: wordData.wordPage.wordInfo.sentence, category: wordData.wordPage.wordInfo.category, id: wordData.wordPage.wordInfo.uid)
+                userProgressModel.saveLearnedWord(day: Date().currentDate(), uid: wordData.wordPage.wordInfo.uid)
                 userProgressModel.deleteSolvedTest(uid: wordData.wordPage.wordInfo.uid)
             default:
                 break

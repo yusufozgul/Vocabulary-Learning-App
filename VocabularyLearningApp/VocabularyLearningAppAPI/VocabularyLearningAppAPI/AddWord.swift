@@ -11,28 +11,28 @@ import FirebaseDatabase
 
 public protocol AddWordProtocol
 {
-    func AddNewWord(word: String, translate: String, sentence: String, category: String)
+    func AddNewWord(word: String, translate: String, sentence: String, category: String, completion: @escaping (Result<AddWordResponse>) -> Void)
 }
 //  Gelen kelimeyi Firebase'e ekler
 public class AddWord: AddWordProtocol
 {
     public init() { }
     
-    public func AddNewWord(word: String, translate: String, sentence: String, category: String)
+    public func AddNewWord(word: String, translate: String, sentence: String, category: String, completion: @escaping (Result<AddWordResponse>) -> Void)
     {
         var dbRef: DatabaseReference!
-        dbRef = Database.database().reference()
         let uid = NSUUID().uuidString
+        dbRef = Database.database().reference().child("Words").child(uid)
         
-        dbRef.child("Words").child(uid).setValue(["word": word, "translate": translate, "sentence": sentence, "category": category, "uid": uid]) { (errorDB, DBRef) in
+        dbRef.setValue(["word": word, "translate": translate, "sentence": sentence, "category": category, "uid": uid]) { (errorDB, DBRef) in
             if errorDB != nil
             {
-                print(errorDB!.localizedDescription)
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FireBaseMessage"), object: errorDB!.localizedDescription)
+                completion(.failure(errorDB!.localizedDescription))                
             }
             else
             {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FireBaseMessage"), object: true)
+                let result = AddWordResponse(result: true)
+                completion(.success(result))
             }
         }
     }

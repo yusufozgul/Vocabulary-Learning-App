@@ -59,9 +59,13 @@ extension Date
         let dateComponents = DateComponents()
         let calendar = Calendar.current
         let date = calendar.date(from: dateComponents)!
-        
         let range = calendar.range(of: .day, in: .month, for: date)!
-        
         return range.count
+    }
+    func dateFormatter(date: String) -> Date
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: date)!
     }
 }

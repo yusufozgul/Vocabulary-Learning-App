@@ -30,7 +30,7 @@ class AccountVC: UIViewController, ChartViewDelegate
         dateFormatter.dateFormat = "yyyy-MM-dd"
         dateFormatter.dateStyle = .short
         
-        firebaseChart.learnCharts() { result in
+        firebaseChart.learnCharts(userID: "String") { result in
             switch result {
             case .success(let value):
                 self.yVals.removeAll()
