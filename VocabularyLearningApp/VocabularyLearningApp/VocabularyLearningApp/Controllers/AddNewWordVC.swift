@@ -32,6 +32,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         wordDescription.text = NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "")
         addButtonLabel.text = NSLocalizedString("ADD_BUTTON", comment: "")
         categoryTextField.placeholder = NSLocalizedString("CATEGORY_BUTTON", comment: "")
+        wordDescription.layer.cornerRadius = 6
         createPickerView()
         
 //        Bir kelime eklendiğinde işlem sonucu ekranda gösterilir.
@@ -108,7 +109,7 @@ extension AddNewWordVC: UITextViewDelegate
         if wordDescription.text.isEmpty
         {
             wordDescription.text = NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "")
-            wordDescription.textColor = .lightGray
+            wordDescription.textColor = .lightText
         }
     }
     func textViewDidBeginEditing(_ textView: UITextView) {

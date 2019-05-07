@@ -60,9 +60,9 @@ class WordPage: UIView
     
     func buttonSet()
     {
-        answerButton1.isHidden = !answerButton1.isHidden
-        answerButton2.isHidden = !answerButton2.isHidden
-        answerButton3.isHidden = !answerButton3.isHidden
-        answerButton4.isHidden = !answerButton4.isHidden
+        answerButton1.isEnabled = !answerButton1.isEnabled
+        answerButton2.isEnabled = !answerButton2.isEnabled
+        answerButton3.isEnabled = !answerButton3.isEnabled
+        answerButton4.isEnabled = !answerButton4.isEnabled
     }
 }
