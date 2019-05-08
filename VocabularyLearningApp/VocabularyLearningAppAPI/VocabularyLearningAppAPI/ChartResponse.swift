@@ -11,13 +11,11 @@ import Foundation
 public struct ChartResponse
 {
     public var correctArray: [Int]
-    public var wrongArray: [Int]
     public var date: [String]
     
-    init(correct: [Int], wrong: [Int], date: [String])
+    init(correct: [Int], date: [String])
     {
         self.correctArray = correct
-        self.wrongArray = wrong
         self.date = date
     }
 }

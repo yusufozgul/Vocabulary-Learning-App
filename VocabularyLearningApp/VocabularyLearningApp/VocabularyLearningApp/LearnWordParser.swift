@@ -46,7 +46,7 @@ class LearnWordParser: LearnWordParserProtocol
                 }
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "FetchWords"), object: nil)
             case .failure:
-                print("HATA")
+                MessageViewer.messageViewer.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("FAIL_FETCHWORD", comment: ""))
             }
         }
     }
@@ -112,9 +112,9 @@ class LearnWordParser: LearnWordParserProtocol
     func deleteLearn(index: Int)
     {
         wordArray.remove(at: index)
-        if wordArray.count == 0
+        if getLearnArrayCount() == 0
         {
-            MessageViewer.messageViewer.failMessage(title: "Uyarı", body: "Öğrenilecek daha fazla kelime kalmadı gibi")
+            MessageViewer.messageViewer.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("EMPTY_LEARN_WORD", comment: ""))
         }
     }
 //    Öğrenilecek ve test edilecek kaç kelime olduğunu döndürür

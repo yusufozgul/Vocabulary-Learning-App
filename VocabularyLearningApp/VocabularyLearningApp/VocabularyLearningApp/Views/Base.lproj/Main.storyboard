@@ -172,13 +172,6 @@
                                     <outlet property="delegate" destination="onT-rK-7Gz" id="HXp-iT-HrQ"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4R-pI-mVA">
-                                <rect key="frame" x="368" y="276" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="infoButton:" destination="onT-rK-7Gz" eventType="touchUpInside" id="f16-qi-V2X"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uygulamaya katkı sağlamak için kelime ekleyebilirsiniz, böylece tüm kullanıcılar eklediğiniz kelimeleri öğrenebilir." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qm8-aS-q0j">
                                 <rect key="frame" x="20" y="759" width="374" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -230,9 +223,16 @@
                                     <constraint firstItem="XnC-UJ-J1t" firstAttribute="leading" secondItem="RBR-bL-LHo" secondAttribute="leading" id="uxp-9Y-EnM"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4R-pI-mVA">
+                                <rect key="frame" x="362" y="224" width="22" height="22"/>
+                                <connections>
+                                    <action selector="infoButton:" destination="onT-rK-7Gz" eventType="touchUpInside" id="f16-qi-V2X"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ApC-kv-uMi" firstAttribute="trailing" secondItem="s4R-pI-mVA" secondAttribute="trailing" constant="30" id="02l-c3-Pda"/>
                             <constraint firstItem="qm8-aS-q0j" firstAttribute="leading" secondItem="ApC-kv-uMi" secondAttribute="leading" constant="20" id="1xY-mX-Z68"/>
                             <constraint firstItem="qm8-aS-q0j" firstAttribute="bottom" secondItem="ApC-kv-uMi" secondAttribute="bottom" id="7uB-7k-Ah2"/>
                             <constraint firstItem="31t-Vw-p6T" firstAttribute="top" secondItem="ApC-kv-uMi" secondAttribute="top" constant="24" id="9BQ-HG-OmM"/>
@@ -244,6 +244,7 @@
                             <constraint firstItem="PwS-JG-7hU" firstAttribute="top" secondItem="hME-rE-gJa" secondAttribute="bottom" constant="24" id="GpD-Nt-dHv"/>
                             <constraint firstItem="Ypo-tM-zmr" firstAttribute="leading" secondItem="ApC-kv-uMi" secondAttribute="leading" id="KFu-N8-1LF"/>
                             <constraint firstItem="Ypo-tM-zmr" firstAttribute="bottom" secondItem="ApC-kv-uMi" secondAttribute="bottom" id="LvL-nV-a9H"/>
+                            <constraint firstItem="s4R-pI-mVA" firstAttribute="top" secondItem="hME-rE-gJa" secondAttribute="bottom" constant="28" id="M7q-zN-79I"/>
                             <constraint firstItem="qdD-zX-aJX" firstAttribute="leading" secondItem="ApC-kv-uMi" secondAttribute="leading" constant="24" id="MB4-BA-3y9"/>
                             <constraint firstItem="hME-rE-gJa" firstAttribute="top" secondItem="31t-Vw-p6T" secondAttribute="bottom" constant="24" id="QAD-VL-oGr"/>
                             <constraint firstItem="ApC-kv-uMi" firstAttribute="trailing" secondItem="hME-rE-gJa" secondAttribute="trailing" constant="24" id="RUb-6R-vba"/>

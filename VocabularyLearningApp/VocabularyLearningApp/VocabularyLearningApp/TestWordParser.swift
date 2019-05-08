@@ -49,8 +49,8 @@ class TestWordParser: TestWordParserProtocol
                         self.testArray.append(word)
                     }
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "FetchTestWords"), object: nil)
-                case .failure(let message):
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "FailAlert"), object: message)
+                case .failure(_):
+                    MessageViewer.messageViewer.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("FAIL_FETCHWORD", comment: ""))
                 }
             }
         }
@@ -108,6 +108,10 @@ class TestWordParser: TestWordParserProtocol
     func deleteTest(index: Int)
     {
         testArray.remove(at: index)
+        if getTestArrayCount() == 0
+        {
+            MessageViewer.messageViewer.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("EMPTY_TEST_WORD", comment: ""))
+        }
     }
 //    Öğrenilecek ve test edilecek kaç kelime olduğunu döndürür
     func getTestArrayCount() -> Int

@@ -22,7 +22,7 @@
 "A_ISSUE" = "Bir hata oluştu";
 "PLEASE_WAIT" = "Lütfen Bekleyin";
 "INFO_TITLE" = "Bilgi";
-"WORD_INFO" = " Kelimenizin Türünden emin değilseniz aşağıdaki bilgilere göre girebilirsiniz. \n\n• İsim (Ad): Canlı ve cansız varlıkları, duygu ve düşünceleri, durumları, bütün bunların birbiriyle ilgilerini karşılayan sözcüklerdir: kuş, ağaç, ağlama, düşünce, yargı, bilgi gibi. \n• Sıfat (Önad): Adların niteliklerini, ne durumda olduklarını sayılarını, ölçülerini, gösteren, soran ya da belirten sözcüklerdir. \n• Fiil (Eylem): Oluş, kılınış, durum gösteren sözcüklerdir. \n• Zamir (Adıl): Adların yerini tutan, bu görevi yerine getirirken kişi, soru, gösterme ve belgisizlik kavramları da taşıyan sözcüklerdir. \n• Zarf (Belirteç): Eylemlerin, sıfatların ya da görevce kendisi ne benzeyen sözcüklerin anlamlarını zaman bildirerek, güçlendirerek ya da kısıtlayarak etkileyen sözcüklerdir. \n• Bağlaç: Eş görevli ya da birbiriyle ilgili sözcükleri, sözcük öbeklerini, özellikle cümleleri bağlamaya yarayan; bunlar arasında anlam ve biçim bakımından bağlantı kuran sözcüklerdir. \n• Ünlem: Sevinme, kızma, korku, acıma, şaşma, gibi ansızın beliren duyguları yansıtmaya yarayan sözcüklerdir.";
+"WORD_INFO" = " Kelimenizin Türünden emin değilseniz aşağıdaki bilgilere göre girebilirsiniz. \n\n• İsim (Ad): Canlı ve cansız varlıkları, duygu ve düşünceleri, durumları karşılayan sözcüklerdir.\n• Sıfat (Önad): Adların niteliklerini, ne durumda olduklarını sayılarını, ölçülerini, gösteren, soran ya da belirten sözcüklerdir. \n• Fiil (Eylem): Oluş, kılınış, durum gösteren sözcüklerdir. \n• Zamir (Adıl): Adların yerini tutan, bu görevi yerine getirirken kişi, soru, gösterme ve belgisizlik kavramları da taşıyan sözcüklerdir. \n• Zarf (Belirteç): Fiillerden, sıfatlardan veya zarflardan önce gelerek onların özelliklerini, zamanını, yönünü, miktarını belirten sözcüklerdir.\n• Bağlaç: Eş görevli ya da birbiriyle ilgili sözcükleri, sözcük öbeklerini, özellikle cümleleri bağlamaya yarayan; bunlar arasında anlam ve biçim bakımından bağlantı kuran sözcüklerdir.";
 
 //BLTNBoradSigninExt
 
@@ -85,3 +85,8 @@
 "NULL_TEST_WORDS" = "Test edilecek veri bulunamadı, lütfen öğren sayfasından kelime öğrenin ardından buradan öğrendiklerinizi test edin.";
 "WORD_NOT_FOUND" = "Kelime Bulunamadı";
 "TEST_DATA_ERROR" = "Test verilerinde hata";
+
+// Model
+"FAIL_FETCHWORD" = "Kelimeler sunucudan alınırken bir hata oluştu";
+"EMPTY_LEARN_WORD" = "Öğrenilebilecek yeni kelime kalmadı, kelime ekleyrek katkıda bulunabilirsiniz.";
+"EMPTY_TEST_WORD" = "Test edilecek kelime kalmadı. Yeni kelimeler öğrenip test edebilir ya da daha sonra gelerek günü gelen kelimeleri test edebilirsiniz.";

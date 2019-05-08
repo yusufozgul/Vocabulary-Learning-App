@@ -37,7 +37,6 @@ class AccountVC: UIViewController, ChartViewDelegate
                 for i in 0..<value.date.count
                 {
                     self.yVals.append(BarChartDataEntry(x: Double(i), y: Double(value.correctArray[i])))
-                    self.yVals.append(BarChartDataEntry(x: Double(i), y: 0 - Double(value.wrongArray[i])))
                 }
                 self.setChartData()
             case .failure:

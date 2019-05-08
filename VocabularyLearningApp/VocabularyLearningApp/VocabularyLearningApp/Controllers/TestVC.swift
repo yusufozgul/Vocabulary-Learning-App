@@ -43,9 +43,6 @@ class TestVC: UIViewController, WordScrollViewProtocol
             self.prepareScrollView()
             self.loadingView()
         })
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FailAlert"), object: nil, queue: OperationQueue.main, using: { (alert) in
-            self.showAlert(alert: alert.object as! String)
-        })
     }
     override func viewWillAppear(_ animated: Bool)
     {
@@ -71,13 +68,6 @@ class TestVC: UIViewController, WordScrollViewProtocol
         {
             blurredEffectView.removeFromSuperview() // Kelime varsa Loading ekranı view'dan siliniyor.
         }
-    }
-    internal func showAlert(alert: String)
-    {
-        let emptyAlert = UIAlertController(title: NSLocalizedString("ALERT_TITLE", comment: ""), message: alert, preferredStyle: .alert)
-        let emptyAlertButton = UIAlertAction(title: NSLocalizedString("OKAY", comment: ""), style: .cancel, handler: nil)
-        emptyAlert.addAction(emptyAlertButton)
-        present(emptyAlert, animated: true, completion: nil)
     }
     internal func prepareScrollView() // ScrollView'un ayarlanması ve kelimelerin yerleştirilmesi
     {

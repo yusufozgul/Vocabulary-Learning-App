@@ -19,6 +19,7 @@ extension LearnVC
         UserDefaults.standard.setValue(dayWrongAnswer, forKey: "wrongAnswer")
         UserDefaults.standard.setValue(solvedWords, forKey: "SolvedWords")
         userProgressModel.saveLearnProgress(day: Date().currentDate(), correctData: dayCorrectAnswer, wrongData: dayWrongAnswer, solvedWords: solvedWords)
+       
         if isKnown
         {
             let wordData = wordDatas[1]

@@ -32,6 +32,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         wordTranslate.placeholder = NSLocalizedString("WORD_TRANSLATE_TEXTFILED_PLACEHOLDER", comment: "")
         wordDescription.textColor = .lightGray
         wordDescription.text = NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "")
+        wordDescription.delegate = self
         addButtonLabel.text = NSLocalizedString("ADD_BUTTON", comment: "")
         categoryTextField.placeholder = NSLocalizedString("CATEGORY_BUTTON", comment: "")
         wordDescription.layer.cornerRadius = 6
@@ -51,6 +52,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         var wordData: WordData = WordData(word: "", translate: "", sentence: "", category: "", uid: "")
         if !wordTextFiled.text!.isEmpty && !wordTranslate.text!.isEmpty && wordDescription.text != NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "") && !categoryTextField.text!.isEmpty
         {
+            addButton.isEnabled = false
             wordData.word = wordTextFiled.text!
             wordData.translate = wordTranslate.text!
             wordData.category = categoryTextField.text!
@@ -60,22 +62,15 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         }
         else
         {
-            let emptyAlert = UIAlertController(title: NSLocalizedString("EMPTY_ALERT_TITLE", comment: ""), message: NSLocalizedString("EMPTY_ALERT_MESSAGE", comment: ""), preferredStyle: .alert)
-            let emptyAlertButton = UIAlertAction(title: NSLocalizedString("OKAY", comment: ""), style: .cancel, handler: nil)
-            emptyAlert.addAction(emptyAlertButton)
-            present(emptyAlert, animated: true, completion: nil)
+            MessageViewer.messageViewer.failMessage(title: NSLocalizedString("EMPTY_ALERT_TITLE", comment: ""), body: NSLocalizedString("EMPTY_ALERT_MESSAGE", comment: ""))
         }
     }
     @IBAction func addButton(_ sender: Any)
-    {
-        addWord()
-    }
+    { addWord() }
+    
     @IBAction func infoButton(_ sender: Any) // Kelime kategori detayları bilgilendirmesi
     {
-        let emptyAlert = UIAlertController(title: NSLocalizedString("INFO_TITLE", comment: ""), message: NSLocalizedString("WORD_INFO", comment: ""), preferredStyle: .alert)
-        let emptyAlertButton = UIAlertAction(title: NSLocalizedString("OKAY", comment: ""), style: .cancel, handler: nil)
-        emptyAlert.addAction(emptyAlertButton)
-        present(emptyAlert, animated: true, completion: nil)
+        MessageViewer.messageViewer.infoView(title: NSLocalizedString("INFO_TITLE", comment: ""), body: NSLocalizedString("WORD_INFO", comment: ""))
     }
 }
 
@@ -85,6 +80,7 @@ extension AddNewWordVC: AddWordDelegate
     {
         switch result {
         case true:
+            addButton.isEnabled = true
             wordTextFiled.text = ""
             wordTranslate.text = ""
             wordDescription.text = ""
@@ -95,6 +91,7 @@ extension AddNewWordVC: AddWordDelegate
             view.endEditing(true)
             self.addButtonLabel.text = NSLocalizedString("ADD_BUTTON", comment: "")
         default:
+            addButton.isEnabled = true
             break
         }
     }
@@ -102,18 +99,10 @@ extension AddNewWordVC: AddWordDelegate
 
 extension AddNewWordVC: UITextViewDelegate
 {
-    func textViewDidEndEditing(_ textView: UITextView)
-    {
-        if wordDescription.text.isEmpty
-        {
-            wordDescription.text = NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "")
-            wordDescription.textColor = .lightText
-        }
-    }
     func textViewDidBeginEditing(_ textView: UITextView)
     {
-        wordDescription.text = ""
-        wordDescription.textColor = .black
+        textView.text = ""
+        textView.textColor = .black
     }
 }
 extension AddNewWordVC // Kategori seçici ayarları

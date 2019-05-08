@@ -12,7 +12,7 @@ import FirebaseDatabase
 public protocol FetchLearnChartsProtocol
 {
     func learnCharts(userID: String, completion: @escaping (Result<ChartResponse>) -> Void)
-    func fetchChilds(userID: String)
+    func fetchChilds(userID: String, interval: String, intervalValue: Int)
 }
 
 public class FetchLearnCharts: FetchLearnChartsProtocol
@@ -24,13 +24,13 @@ public class FetchLearnCharts: FetchLearnChartsProtocol
     
     public init() {}
     
-    public func fetchChilds(userID: String)
+    public func fetchChilds(userID: String, interval: String, intervalValue: Int)
     {
         var count = 0
         var current = 0
         childs.removeAll()
 
-        dbRef = Database.database().reference().child("UserData").child(userID).child("LearnedWords")
+        dbRef = Database.database().reference().child("UserData").child(userID).child("Completed")
         let dataBase = dbRef.queryOrderedByKey()
         dataBase.observe(.value, with: { snapshot in
             
@@ -38,24 +38,19 @@ public class FetchLearnCharts: FetchLearnChartsProtocol
             {
                 for child in result
                 {
-                    let orderID = child.key
+                    let addedDate = Date().addCurrentDate(value: -intervalValue, byAdding: interval)
                     
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd"
-                    let firDate = dateFormatter.date(from: orderID)!
-                    let nowDate = dateFormatter.date(from: Date().addCurrentDate(value: -1, byAdding: "month"))
-                    
-                    if firDate >= nowDate!
+                    if Date().dateFormatter(date: child.key) >= Date().dateFormatter(date: addedDate)
                     {
                         self.childs.append(child.key)
                         count += 1
                         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.2 , execute: // bekletme sebebi tüm veriler geldikten sonra notification atmasını sağlamak.
+                        {
+                            current += 1
+                            if current == count
                             {
-                                current += 1
-                                if current == count
-                                {
-                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchedChart"), object: nil)
-                                }
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchedChart"), object: nil)
+                            }
                         })
                     }
                 }
@@ -65,27 +60,22 @@ public class FetchLearnCharts: FetchLearnChartsProtocol
  
     public func learnCharts(userID: String, completion: @escaping (Result<ChartResponse>) -> Void)
     {
-        fetchChilds(userID: userID)
+        fetchChilds(userID: userID, interval: "", intervalValue: 0)
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fetchedChart"), object: nil, queue: OperationQueue.main, using: { (_) in
             
             for child in self.childs
             {
-                self.dbRef = Database.database().reference().child("UserData").child(userID).child("LearnedWords").child(child)
-                let correctRef = self.dbRef.child("Correct").queryOrderedByKey()
-                let wrongRef = self.dbRef.child("Wrong").queryOrderedByKey()
-                correctRef.observe(.value, with: { (snaphot) in
+                self.dbRef = Database.database().reference().child("UserData").child(userID).child("Completed").child(child)
+                
+                let chartRef = self.dbRef.child("Correct").queryOrderedByKey()
+                chartRef.observe(.value, with: { (snaphot) in
                     self.correctArray.append(Int(snaphot.childrenCount))
                 })
-                wrongRef.observe(.value, with: { (snaphot) in
-                    self.wrongArray.append(Int(snaphot.childrenCount))
-                })
+
                 if child == self.childs.last
                 {
-                    DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.2 , execute: // bekletme sebebi tüm veriler geldikten sonra notification atmasını sağlamak.
-                        {
-                            let chartResponse = ChartResponse(correct: self.correctArray, wrong: self.wrongArray, date: self.childs)
-                            completion(.success(chartResponse))
-                    })
+                    let chartResponse = ChartResponse(correct: self.correctArray, date: self.childs)
+                    completion(.success(chartResponse))
                 }
             }
         })
