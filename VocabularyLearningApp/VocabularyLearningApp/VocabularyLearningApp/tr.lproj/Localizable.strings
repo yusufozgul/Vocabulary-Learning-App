@@ -81,6 +81,7 @@
 "COMPLETED_WORDS" = "Bir kelimeyi daha tamamen öğrendiniz.";
 
 // ChartVC
+"CHART_VC_TITLE" = "İstatistikler";
 "ERROR_FETCH_CHART" = "İstatistikler alınırken bir sorun oluştu.";
 "SELECT_MENU" = "İstatistiğin Aralığını";
 "SELECT_MENU_DESC" = "Grafik için getirilecek verilerin aralığını belirleyin.";

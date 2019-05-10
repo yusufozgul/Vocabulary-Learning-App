@@ -81,6 +81,7 @@
 "COMPLETED_WORDS" = "You learned a word more completely.";
 
 // ChartVC
+"CHART_VC_TITLE" = "Statistics";
 "ERROR_FETCH_CHART" = "There was a problem getting statistics.";
 "SELECT_MENU" = "Range of Statistics";
 "SELECT_MENU_DESC" = "Specify the range of data to be fetched for the chart.";

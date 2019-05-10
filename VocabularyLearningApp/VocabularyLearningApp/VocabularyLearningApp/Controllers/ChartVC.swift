@@ -25,6 +25,7 @@ class ChartVC: UIViewController, ChartViewDelegate, ChartResponseDelegate
         super.viewDidLoad()
         chartModel.delegate = self
         chartView.delegate = self
+        navigationItem.title = NSLocalizedString("CHART_VC_TITLE", comment: "")
         
         prepareChart()
     }
