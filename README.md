@@ -14,19 +14,19 @@ Proje detaylarını Wiki sayfasından edinebilirsiniz. [Wiki](https://github.com
 
 
 
-![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS1.png)
-![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS2.png)
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS1.png)  
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS2.png)  
 
-![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS4.png)
-![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS5.png)
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS4.png)  
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS5.png)  
 
-![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS6.png)
-![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS7.png)
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS6.png)  
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS7.png)  
 
-![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS8.png)
-![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS9.png)
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS8.png)  
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS9.png)  
 
-![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS10.png)
-![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS11.png)
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS10.png)  
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS11.png)  
 
 ![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS12.png)
