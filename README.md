@@ -10,7 +10,7 @@ Yazılım yapımı dersi dönem proje ödevi. İngilizce kelime öğrenme uygula
 
 Swift ile kodlanmıştır, Backend olarak Firebase kullanılmıştır.
 
-Proje detaylarını Wiki sayfasından edinebilirsiniz.
+Proje detaylarını Wiki sayfasından edinebilirsiniz. [Wiki](https://github.com/yusufozgul/Vocabulary_Learning_App/wiki)
 
 ![Alt text](https://github.com/yusufozgul/Vocabulary_Learning_App/raw/master/SS/SS1.png)
 ![Alt text](https://github.com/yusufozgul/Vocabulary_Learning_App/raw/master/SS/SS2.png)
