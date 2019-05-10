@@ -13,12 +13,15 @@
 		88283A5D2275BE7800ECB72F /* UserProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88283A5C2275BE7800ECB72F /* UserProgress.swift */; };
 		8840CB402270FB7200A837FD /* AuthenticateFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840CB3F2270FB7200A837FD /* AuthenticateFirebase.swift */; };
 		885FD16C2281EE150042D95C /* AddWordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885FD16B2281EE150042D95C /* AddWordResponse.swift */; };
+		885FD1AD22837BA90042D95C /* DeleteUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885FD1AC22837BA90042D95C /* DeleteUserData.swift */; };
+		885FD1BB228557040042D95C /* FirebaseChilds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885FD1BA228557040042D95C /* FirebaseChilds.swift */; };
+		885FD1BF22856E180042D95C /* solvedWordsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885FD1BE22856E180042D95C /* solvedWordsResponse.swift */; };
 		886D412F226F57230016527B /* AddWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D412E226F57230016527B /* AddWord.swift */; };
 		886D4147226F58820016527B /* ConfigureFireBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D4146226F58820016527B /* ConfigureFireBase.swift */; };
 		88853C49227A62590095B2FE /* DeleteTestWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88853C48227A62590095B2FE /* DeleteTestWord.swift */; };
 		88B5D07B22798E7B00A08E12 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B5D07A22798E7B00A08E12 /* Results.swift */; };
 		88B5D07D22798E8500A08E12 /* WordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B5D07C22798E8500A08E12 /* WordResponse.swift */; };
-		88C3C9D7227EB5EC000E4206 /* FetchLearnCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3C9D6227EB5EC000E4206 /* FetchLearnCharts.swift */; };
+		88C3C9D7227EB5EC000E4206 /* FetchUserCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3C9D6227EB5EC000E4206 /* FetchUserCharts.swift */; };
 		88C3C9D9227EBA21000E4206 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3C9D8227EBA1E000E4206 /* Extensions.swift */; };
 		88C3C9DB227EC231000E4206 /* ChartResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3C9DA227EC231000E4206 /* ChartResponse.swift */; };
 		88C4E8ED226EFCDD0008382C /* VocabularyLearningAppAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88C4E8E3226EFCDD0008382C /* VocabularyLearningAppAPI.framework */; };
@@ -54,6 +57,9 @@
 		88283A5C2275BE7800ECB72F /* UserProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProgress.swift; sourceTree = "<group>"; };
 		8840CB3F2270FB7200A837FD /* AuthenticateFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateFirebase.swift; sourceTree = "<group>"; };
 		885FD16B2281EE150042D95C /* AddWordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordResponse.swift; sourceTree = "<group>"; };
+		885FD1AC22837BA90042D95C /* DeleteUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserData.swift; sourceTree = "<group>"; };
+		885FD1BA228557040042D95C /* FirebaseChilds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseChilds.swift; sourceTree = "<group>"; };
+		885FD1BE22856E180042D95C /* solvedWordsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = solvedWordsResponse.swift; sourceTree = "<group>"; };
 		886D412E226F57230016527B /* AddWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWord.swift; sourceTree = "<group>"; };
 		886D4146226F58820016527B /* ConfigureFireBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureFireBase.swift; sourceTree = "<group>"; };
 		886D4159226FC7D70016527B /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,7 +69,7 @@
 		88853C48227A62590095B2FE /* DeleteTestWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTestWord.swift; sourceTree = "<group>"; };
 		88B5D07A22798E7B00A08E12 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		88B5D07C22798E8500A08E12 /* WordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordResponse.swift; sourceTree = "<group>"; };
-		88C3C9D6227EB5EC000E4206 /* FetchLearnCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLearnCharts.swift; sourceTree = "<group>"; };
+		88C3C9D6227EB5EC000E4206 /* FetchUserCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserCharts.swift; sourceTree = "<group>"; };
 		88C3C9D8227EBA1E000E4206 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		88C3C9DA227EC231000E4206 /* ChartResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartResponse.swift; sourceTree = "<group>"; };
 		88C4E8E3226EFCDD0008382C /* VocabularyLearningAppAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VocabularyLearningAppAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +138,8 @@
 				88B5D07C22798E8500A08E12 /* WordResponse.swift */,
 				88C3C9DA227EC231000E4206 /* ChartResponse.swift */,
 				885FD16B2281EE150042D95C /* AddWordResponse.swift */,
+				885FD1BA228557040042D95C /* FirebaseChilds.swift */,
+				885FD1BE22856E180042D95C /* solvedWordsResponse.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -166,9 +174,10 @@
 				88B5D07922798E6D00A08E12 /* Helper */,
 				886D4146226F58820016527B /* ConfigureFireBase.swift */,
 				8840CB3F2270FB7200A837FD /* AuthenticateFirebase.swift */,
+				885FD1AC22837BA90042D95C /* DeleteUserData.swift */,
 				886D412E226F57230016527B /* AddWord.swift */,
 				88283A51227515C100ECB72F /* FetchFirebase.swift */,
-				88C3C9D6227EB5EC000E4206 /* FetchLearnCharts.swift */,
+				88C3C9D6227EB5EC000E4206 /* FetchUserCharts.swift */,
 				88283A5C2275BE7800ECB72F /* UserProgress.swift */,
 				88853C48227A62590095B2FE /* DeleteTestWord.swift */,
 				880A82B22281E7BE003E6B6E /* UserData.swift */,
@@ -340,18 +349,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				885FD1BF22856E180042D95C /* solvedWordsResponse.swift in Sources */,
 				880A82B32281E7BE003E6B6E /* UserData.swift in Sources */,
 				88C3C9DB227EC231000E4206 /* ChartResponse.swift in Sources */,
 				880A82AF2281E799003E6B6E /* WordData.swift in Sources */,
+				885FD1AD22837BA90042D95C /* DeleteUserData.swift in Sources */,
 				8840CB402270FB7200A837FD /* AuthenticateFirebase.swift in Sources */,
 				886D412F226F57230016527B /* AddWord.swift in Sources */,
 				88B5D07B22798E7B00A08E12 /* Results.swift in Sources */,
+				885FD1BB228557040042D95C /* FirebaseChilds.swift in Sources */,
 				885FD16C2281EE150042D95C /* AddWordResponse.swift in Sources */,
 				88283A5D2275BE7800ECB72F /* UserProgress.swift in Sources */,
 				886D4147226F58820016527B /* ConfigureFireBase.swift in Sources */,
 				88853C49227A62590095B2FE /* DeleteTestWord.swift in Sources */,
 				88C3C9D9227EBA21000E4206 /* Extensions.swift in Sources */,
-				88C3C9D7227EB5EC000E4206 /* FetchLearnCharts.swift in Sources */,
+				88C3C9D7227EB5EC000E4206 /* FetchUserCharts.swift in Sources */,
 				88283A52227515C100ECB72F /* FetchFirebase.swift in Sources */,
 				88B5D07D22798E8500A08E12 /* WordResponse.swift in Sources */,
 			);

@@ -19,7 +19,7 @@ public final class AuthenticateFirebase: AuthenticateFirebaseProtocol
 {
     public init() {}
     
-    public func signin(userEmail: String, userPassword: String)
+    public func signin(userEmail: String, userPassword: String) // Gelen verilere göre giriş yapılır.
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
@@ -31,16 +31,13 @@ public final class AuthenticateFirebase: AuthenticateFirebaseProtocol
             else
             {
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "fireBaseMessage"), object: "succes")
-                var currentUser = currentUserData.init()
-                currentUser.userEmail = authResults?.user.email
-                currentUser.userID = authResults?.user.uid
-                UserDefaults.standard.setValue([currentUser.userEmail, currentUser.userID], forKey: "currentUser")
+                UserDefaults.standard.setValue([authResults?.user.email, authResults?.user.uid], forKey: "currentUser")
             }
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
     
-    public func signup(userEmail: String, userPassword: String)
+    public func signup(userEmail: String, userPassword: String) // Gelen verilere göre yeni kullanıcı oluşturulur.
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Auth.auth().createUser(withEmail: userEmail, password: userPassword) { (authResult, error) in
@@ -51,10 +48,7 @@ public final class AuthenticateFirebase: AuthenticateFirebaseProtocol
             else
             {
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "fireBaseMessage"), object: "succes")
-                var currentUser = currentUserData.init()
-                currentUser.userEmail = authResult?.user.email
-                currentUser.userID = authResult?.user.uid
-                UserDefaults.standard.setValue([currentUser.userEmail, currentUser.userID], forKey: "currentUser")
+                UserDefaults.standard.setValue([authResult?.user.email, authResult?.user.uid], forKey: "currentUser")
             }
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }

@@ -33,19 +33,16 @@
 
 //BLTNBoradSignupExt
 
-"USER_NAME" = "Kullanıcı Adı";
 "USER_PASSWORD" = "Şifre";
 "USER_EMAIL" = "E-Posta";
-"PASSWORD_REPETITION" = "Şifre Tekrarı";
 "PLEASE_WRITE_SOMETHING" = "Lütfen bir şeyler yazın";
-"PASSWORDS_DO_NOT_MATCH" = "Parolalar uyuşmuyor";
 
 
 // BulletinDataSource
 // .splashBoard
 
 "SPLASH_BOARD_TITLE" = "Hoşgeldiniz";
-"SPLASH_BOARD_DESC" = "Uygulamadan daha iyi yararlanabilmek için giriş yapın \n Öğrenme verileriniz kaydeilerek test çözebilirsiniz.";
+"SPLASH_BOARD_DESC" = "Uygulamadan daha iyi yararlanabilmek için giriş yapın \n Öğrenme verileriniz kaydedilip öğrendiğiniz kelimelerden test oluşturulur.";
 "SPLASH_BOARD_SIGNIN" = "Giriş Yap";
 "SPLASH_BOARD_SIGNUP" = "Kaydol";
 
@@ -54,7 +51,6 @@
 
 "SIGNIN" = "Giriş Yap";
 "SIGNIN_DESC" = "Kullanıcı adınız ve şifrenizi girerek giriş yapabilirsiniz";
-"FORGET_PASSWORD" = "Şifremi unuttum";
 
 
 
@@ -65,11 +61,14 @@
 "SIGNIN" = "Giriş Yap";
 
 
-// .notificationPermissionBoard
+// .accountBoard
 
-"NOTIFICATION" = "Bildirim İzin Verin";
-"NOTIFICATION_BOARD_DESC" = "Size bildirimler göndermemiz için bildirimleri açın";
-"NOTIFICATION_PERMISSION_BUTTON_TITLE" = "Bildirimlere izin ver";
+"ACCOUNT_BOARD_TITLE" = "Hesap";
+"ACCOUNT_BOARD_DESC" = "Hesabınızdan çıkış yapabilir ya da hesabınıza ait öğrenme verilerini silebilirsiniz. \n\n";
+"ACCOUNT_BOARD_LOG_OUT" = "Çıkış Yap";
+"ACCOUNT_BOARD_DELETE_DATA" = "Tüm verilerimi sil";
+"ARE_YOU_SURE" = "Eminseniz tıklayın";
+"DELETE_ACCOUNT_QUESTION" = "Bu işlem hesabınıza ait tutulan verileri silecektir. Tüm ilerleme geçmişiniz ve test kelimeleriniz silinecektir ve bu işlem GERİ ALINAMAZ.";
 
 
 //  LearnVC
@@ -78,7 +77,20 @@
 // TestVC
 "TEST_VC_TITLE" = "Test Et";
 "ALERT_TITLE" = "Uyarı";
+"CONGRATULATIONS" = "Tebrikler";
+"COMPLETED_WORDS" = "Bir kelimeyi daha tamamen öğrendiniz.";
 
+// ChartVC
+"ERROR_FETCH_CHART" = "İstatistikler alınırken bir sorun oluştu.";
+"SELECT_MENU" = "İstatistiğin Aralığını";
+"SELECT_MENU_DESC" = "Grafik için getirilecek verilerin aralığını belirleyin.";
+"SELECT_DAY" = "Son gün";
+"SELECT_WEEK" = "Son bir hafta";
+"SELECT_MONTH" = "Son bir ay";
+"SELECT_SIX_MONTH" = "Son altı ay";
+"SELECT_YEAR" = "Son bir yıl";
+"CANCEL" = "İptal";
+"NO_CHART_DATA" = "Gösterilecek veri bulunamadı";
 
 
 // API
@@ -90,3 +102,8 @@
 "FAIL_FETCHWORD" = "Kelimeler sunucudan alınırken bir hata oluştu";
 "EMPTY_LEARN_WORD" = "Öğrenilebilecek yeni kelime kalmadı, kelime ekleyrek katkıda bulunabilirsiniz.";
 "EMPTY_TEST_WORD" = "Test edilecek kelime kalmadı. Yeni kelimeler öğrenip test edebilir ya da daha sonra gelerek günü gelen kelimeleri test edebilirsiniz.";
+"NOT_SIGNIN" = "Giriş Yapılmamış";
+"PLEASE_SIGNIN" = "Kelime eklemek için uygulamaya giriş yapmanız gerekmektedir.";
+"PLEASE_SIGNIN_FOR_DELETE_DATA" = "Verilerinizi silmek için lütfen giriş yapınız.";
+"PLEASE_SIGNIN_FOR_TEST" = "Test verilerinizin oluşması için giriş yapmalısınız.";
+"PLEASE_SIGNIN_FOR_CHART" = "İstatistiklerinizi görebilmek için giriş yapmalısınız.";

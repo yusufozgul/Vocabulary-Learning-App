@@ -18,6 +18,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     
     let wordPageScrollView: UIScrollView = UIScrollView() // kaydırılabilir sayfamız
     let blurredEffectView = UIVisualEffectView() // loading view'u
+    let authdata = UserData.userData
     
     var wordPages: [WordPage] = { () -> [WordPage] in // ScrollView sayfalarının oluşturulmasu
         let wordPage0: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Previous Page
@@ -34,8 +35,15 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     private var isDragging = false // kaydırma kontrolü
     private var scrollViewSize: CGSize = .zero
     
-    let authBoard = BLTNItemManager(rootItem: BulletinDataSource.splashBoard()) // Kaydol, giriş yap sayfası
-
+    lazy var authBoard: BLTNItemManager = {
+        let rootItem: BLTNItem = BulletinDataSource.splashBoard()
+        return BLTNItemManager(rootItem: rootItem)
+    }()
+    lazy var accountBoard: BLTNItemManager = {
+        let rootItem: BLTNItem = BulletinDataSource.accountBoard()
+        return BLTNItemManager(rootItem: rootItem)
+    }()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -54,7 +62,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         loadData()
         
 //        Giriş yapılıp yapılmadığının kontrolü. Giriş yapılmamışsa yönlendiriliyor.
-        if UserDefaults.standard.object(forKey: "currentUser") == nil
+        if !authdata.isSign
         { showBulletin() }
         
 //        Kelime geldiği zaman bilgi mesajını yakalayıp işlem yapımı
@@ -68,6 +76,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     }
     override func viewWillAppear(_ animated: Bool)
     {
+        loadData()
         loadingView()
     }
     internal func loadingView() // Loading sayfası gösterimi ve kontrolü
@@ -92,7 +101,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     }
     internal func loadData()
     {
-        let loader = LoadLocalData()
+        let loader = LoadData()
         dayCorrectAnswer.removeAll()
         dayWrongAnswer.removeAll()
         solvedWords.removeAll()
@@ -102,7 +111,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     }
     internal func prepareScrollView() // ScrollView'un ayarlanması ve kelimelerin yerleştirilmesi
     {
-        var wordData = wordDataParser.getLearnWord()
+        var wordData = wordDataParser.getLearnWord() // random olarak bir sayfa için veri alma sınıfı.
         for page in wordPages
         {
             page.frame.size.width = view.frame.width / 1.2
@@ -110,7 +119,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         }
         wordDatas.removeAll()
         
-        for i in 0 ..< 3
+        for i in 0 ..< 3 // oluşturulan 3 sayfa için ayrı ayrı ayarı yapılır.
         {
             wordData = wordDataParser.getLearnWord()
             wordDatas.append(wordData)
@@ -123,7 +132,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         wordPageScrollView.contentOffset = CGPoint(x: scrollViewSize.width, y: 0)
         layoutWordPage()
     }
-    internal func layoutWordPage() // ScrollView'a kelimelerin verilmesi
+    internal func layoutWordPage() // ScrollView'a kelimelerin verilmesi ve düzen ayarları
     {
         var index = 0
         for page in wordPages
@@ -159,6 +168,11 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     {
         authBoard.backgroundViewStyle = BLTNBackgroundViewStyle.dimmed
         authBoard.showBulletin(above: self)
+    }
+    @IBAction func accountButton(_ sender: Any)
+    {
+        accountBoard.backgroundViewStyle = .dimmed
+        accountBoard.showBulletin(above: self)
     }
 }
 

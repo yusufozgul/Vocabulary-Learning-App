@@ -40,6 +40,8 @@ extension Date
         case "month":
             dateComponent.month = value
             break
+        case "week":
+            dateComponent.day = value
         case "day":
             dateComponent.day = value
             break

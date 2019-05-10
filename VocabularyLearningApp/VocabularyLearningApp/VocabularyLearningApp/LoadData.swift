@@ -7,8 +7,12 @@
 //
 
 import Foundation
+import VocabularyLearningAppAPI
 
-public class LoadLocalData
+/*
+ Kullanıcıya ait veriler geri yüklenir.
+ */
+public class LoadData
 {
     public func loadCorrectAnswers() -> [String]
     {
@@ -28,6 +32,19 @@ public class LoadLocalData
     }
     public func loadSolvedWords() -> [String]
     {
+        if UserData.userData.isSign
+        {
+            let firebaseService: fetchServiceProtocol = FetchWords.fetchWords // Firebase service
+            firebaseService.fetchSolvedWords(userID: UserData.userData.userID) { (result) in
+                switch result {
+                case .success(let value):
+                   UserDefaults.standard.setValue(value.result, forKey: "SolvedWords")
+                    
+                case .failure(_):
+                    break
+                }
+            }
+        }
         if UserDefaults.standard.value(forKey: "SolvedWords") != nil
         {
             return UserDefaults.standard.value(forKey: "SolvedWords") as! [String]

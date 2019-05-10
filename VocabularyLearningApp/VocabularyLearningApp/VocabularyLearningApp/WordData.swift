@@ -31,12 +31,12 @@ public struct WordPageData
 public struct WordTestPageData
 {
     public var wordPage: WordPageData
-    public var level: String
+    public var level: Int
 }
 
 public struct TestedWordData
 {
     public var word: WordData
-    public var level: String
+    public var level: Int
 }
 

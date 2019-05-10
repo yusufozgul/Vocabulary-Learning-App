@@ -9,6 +9,10 @@
 import Foundation
 import VocabularyLearningAppAPI
 
+
+/*
+ Kullanıcının ilerlemesinin kaydedilmesini sağlayan model. Kullanıcıya ait, test verileri, çözüm verileri öğrenme verileri.
+ */
 protocol UserProgressModelProtocol
 {
     func saveLearnProgress(day: String, correctData: [String], wrongData: [String], solvedWords: [String])
@@ -19,34 +23,51 @@ protocol UserProgressModelProtocol
 class UserProgressModel: UserProgressModelProtocol
 {
     private let service: UserProgressProtocol = UserProgress()
+    let authdata = UserData.userData
     func saveLearnProgress(day: String, correctData: [String], wrongData: [String], solvedWords: [String])
     {
-        if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
+        authdata.reloadData()
+        if authdata.isSign
         {
-            service.saveProgress(userID: currentUserId[1], day: day, correctData: correctData, wrongData: wrongData, solvedWords: solvedWords)
+            service.saveProgress(userID: authdata.userID, day: day, correctData: correctData, wrongData: wrongData, solvedWords: solvedWords)
         }
     }
     
     func saveTestProgress(askDay: String, level: String, word: String, translate: String, sentence: String, category: String, id: String)
     {
-        if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
+        authdata.reloadData()
+        if authdata.isSign
         {
-            service.saveTestedProgress(userID: currentUserId[1], askDay: askDay, level: level, word: word, translate: translate, sentence: sentence, category: category, id: id)
+            service.saveTestedProgress(userID: authdata.userID, askDay: askDay, level: level, word: word, translate: translate, sentence: sentence, category: category, id: id)
         }
     }
     public func saveLearnedWord(day: String, uid: String)
     {
-        if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
+        authdata.reloadData()
+        if authdata.isSign
         {
-            service.saveLearnedWord(userID: currentUserId[1], day: day, uid: uid)
+            var words: [String] = []
+            if Date().currentDate() == UserDefaults.standard.value(forKey: "LearnedDate") as? String
+            {
+                if let wordsArray: [String] =  UserDefaults.standard.value(forKey: "LearnedWords") as? [String]
+                {
+                    words = wordsArray
+                }
+            }
+            
+            words.append(uid)
+            UserDefaults.standard.setValue(words, forKey: "LearnedWords")
+            UserDefaults.standard.setValue(Date().currentDate(), forKey: "LearnedDate")
+            service.saveLearnedWord(userID: authdata.userID, day: day, uid: words)
         }
     }
     func deleteSolvedTest(uid: String)
     {
-        if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
+        authdata.reloadData()
+        if authdata.isSign
         {
             let deleteService: FireBaseDeleteProtocol = FireBaseDelete()
-            deleteService.deteleteChil(userID: currentUserId[1], uid: uid)
+            deleteService.deteleteChil(userID: authdata.userID, uid: uid)
         }
     }
 }

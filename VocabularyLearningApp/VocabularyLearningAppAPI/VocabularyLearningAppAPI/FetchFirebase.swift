@@ -15,6 +15,7 @@ public protocol fetchServiceProtocol
 {
     func fetchAllWord(completion: @escaping (Result<FetchWordResponse>) -> Void)
     func fetchTestWord(userID: String, completion: @escaping (Result<FetchTestWordReponse>) -> Void)
+    func fetchSolvedWords(userID: String, completion: @escaping (Result<solvedWordsResponse>) -> Void)
     func fetchChilds(userID: String)
 }
 
@@ -27,18 +28,36 @@ public class FetchWords: fetchServiceProtocol
     public static let fetchWords = FetchWords()
     private init() { }
     
-    public func fetchAllWord(completion: @escaping (Result<FetchWordResponse>) -> Void)
+    public func fetchSolvedWords(userID: String, completion: @escaping (Result<solvedWordsResponse>) -> Void) // Çözülmüş kelimeler çekilir.
+    {
+        var solvedWordsArray: [String] = []
+        dbRef = Database.database().reference().child(FirebaseChilds.UserData.rawValue).child(userID).child(FirebaseChilds.SolvedWords.rawValue)
+        let solvedWords = dbRef.queryOrderedByKey()
+        solvedWords.observe(.value) { (snapshot) in
+            if let result = snapshot.value as? [String]
+            {
+                solvedWordsArray = result
+            }
+            if solvedWordsArray.count == snapshot.childrenCount
+            {
+                let solvedResponse: solvedWordsResponse = solvedWordsResponse(result: solvedWordsArray)
+                completion(.success(solvedResponse))
+            }
+        }
+    }
+    
+    public func fetchAllWord(completion: @escaping (Result<FetchWordResponse>) -> Void) // Tüm kelimeler çekilir.
     {
         var dataArray: FetchWordResponse = FetchWordResponse(results: [])
         dataArray.results.removeAll()
-        dbRef = Database.database().reference().child("Words")
+        dbRef = Database.database().reference().child(FirebaseChilds.Words.rawValue)
         
         let words = dbRef.queryOrderedByKey()
         words.observe(.value) { (snap) in
             words.observe(.childAdded, with: { snaphot in
                 if let firebaseData = snaphot.value as? [String:String]
                 {
-                    let wordData: WordData = WordData(word: firebaseData["word"]!, translate: firebaseData["translate"]!, sentence: firebaseData["sentence"]!, category: firebaseData["category"]!, uid: firebaseData["uid"]!)
+                    let wordData: WordData = WordData(word: firebaseData[FirebaseChilds.word.rawValue]!, translate: firebaseData[FirebaseChilds.translate.rawValue]!, sentence: firebaseData[FirebaseChilds.sentence.rawValue]!, category: firebaseData[FirebaseChilds.category.rawValue]!, uid: firebaseData[FirebaseChilds.uid.rawValue]!)
                     dataArray.results.append(wordData)
                     
                     if  dataArray.results.count == snap.childrenCount
@@ -49,12 +68,12 @@ public class FetchWords: fetchServiceProtocol
             })
         }
     }
-    public func fetchChilds(userID: String)
+    public func fetchChilds(userID: String) // Test için kelimelerin klasör isimleri çekilir yani tarihleri
     {
         var count = 0
         childs.removeAll()
 
-        wordDbRef = Database.database().reference().child("UserData").child(userID).child("TestableWords")
+        wordDbRef = Database.database().reference().child(FirebaseChilds.UserData.rawValue).child(userID).child(FirebaseChilds.TestableWords.rawValue)
         let testRef = wordDbRef.queryOrderedByKey()
         testRef.observe(.value, with: { snapshot in
             
@@ -83,19 +102,19 @@ public class FetchWords: fetchServiceProtocol
         })
     }
     
-    public func fetchTestWord(userID: String, completion: @escaping (Result<FetchTestWordReponse>) -> Void)
+    public func fetchTestWord(userID: String, completion: @escaping (Result<FetchTestWordReponse>) -> Void) // Gelen klasör isimlerine göre veriler çekilip gönderilir.
     {
         fetchChilds(userID: userID)
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fetchedChild"), object: nil, queue: OperationQueue.main, using: { (_) in
 
             let wordDetail: WordData = WordData(word: "", translate: "", sentence: "", category: "", uid: "")
-            var testableWordData: TestedWordData = TestedWordData(word: wordDetail, level: "")
+            var testableWordData: TestedWordData = TestedWordData(word: wordDetail, level: 0)
             
             var testableWords: FetchTestWordReponse = FetchTestWordReponse(results: [])
             var snapCount = 0
             for child in self.childs
             {
-                self.dbRef = Database.database().reference().child("UserData").child(userID).child("TestableWords").child(child)
+                self.dbRef = Database.database().reference().child(FirebaseChilds.UserData.rawValue).child(userID).child(FirebaseChilds.TestableWords.rawValue).child(child)
                 let testRef = self.dbRef.queryOrderedByKey()
                 testRef.observe(.value, with: { (snap) in snapCount += Int(snap.childrenCount) })
                 
@@ -103,12 +122,12 @@ public class FetchWords: fetchServiceProtocol
                     
                     if let firebaseData = snaphot.value! as? [String:String]
                     {
-                        testableWordData.word.word = firebaseData["word"]!
-                        testableWordData.word.translate = firebaseData["translate"]!
-                        testableWordData.word.sentence = firebaseData["sentence"]!
-                        testableWordData.word.category = firebaseData["category"]!
-                        testableWordData.word.uid = firebaseData["uid"]!
-                        testableWordData.level = firebaseData["level"]!
+                        testableWordData.word.word = firebaseData[FirebaseChilds.word.rawValue]!
+                        testableWordData.word.translate = firebaseData[FirebaseChilds.translate.rawValue]!
+                        testableWordData.word.sentence = firebaseData[FirebaseChilds.sentence.rawValue]!
+                        testableWordData.word.category = firebaseData[FirebaseChilds.category.rawValue]!
+                        testableWordData.word.uid = firebaseData[FirebaseChilds.uid.rawValue]!
+                        testableWordData.level = Int(firebaseData[FirebaseChilds.level.rawValue]!)!
                         testableWords.results.append(testableWordData)
                         
                         if (child == self.childs.last) && (testableWords.results.count == snapCount)

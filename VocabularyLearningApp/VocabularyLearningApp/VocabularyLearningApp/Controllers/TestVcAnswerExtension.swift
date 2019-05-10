@@ -18,50 +18,37 @@ extension TestVC: AnsweredDelegate
         let wordData = wordDataArray[1]
         var isKnown: Bool = false
         
+        if selected == wordData.wordPage.correctAnswer
+        { isKnown = true }
+        
         switch selected {
         case 1:
             if selected == wordData.wordPage.correctAnswer
-            {
-                page.answerBox1Image.image = UIImage(named: "correctBoxBackground")
-                isKnown = true
-            }
+            { page.answerBox1Image.image = UIImage(named: "correctBoxBackground") }
+                
             else
-            {
-                page.answerBox1Image.image = UIImage(named: "WrongBoxBackground")
-            }
+            { page.answerBox1Image.image = UIImage(named: "WrongBoxBackground") }
             break
         case 2:
             if selected == wordData.wordPage.correctAnswer
-            {
-                page.answerBox2Image.image = UIImage(named: "correctBoxBackground")
-                isKnown = true
-            }
+            { page.answerBox2Image.image = UIImage(named: "correctBoxBackground") }
+                
             else
-            {
-                page.answerBox2Image.image = UIImage(named: "WrongBoxBackground")
-            }
+            { page.answerBox2Image.image = UIImage(named: "WrongBoxBackground") }
             break
         case 3:
             if selected == wordData.wordPage.correctAnswer
-            {
-                page.answerBox3Image.image = UIImage(named: "correctBoxBackground")
-                isKnown = true
-            }
+            { page.answerBox3Image.image = UIImage(named: "correctBoxBackground") }
+                
             else
-            {
-                page.answerBox3Image.image = UIImage(named: "WrongBoxBackground")
-            }
+            { page.answerBox3Image.image = UIImage(named: "WrongBoxBackground") }
             break
         case 4:
             if selected == wordData.wordPage.correctAnswer
-            {
-                page.answerBox4Image.image = UIImage(named: "correctBoxBackground")
-                isKnown = true
-            }
+            { page.answerBox4Image.image = UIImage(named: "correctBoxBackground") }
+                
             else
-            {
-                page.answerBox4Image.image = UIImage(named: "WrongBoxBackground")
-            }
+            { page.answerBox4Image.image = UIImage(named: "WrongBoxBackground") }
             break
         default:
             break
@@ -73,6 +60,7 @@ extension TestVC: AnsweredDelegate
     {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay)
         {
+            self.wordPages[1].buttonSet()
             let wordData = self.wordDataParser.getTestWord()
             self.wordDataArray.remove(at: 0)
             self.wordDataArray.append(wordData)

@@ -23,7 +23,7 @@ public class FireBaseDelete: FireBaseDeleteProtocol
     {
         for child in firebaseService.childs
         {
-            dbRef = Database.database().reference().child("UserData").child(userID).child("TestableWords").child(child).child(uid)
+            dbRef = Database.database().reference().child(FirebaseChilds.UserData.rawValue).child(userID).child(FirebaseChilds.TestableWords.rawValue).child(child).child(uid)
             dbRef.removeValue()
         }
     }

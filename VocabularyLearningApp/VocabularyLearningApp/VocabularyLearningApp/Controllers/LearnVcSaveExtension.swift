@@ -20,7 +20,7 @@ extension LearnVC
         UserDefaults.standard.setValue(solvedWords, forKey: "SolvedWords")
         userProgressModel.saveLearnProgress(day: Date().currentDate(), correctData: dayCorrectAnswer, wrongData: dayWrongAnswer, solvedWords: solvedWords)
        
-        if isKnown
+        if isKnown // Eğer kelime bilindiyse test kısmına ekleme gibi özel ayarlar yapılıyor.
         {
             let wordData = wordDatas[1]
             
@@ -28,7 +28,7 @@ extension LearnVC
             dayCorrectAnswer.append(wordData.wordInfo.uid)
             
             wordDataParser.deleteLearn(index: wordData.wordIndex) // Bir kelime doğru bilindiyse tekrar etmemesi için siliniyor.
-            userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 1, byAdding: "day"), level: "1", word: wordData.wordInfo.word, translate: wordData.wordInfo.translate, sentence: wordData.wordInfo.sentence, category: wordData.wordInfo.category, id: wordData.wordInfo.uid)
+            userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 1, byAdding: DateInterval.day.rawValue), level: "1", word: wordData.wordInfo.word, translate: wordData.wordInfo.translate, sentence: wordData.wordInfo.sentence, category: wordData.wordInfo.category, id: wordData.wordInfo.uid)
         }
     }
 }

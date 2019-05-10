@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--AccountVC-->
+        <!--ChartVC-->
         <scene sceneID="s4z-Hi-JFD">
             <objects>
-                <viewController id="k3X-Iw-LMg" customClass="AccountVC" customModule="VocabularyLearningApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="k3X-Iw-LMg" customClass="ChartVC" customModule="VocabularyLearningApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Ju-Xi-Vhj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,13 +32,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e3N-fc-0JW"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UjJ-3M-Akh">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="w8p-cr-Z48">
+                            <connections>
+                                <action selector="dateIntervalButton:" destination="k3X-Iw-LMg" id="nMY-Kd-U3w"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="chartView" destination="u9V-cd-V1K" id="XFd-Ho-b6N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bug-Fu-adS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="67" y="771"/>
+            <point key="canvasLocation" x="977" y="1578"/>
         </scene>
         <!--LearnVC-->
         <scene sceneID="MQl-jS-H6c">
@@ -121,21 +128,29 @@
                         <viewLayoutGuide key="safeArea" id="QvY-8v-Gh8"/>
                     </view>
                     <navigationItem key="navigationItem" id="Vko-Mz-dwW">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="elb-i8-Ngh">
-                            <connections>
-                                <segue destination="k3X-Iw-LMg" kind="show" id="CX3-n4-7NT"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="ACCOUNT" id="pUE-S1-iEx">
+                                <connections>
+                                    <action selector="accountButton:" destination="eQw-ua-e5B" id="tIh-Qg-P4M"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="CHARTS" id="elb-i8-Ngh">
+                                <connections>
+                                    <segue destination="k3X-Iw-LMg" kind="show" id="Dz2-J7-BTQ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="correctCounter" destination="hCR-QF-FTK" id="czZ-d6-yCT"/>
                         <outlet property="counterStack" destination="lVY-B2-l61" id="3D0-LW-qdT"/>
                         <outlet property="wrongCounter" destination="dLT-An-VCt" id="jMG-0o-aHt"/>
+                        <segue destination="Jlg-1E-EF7" kind="show" identifier="segue" id="vaq-La-jc6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KvO-7z-YVU" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="976.81159420289862" y="788.83928571428567"/>
+            <point key="canvasLocation" x="977" y="775"/>
         </scene>
         <!--Add New WordVC-->
         <scene sceneID="gsI-zF-eEL">
@@ -271,7 +286,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7n0-Hg-GM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2708.6956521739135" y="788.83928571428567"/>
+            <point key="canvasLocation" x="2709" y="775"/>
         </scene>
         <!--TestVC-->
         <scene sceneID="4Rq-KU-elh">
@@ -298,7 +313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H3q-ha-BD2" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1845" y="789"/>
+            <point key="canvasLocation" x="1845" y="775"/>
         </scene>
         <!--Flashy Tab Bar Controller-->
         <scene sceneID="zTh-bX-T6S">
@@ -377,6 +392,24 @@
             </objects>
             <point key="canvasLocation" x="2710" y="0.0"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gP2-FH-SjM">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lQq-1w-hcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jlg-1E-EF7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eaL-cL-S4t">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="k3X-Iw-LMg" kind="relationship" relationship="rootViewController" id="fkS-2z-YBG"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="261" y="1578"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AddWordVCBackground" width="375" height="506"/>
@@ -389,4 +422,7 @@
         <image name="test Icon" width="35" height="38"/>
         <image name="testPageBackground" width="375" height="507"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Dz2-J7-BTQ"/>
+    </inferredMetricsTieBreakers>
 </document>

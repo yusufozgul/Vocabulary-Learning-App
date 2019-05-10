@@ -79,7 +79,7 @@ class TestVC: UIViewController, WordScrollViewProtocol
         }
         wordDataArray.removeAll()
         
-        for i in 0 ..< 3
+        for i in 0 ..< 3 // üç sayfada ayrı ayrı oluşturuluyor.
         {
             wordData = wordDataParser.getTestWord()
             wordDataArray.append(wordData)

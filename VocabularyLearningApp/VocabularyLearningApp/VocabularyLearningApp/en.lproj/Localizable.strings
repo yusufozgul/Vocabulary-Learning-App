@@ -1,15 +1,15 @@
-/* 
-  Localizable.strings
-  VocabularyLearningApp
-
-  Created by Yusuf Özgül on 23.04.2019.
-  Copyright © 2019 Yusuf Özgül. All rights reserved.
-*/
+/*
+ Localizable.strings
+ VocabularyLearningApp
+ 
+ Created by Yusuf Özgül on 23.04.2019.
+ Copyright © 2019 Yusuf Özgül. All rights reserved.
+ */
 
 // Add New Word ViewController
 "ADD_WORD_TITLE" = "Add Word";
 "WORD_TEXTFILED_PLACEHOLDER" = "Enter the word to add";
-"WORD_TRANSLATE_TEXTFILED_PLACEHOLDER" = "Enter the Turkish translation of the word";
+"WORD_TRANSLATE_TEXTFILED_PLACEHOLDER" = "Enter Turkish translation of word";
 "WORD_DESC_TEXTVIEW_PLACEHOLDER" = "Enter a Sentence with a Word";
 "ADD_BUTTON" = "ADD";
 "EMPTY_ALERT_TITLE" = "Alert";
@@ -18,33 +18,31 @@
 "CATEGORY_BUTTON" = "Select Category";
 "FIREBASE_SUCCES_TITLE" = "INFO";
 "FIREBASE_SUCCES" = "Word successfully added, thank you.";
+"FIREBASE_ALERT_TITLE" = "Alert";
 "A_ISSUE" = "Something went wrong";
-"FIREBASE_ALERT_TITLE" = "ALERT";
-"PLEASE_WAIT" = "Please Wait";
-
-
+"PLEASE_WAIT" = "Please wait";
+"INFO_TITLE" = "Info";
+"WORD_INFO" = "If you are not sure of the type of your word, you can enter it according to the following information. \ n \ n • Name: The words that meet the living and non-living beings, feelings and thoughts, situations. \ n • Adjective (Pread): These are the words of the names, the number, the size of the names, the words, the asking or the stating. \ n • Verb (Action): These are words that appear, make things happen. \ n • Pronouns: The words that bear the names of the names, the person carrying out the task, the question, the show and the words that carry the concepts of apathy. \ n • Envelope (Adverb): These are words that refer to their characteristics, time, direction, and quantity, from verbs, adjectives, or envelopes. these are the words that connect in terms of meaning and form.";
 
 //BLTNBoradSigninExt
 
-"USER_NAME" = "Kullanıcı Adı";
-"USER_PASSWORD" = "Şifre";
-"PLEASE_WRITE_SOMETHING" = "Gerekli yerleri doldurmanız gerekmektedir.";
+"USER_EMAIL" = "E-Mail";
+"USER_PASSWORD" = "Password";
+"PLEASE_WRITE_SOMETHING" = "You need to fill in the necessary places.";
 
 
 //BLTNBoradSignupExt
 
 "USER_PASSWORD" = "Password";
 "USER_EMAIL" = "E-Mail";
-"PASSWORD_REPETITION" = "Repeat Password";
 "PLEASE_WRITE_SOMETHING" = "Please write something";
-"PASSWORDS_DO_NOT_MATCH" = "Passwords do not match";
 
 
 // BulletinDataSource
 // .splashBoard
 
 "SPLASH_BOARD_TITLE" = "Welcome";
-"SPLASH_BOARD_DESC" = "Log in to get more out of the app";
+"SPLASH_BOARD_DESC" = "Log in to make better use of the application \ n Your learning data is recorded and the test is created from the words you learned.";
 "SPLASH_BOARD_SIGNIN" = "Sign in";
 "SPLASH_BOARD_SIGNUP" = "Sign up";
 
@@ -63,11 +61,14 @@
 "SIGNIN" = "Sign in";
 
 
-// .notificationPermissionBoard
+// .accountBoard
 
-"NOTIFICATION" = "Allow Notification";
-"NOTIFICATION_BOARD_DESC" = "Turn on notifications to send you notifications";
-"NOTIFICATION_PERMISSION_BUTTON_TITLE" = "Allow notifications";
+"ACCOUNT_BOARD_TITLE" = "Account";
+"ACCOUNT_BOARD_DESC" = "You can log out of your account or delete the learning data for your account. \n\n";
+"ACCOUNT_BOARD_LOG_OUT" = "Log out";
+"ACCOUNT_BOARD_DELETE_DATA" = "Delete all my data";
+"ARE_YOU_SURE" = "If you are sure, click";
+"DELETE_ACCOUNT_QUESTION" = "This will delete data held by your account. All of your progress history and test words will be deleted and this operation will NOT return.";
 
 
 //  LearnVC
@@ -75,3 +76,34 @@
 
 // TestVC
 "TEST_VC_TITLE" = "Test";
+"ALERT_TITLE" = "Warning";
+"CONGRATULATIONS" = "Congratulations";
+"COMPLETED_WORDS" = "You learned a word more completely.";
+
+// ChartVC
+"ERROR_FETCH_CHART" = "There was a problem getting statistics.";
+"SELECT_MENU" = "Range of Statistics";
+"SELECT_MENU_DESC" = "Specify the range of data to be fetched for the chart.";
+"SELECT_DAY" = "The last day";
+"SELECT_WEEK" = "Last week";
+"SELECT_MONTH" = "Last month";
+"SELECT_SIX_MONTH" = "Last six months";
+"SELECT_YEAR" = "Last year";
+"CANCEL" = "Cancel";
+"NO_CHART_DATA" = "No data to display";
+
+
+// API
+"NULL_TEST_WORDS" = "No data to be tested, please learn from the Learn page and then test what you have learned here.";
+"WORD_NOT_FOUND" = "Word Not Found";
+"TEST_DATA_ERROR" = "Error in test data";
+
+// Model
+"FAIL_FETCHWORD" = "There was an error retrieving words from the server";
+"EMPTY_LEARN_WORD" = "There are no new words to learn, you can contribute by adding words.";
+"EMPTY_TEST_WORD" = "There's no left word to test. You can learn and test new words, or come back later and test the words that come in the day.";
+"NOT_SIGNIN" = "Not logged in";
+"PLEASE_SIGNIN" = "To add words, you need to login to the application.";
+"PLEASE_SIGNIN_FOR_DELETE_DATA" = "Please login to delete your data.";
+"PLEASE_SIGNIN_FOR_TEST" = "You must log in to create your test data.";
+"PLEASE_SIGNIN_FOR_CHART" = "You must be logged in to view your stats.";

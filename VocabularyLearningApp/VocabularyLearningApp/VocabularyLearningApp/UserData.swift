@@ -8,25 +8,7 @@
 
 import Foundation
 
-// User datas struct. Signin, Signup etc
-public struct currentUserData
-{
-    var userEmail: String?
-    var userID: String?
-    
-    init() {
-        if let data: [String] = (UserDefaults.standard.object(forKey: "currentUser") as? [String])
-        {
-            userEmail = data[0]
-            userID = data[1]
-        }
-        else
-        {
-            userEmail = ""
-            userID = ""
-        }
-    }
-}
+
 public struct userRegisterData
 {
     var userEmail:String

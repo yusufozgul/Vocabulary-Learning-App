@@ -13,7 +13,7 @@ public protocol UserProgressProtocol
 {
     func saveProgress(userID: String, day: String, correctData: [String], wrongData: [String], solvedWords: [String])
     func saveTestedProgress(userID: String, askDay: String, level: String, word: String, translate: String, sentence: String, category: String, id: String)
-    func saveLearnedWord(userID: String, day: String, uid: String)
+    func saveLearnedWord(userID: String, day: String, uid: [String])
 }
 
 public class UserProgress: UserProgressProtocol
@@ -24,29 +24,29 @@ public class UserProgress: UserProgressProtocol
     
     public func saveProgress(userID: String, day: String, correctData: [String], wrongData: [String], solvedWords: [String])
     {
-        dbRef = Database.database().reference().child("UserData").child(userID).child("LearnedWords").child(String(describing: day))
-        dbRef.setValue(["Correct": correctData, "Wrong": wrongData]) { (errorDB, DBRef) in
+        dbRef = Database.database().reference().child(FirebaseChilds.UserData.rawValue).child(userID).child(FirebaseChilds.LearnedWords.rawValue).child(String(describing: day))
+        dbRef.setValue([FirebaseChilds.Correct.rawValue: correctData, FirebaseChilds.Wrong.rawValue: wrongData]) { (errorDB, DBRef) in
             if errorDB != nil
             {
                 print("FireBase Save Error")
             }
         }
-        dbRef.child("SolvedWords").setValue(solvedWords)
+        dbRef.child(FirebaseChilds.SolvedWords.rawValue).setValue(solvedWords)
     }
     public func saveTestedProgress(userID: String, askDay: String, level: String, word: String, translate: String, sentence: String, category: String, id: String)
     {
-        dbRef = Database.database().reference().child("UserData").child(userID).child("TestableWords").child(String(describing: askDay)).child(id)
-        dbRef.setValue(["word": word, "translate": translate, "sentence": sentence, "category": category, "uid": id, "level": level]) { (errorDB, DBRef) in
+        dbRef = Database.database().reference().child(FirebaseChilds.UserData.rawValue).child(userID).child(FirebaseChilds.TestableWords.rawValue).child(String(describing: askDay)).child(id)
+        dbRef.setValue([FirebaseChilds.word.rawValue: word, FirebaseChilds.translate.rawValue: translate, FirebaseChilds.sentence.rawValue: sentence, FirebaseChilds.category.rawValue: category, FirebaseChilds.uid.rawValue: id, FirebaseChilds.level.rawValue: level]) { (errorDB, DBRef) in
             if errorDB != nil
             {
                 print("FireBase Save Error")
             }
         }
     }
-    public func saveLearnedWord(userID: String, day: String, uid: String)
+    public func saveLearnedWord(userID: String, day: String, uid: [String])
     {
-        dbRef = Database.database().reference().child("UserData").child(userID).child("Completed").child(day)
-        dbRef.setValue(["word": uid]) { (errorDB, DBRef) in
+        dbRef = Database.database().reference().child(FirebaseChilds.UserData.rawValue).child(userID).child(FirebaseChilds.Completed.rawValue).child(day)
+        dbRef.setValue(uid) { (errorDB, DBRef) in
             if errorDB != nil
             {
                 print("FireBase Save Error")

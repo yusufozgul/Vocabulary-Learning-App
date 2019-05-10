@@ -21,18 +21,19 @@ extension TestVC
         {
             switch wordData.level
             {
-            case "1":
-                userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 7, byAdding: "day"), level: "2", word: wordData.wordPage.wordInfo.word, translate: wordData.wordPage.wordInfo.translate, sentence: wordData.wordPage.wordInfo.sentence, category: wordData.wordPage.wordInfo.category, id: wordData.wordPage.wordInfo.uid)
+            case 1:
+                userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 7, byAdding: DateInterval.day.rawValue), level: "2", word: wordData.wordPage.wordInfo.word, translate: wordData.wordPage.wordInfo.translate, sentence: wordData.wordPage.wordInfo.sentence, category: wordData.wordPage.wordInfo.category, id: wordData.wordPage.wordInfo.uid)
                 userProgressModel.deleteSolvedTest(uid: wordData.wordPage.wordInfo.uid)
-            case "2":
-                userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 1, byAdding: "month"), level: "3", word: wordData.wordPage.wordInfo.word, translate: wordData.wordPage.wordInfo.translate, sentence: wordData.wordPage.wordInfo.sentence, category: wordData.wordPage.wordInfo.category, id: wordData.wordPage.wordInfo.uid)
+            case 2:
+                userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 1, byAdding: DateInterval.month.rawValue), level: "3", word: wordData.wordPage.wordInfo.word, translate: wordData.wordPage.wordInfo.translate, sentence: wordData.wordPage.wordInfo.sentence, category: wordData.wordPage.wordInfo.category, id: wordData.wordPage.wordInfo.uid)
                 userProgressModel.deleteSolvedTest(uid: wordData.wordPage.wordInfo.uid)
-            case "3":
-                userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 6, byAdding: "month"), level: "4", word: wordData.wordPage.wordInfo.word, translate: wordData.wordPage.wordInfo.translate, sentence: wordData.wordPage.wordInfo.sentence, category: wordData.wordPage.wordInfo.category, id: wordData.wordPage.wordInfo.uid)
+            case 3:
+                userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 6, byAdding: DateInterval.month.rawValue), level: "4", word: wordData.wordPage.wordInfo.word, translate: wordData.wordPage.wordInfo.translate, sentence: wordData.wordPage.wordInfo.sentence, category: wordData.wordPage.wordInfo.category, id: wordData.wordPage.wordInfo.uid)
                 userProgressModel.deleteSolvedTest(uid: wordData.wordPage.wordInfo.uid)
-            case "4":
+            case 4:
                 userProgressModel.saveLearnedWord(day: Date().currentDate(), uid: wordData.wordPage.wordInfo.uid)
                 userProgressModel.deleteSolvedTest(uid: wordData.wordPage.wordInfo.uid)
+                MessageViewer.messageViewer.succesMessage(title: NSLocalizedString("CONGRATULATIONS", comment: ""), body: NSLocalizedString("COMPLETED_WORDS", comment: ""))
             default:
                 break
             }
@@ -40,7 +41,7 @@ extension TestVC
         else
         {
             userProgressModel.deleteSolvedTest(uid: wordData.wordPage.wordInfo.uid)
-            userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 1, byAdding: "day"), level: "1", word: wordData.wordPage.wordInfo.word, translate: wordData.wordPage.wordInfo.translate, sentence: wordData.wordPage.wordInfo.sentence, category: wordData.wordPage.wordInfo.category, id: wordData.wordPage.wordInfo.uid)
+            userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 1, byAdding: DateInterval.day.rawValue), level: "1", word: wordData.wordPage.wordInfo.word, translate: wordData.wordPage.wordInfo.translate, sentence: wordData.wordPage.wordInfo.sentence, category: wordData.wordPage.wordInfo.category, id: wordData.wordPage.wordInfo.uid)
         }
     }
 }

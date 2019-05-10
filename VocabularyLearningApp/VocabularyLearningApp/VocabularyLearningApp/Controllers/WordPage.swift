@@ -33,7 +33,6 @@ class WordPage: UIView
     @IBOutlet weak var answerButton3: UIButton!
     @IBOutlet weak var answerButton4: UIButton!
     
-    
     @IBAction func answerBox1Button(_ sender: Any)
     {
         delegate?.selectAnswer(selected: 1)
@@ -58,7 +57,7 @@ class WordPage: UIView
         buttonSet()
     }
     
-    func buttonSet()
+    func buttonSet() // Cevap verildikten sonra butonların açılıp kapanması
     {
         answerButton1.isEnabled = !answerButton1.isEnabled
         answerButton2.isEnabled = !answerButton2.isEnabled

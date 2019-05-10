@@ -9,6 +9,10 @@
 import Foundation
 import FirebaseDatabase
 
+/*
+ Kullanıcılar tarafından kelime ekleme, gelen kelime veri tabanının ilgili yerine eklenir.
+ */
+
 public protocol AddWordProtocol
 {
     func AddNewWord(word: String, translate: String, sentence: String, category: String, completion: @escaping (Result<AddWordResponse>) -> Void)
@@ -22,9 +26,9 @@ public class AddWord: AddWordProtocol
     {
         var dbRef: DatabaseReference!
         let uid = NSUUID().uuidString
-        dbRef = Database.database().reference().child("Words").child(uid)
+        dbRef = Database.database().reference().child(FirebaseChilds.Words.rawValue).child(uid)
         
-        dbRef.setValue(["word": word, "translate": translate, "sentence": sentence, "category": category, "uid": uid]) { (errorDB, DBRef) in
+        dbRef.setValue([FirebaseChilds.word.rawValue: word, FirebaseChilds.translate.rawValue: translate, FirebaseChilds.sentence.rawValue: sentence, FirebaseChilds.category.rawValue: category, FirebaseChilds.uid.rawValue: uid]) { (errorDB, DBRef) in
             if errorDB != nil
             {
                 completion(.failure(errorDB!.localizedDescription))                

@@ -26,12 +26,14 @@ public class MessageViewer
     }
     func failMessage(title: String, body: String)
     {
+        var config = SwiftMessages.Config()
+        config.duration = .seconds(seconds: 5)
         messageView.configureTheme(.error)
         messageView.button?.isHidden = true
         messageView.configureContent(title: title, body: body)
         messageView.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         messageView.layer.cornerRadius = 10
-        SwiftMessages.show(view: messageView)
+        SwiftMessages.show(config: config, view: messageView)
     }
     func info(title: String, body: String)
     {

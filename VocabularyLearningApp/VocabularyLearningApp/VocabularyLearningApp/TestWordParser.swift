@@ -25,19 +25,21 @@ class TestWordParser: TestWordParserProtocol
     internal var testArray: [TestedWordData] = [] // Test edilecek kelime dizisi
     let learnWordService: LearnWordParserProtocol = LearnWordParser.parser
     let firebaseService: fetchServiceProtocol = FetchWords.fetchWords // Firebase service
+    let authdata = UserData.userData
     
     static let parser = TestWordParser() // Singleton sağlamak için kendi nesnesini oluşturması.
     private init() { }
     
     func fetchedTestWord() // Test edilecek kelimelerin çekilmesi
     {
-        if let currentUserId: [String] = UserDefaults.standard.object(forKey: "currentUser") as? [String]
+        authdata.reloadData()
+        if authdata.isSign
         {
-            firebaseService.fetchTestWord(userID: currentUserId[1]) { (result) in
+            firebaseService.fetchTestWord(userID: authdata.userID) { (result) in
                 switch result {
                 case .success(let value):
                     let wordInfo: WordData = WordData(word: "", translate: "", sentence: "", category: "", uid: "")
-                    var word: TestedWordData = TestedWordData(word: wordInfo, level: "")
+                    var word: TestedWordData = TestedWordData(word: wordInfo, level: 0)
                     for result in value.results
                     {
                         word.word.word = result.word.word
@@ -53,6 +55,10 @@ class TestWordParser: TestWordParserProtocol
                     MessageViewer.messageViewer.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("FAIL_FETCHWORD", comment: ""))
                 }
             }
+        }
+        else
+        {
+            MessageViewer.messageViewer.failMessage(title: NSLocalizedString("NOT_SIGNIN", comment: ""), body: NSLocalizedString("PLEASE_SIGNIN_FOR_TEST", comment: ""))
         }
     }
     func getTestWord() -> WordTestPageData // Random test edilecek kelime sayfası oluşturup gönderir.
@@ -103,9 +109,9 @@ class TestWordParser: TestWordParserProtocol
             return wordTestPageData
         }
         let wordData = WordPageData(wordInfo: WordData(word: "", translate: "", sentence: "", category: "", uid: ""), option1: "", option2: "", option3: "", option4: "", correctAnswer: 0, wordIndex: 0)
-        return WordTestPageData(wordPage: wordData, level: "")
+        return WordTestPageData(wordPage: wordData, level: 0)
     }
-    func deleteTest(index: Int)
+    func deleteTest(index: Int) // Test edilen kelime silinir.
     {
         testArray.remove(at: index)
         if getTestArrayCount() == 0

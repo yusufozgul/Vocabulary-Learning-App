@@ -52,17 +52,6 @@ class LearnWordParser: LearnWordParserProtocol
     }
     func getLearnWord() -> WordPageData // Random öğrenilecek kelime sayfasını oluşturup gönderir
     {
-        DispatchQueue.main.async
-            {
-                if UserDefaults.standard.value(forKey: "correctAnswer") != nil
-                {
-                    let correctAnswerArray = LoadLocalData().loadCorrectAnswers()
-                    if self.wordArray.count - correctAnswerArray.count < 30
-                    {
-                        self.fetchedLearnWord()
-                    }
-                }
-        }
         if !wordArray.isEmpty
         {
             let randomIndex = Int.random(in: 0 ... (wordArray.count - 1))
@@ -109,10 +98,10 @@ class LearnWordParser: LearnWordParserProtocol
         }
         return WordPageData(wordInfo: WordData(word: "", translate: "", sentence: "", category: "", uid: ""), option1: "", option2: "", option3: "", option4: "", correctAnswer: 0, wordIndex: 0)
     }
-    func deleteLearn(index: Int)
+    func deleteLearn(index: Int) // Çözülen kelime silinir.
     {
         wordArray.remove(at: index)
-        if getLearnArrayCount() == 0
+        if getLearnArrayCount() < 10
         {
             MessageViewer.messageViewer.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("EMPTY_LEARN_WORD", comment: ""))
         }

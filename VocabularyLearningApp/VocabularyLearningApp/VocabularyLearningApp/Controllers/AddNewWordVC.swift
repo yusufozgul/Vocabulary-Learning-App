@@ -76,7 +76,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
 
 extension AddNewWordVC: AddWordDelegate
 {
-    func addWordResult(result: Bool)
+    func addWordResult(result: Bool) // Kelime ekleme işleminin sonucuna göre ayarların yapılması
     {
         switch result {
         case true:
@@ -133,7 +133,6 @@ extension AddNewWordVC // Kategori seçici ayarları
         
         label.textColor = UIColor.black
         label.textAlignment = .left
-        label.font = UIFont(name: "Helvetica", size: 17)
         label.text = categories[row]
         return label
     }

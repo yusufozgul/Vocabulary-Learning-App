@@ -14,6 +14,7 @@ protocol BullettinDataSourceProtocol
     static func splashBoard() -> BLTNPageItem
     static func signinBoard() -> BLTNBoradSignin
     static func signupBoard() -> BLTNBoradSignup
+    static func accountBoard() -> BLTNPageItem
 }
 
 //    Signin - login Boards in BulletinBoard
@@ -41,6 +42,7 @@ enum BulletinDataSource: BullettinDataSourceProtocol
     
     static func signinBoard() -> BLTNBoradSignin
     {
+        let authdata = UserData.userData
         var userData = userRegisterData.init(userEmail: "", userPassowrd: "")
         let signinBoard = BLTNBoradSignin(title: NSLocalizedString("SIGNIN", comment: ""))
         signinBoard.descriptionText = NSLocalizedString("SIGNIN_DESC", comment: "")
@@ -70,6 +72,7 @@ enum BulletinDataSource: BullettinDataSourceProtocol
                     else
                     {
                         item.manager?.dismissBulletin()
+                        authdata.reloadData()
                     }
                 })
             }
@@ -79,6 +82,7 @@ enum BulletinDataSource: BullettinDataSourceProtocol
     
     static func signupBoard() -> BLTNBoradSignup
     {
+        let authdata = UserData.userData
         var userData = userRegisterData(userEmail: "", userPassowrd: "")
         
         let signupBoard = BLTNBoradSignup(title: NSLocalizedString("SIGNUP", comment: ""))
@@ -109,6 +113,7 @@ enum BulletinDataSource: BullettinDataSourceProtocol
                     else
                     {
                         item.manager?.dismissBulletin()
+                        authdata.reloadData()
                     }
                 })
             }
@@ -119,5 +124,55 @@ enum BulletinDataSource: BullettinDataSourceProtocol
             item.manager?.displayNextItem()
         }
         return signupBoard
+    }
+    static func accountBoard() -> BLTNPageItem
+    {
+        let authdata = UserData.userData
+        let accountBoard = BLTNPageItem(title: NSLocalizedString("ACCOUNT_BOARD_TITLE", comment: ""))
+        accountBoard.image =  UIImage(named: "alertIcon")
+        accountBoard.descriptionText = NSLocalizedString("ACCOUNT_BOARD_DESC", comment: "")
+        accountBoard.actionButtonTitle = NSLocalizedString("ACCOUNT_BOARD_LOG_OUT", comment: "")
+        accountBoard.alternativeButtonTitle = NSLocalizedString("ACCOUNT_BOARD_DELETE_DATA", comment: "")
+        accountBoard.appearance.actionButtonColor = .red
+        accountBoard.appearance.alternativeButtonTitleColor = .red
+        accountBoard.isDismissable = true
+        
+        if !authdata.isSign
+        {
+            accountBoard.appearance.actionButtonColor = .green
+            accountBoard.actionButtonTitle = NSLocalizedString("SIGNIN", comment: "")
+        }
+        
+        accountBoard.actionHandler = { (item: BLTNActionItem) in
+            UserDefaults.standard.removeObject(forKey: "currentUser")
+            UserDefaults.standard.synchronize()
+            authdata.reloadData()
+
+            item.next = splashBoard()
+            item.manager?.displayNextItem()
+        }
+        var isSecond = false
+        accountBoard.alternativeHandler = { item in
+            if isSecond
+            {
+                DeleteUserDataModel().deleteData()
+                accountBoard.descriptionText = NSLocalizedString("ACCOUNT_BOARD_DESC", comment: "")
+                accountBoard.descriptionLabel?.textColor = .black
+            }
+            else
+            {
+                isSecond = true
+                accountBoard.alternativeButtonTitle = NSLocalizedString("ARE_YOU_SURE", comment: "")
+                accountBoard.descriptionText = NSLocalizedString("DELETE_ACCOUNT_QUESTION", comment: "")
+                accountBoard.descriptionLabel?.textColor = .red
+            }
+            DispatchQueue.main.asyncAfter(wallDeadline: .now() + 4, execute: {
+                isSecond = false
+                accountBoard.alternativeButtonTitle = NSLocalizedString("ACCOUNT_BOARD_DELETE_DATA", comment: "")
+                accountBoard.descriptionText = NSLocalizedString("ACCOUNT_BOARD_DESC", comment: "")
+                accountBoard.descriptionLabel?.textColor = .black
+            })
+        }
+        return accountBoard
     }
 }

@@ -25,14 +25,19 @@
 		8850BA20226F32F800FFCE3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8850BA22226F32F800FFCE3D /* Main.storyboard */; };
 		8850BA29226F336B00FFCE3D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8850BA2B226F336B00FFCE3D /* Localizable.strings */; };
 		885FD16A2281ED790042D95C /* MessageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885FD1692281ED790042D95C /* MessageViewer.swift */; };
+		885FD1AB22837B390042D95C /* DeleteUserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885FD1AA22837B390042D95C /* DeleteUserDataModel.swift */; };
+		885FD1AF228476970042D95C /* UserChartsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885FD1AE228476970042D95C /* UserChartsModel.swift */; };
+		885FD1B3228481AE0042D95C /* ChartResponseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885FD1B2228481AE0042D95C /* ChartResponseDelegate.swift */; };
+		885FD1B72284C3A00042D95C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885FD1B62284C3A00042D95C /* User.swift */; };
+		885FD1B9228552D50042D95C /* DateInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885FD1B8228552D50042D95C /* DateInterval.swift */; };
 		886D415D226FC81F0016527B /* VocabularyLearningAppAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886D414D226F62020016527B /* VocabularyLearningAppAPI.framework */; };
 		886D415E226FC81F0016527B /* VocabularyLearningAppAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 886D414D226F62020016527B /* VocabularyLearningAppAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		886D4169226FCCDA0016527B /* addWordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D4168226FCCDA0016527B /* addWordModel.swift */; };
 		88853C45227A4E1D0095B2FE /* TestVcAnswerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88853C44227A4E1D0095B2FE /* TestVcAnswerExtension.swift */; };
 		88853C47227A4E320095B2FE /* TestVcSaveExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88853C46227A4E320095B2FE /* TestVcSaveExtension.swift */; };
 		88B5D0602278BD6400A08E12 /* LearnVcSaveExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B5D05F2278BD6400A08E12 /* LearnVcSaveExtension.swift */; };
-		88C3C97E227B89AE000E4206 /* LoadLocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3C97D227B89AE000E4206 /* LoadLocalData.swift */; };
-		88C3C9CD227E1394000E4206 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3C9CC227E1394000E4206 /* AccountVC.swift */; };
+		88C3C97E227B89AE000E4206 /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3C97D227B89AE000E4206 /* LoadData.swift */; };
+		88C3C9CD227E1394000E4206 /* ChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3C9CC227E1394000E4206 /* ChartVC.swift */; };
 		88C4E87D226EFB870008382C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E87C226EFB870008382C /* AppDelegate.swift */; };
 		88C4E87F226EFB870008382C /* LearnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E87E226EFB870008382C /* LearnVC.swift */; };
 		88C4E881226EFB870008382C /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4E880226EFB870008382C /* TestVC.swift */; };
@@ -107,6 +112,11 @@
 		8850BA2C226F336C00FFCE3D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8850BA2D226F3E9100FFCE3D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		885FD1692281ED790042D95C /* MessageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewer.swift; sourceTree = "<group>"; };
+		885FD1AA22837B390042D95C /* DeleteUserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserDataModel.swift; sourceTree = "<group>"; };
+		885FD1AE228476970042D95C /* UserChartsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChartsModel.swift; sourceTree = "<group>"; };
+		885FD1B2228481AE0042D95C /* ChartResponseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartResponseDelegate.swift; sourceTree = "<group>"; };
+		885FD1B62284C3A00042D95C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		885FD1B8228552D50042D95C /* DateInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInterval.swift; sourceTree = "<group>"; };
 		886D4134226F57B90016527B /* VocabularyLearningAppAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VocabularyLearningAppAPI.xcodeproj; path = /Users/yusuf/Documents/GitHub/Vocabulary_Learning_App/VocabularyLearningApp/VocabularyLearningAppAPI/VocabularyLearningAppAPI.xcodeproj; sourceTree = "<absolute>"; };
 		886D4140226F584D0016527B /* VocabularyLearningAppAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VocabularyLearningAppAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		886D4155226FC7BE0016527B /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,8 +125,8 @@
 		88853C44227A4E1D0095B2FE /* TestVcAnswerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVcAnswerExtension.swift; sourceTree = "<group>"; };
 		88853C46227A4E320095B2FE /* TestVcSaveExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVcSaveExtension.swift; sourceTree = "<group>"; };
 		88B5D05F2278BD6400A08E12 /* LearnVcSaveExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnVcSaveExtension.swift; sourceTree = "<group>"; };
-		88C3C97D227B89AE000E4206 /* LoadLocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLocalData.swift; sourceTree = "<group>"; };
-		88C3C9CC227E1394000E4206 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		88C3C97D227B89AE000E4206 /* LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
+		88C3C9CC227E1394000E4206 /* ChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartVC.swift; sourceTree = "<group>"; };
 		88C4E879226EFB870008382C /* VocabularyLearningApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VocabularyLearningApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C4E87C226EFB870008382C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88C4E87E226EFB870008382C /* LearnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnVC.swift; sourceTree = "<group>"; };
@@ -196,6 +206,8 @@
 			children = (
 				880A82AC2281E78F003E6B6E /* WordData.swift */,
 				880A82B02281E7B9003E6B6E /* UserData.swift */,
+				885FD1B62284C3A00042D95C /* User.swift */,
+				885FD1B8228552D50042D95C /* DateInterval.swift */,
 			);
 			name = DTOs;
 			sourceTree = "<group>";
@@ -214,11 +226,13 @@
 			children = (
 				8840CB3B2270F79900A837FD /* BulletinBoardDataSource.swift */,
 				8840CB442270FEED00A837FD /* AuthModel.swift */,
+				885FD1AA22837B390042D95C /* DeleteUserDataModel.swift */,
 				886D4168226FCCDA0016527B /* addWordModel.swift */,
 				88283A602275C09700ECB72F /* UserProgressModel.swift */,
-				88C3C97D227B89AE000E4206 /* LoadLocalData.swift */,
+				88C3C97D227B89AE000E4206 /* LoadData.swift */,
 				883E233B22817D100077AFF3 /* LearnWordParser.swift */,
 				883E233E22817D1E0077AFF3 /* TestWordParser.swift */,
+				885FD1AE228476970042D95C /* UserChartsModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -287,7 +301,7 @@
 				88853C44227A4E1D0095B2FE /* TestVcAnswerExtension.swift */,
 				88853C46227A4E320095B2FE /* TestVcSaveExtension.swift */,
 				88C4E90A226F0B560008382C /* AddNewWordVC.swift */,
-				88C3C9CC227E1394000E4206 /* AccountVC.swift */,
+				88C3C9CC227E1394000E4206 /* ChartVC.swift */,
 				8840CB4D227482A100A837FD /* WordPage.swift */,
 			);
 			path = Controllers;
@@ -308,6 +322,7 @@
 				88F4C0D622774884002D1C44 /* WordScrollViewPageProtocol.swift */,
 				8840CB512274B6E900A837FD /* AnsweredDelegate.swift */,
 				880A82B62281EBE1003E6B6E /* AddWordDelegate.swift */,
+				885FD1B2228481AE0042D95C /* ChartResponseDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -479,13 +494,16 @@
 				88C4E881226EFB870008382C /* TestVC.swift in Sources */,
 				88C4E90B226F0B560008382C /* AddNewWordVC.swift in Sources */,
 				880A82B12281E7B9003E6B6E /* UserData.swift in Sources */,
+				885FD1B72284C3A00042D95C /* User.swift in Sources */,
 				880A82AD2281E78F003E6B6E /* WordData.swift in Sources */,
 				88C4E87D226EFB870008382C /* AppDelegate.swift in Sources */,
+				885FD1B3228481AE0042D95C /* ChartResponseDelegate.swift in Sources */,
 				8840CB392270F76C00A837FD /* BLTNBoradSigninExt.swift in Sources */,
 				8840CB382270F76C00A837FD /* BLTNBoradSignupExt.swift in Sources */,
+				885FD1AF228476970042D95C /* UserChartsModel.swift in Sources */,
 				8840CB4E227482A100A837FD /* WordPage.swift in Sources */,
-				88C3C97E227B89AE000E4206 /* LoadLocalData.swift in Sources */,
-				88C3C9CD227E1394000E4206 /* AccountVC.swift in Sources */,
+				88C3C97E227B89AE000E4206 /* LoadData.swift in Sources */,
+				88C3C9CD227E1394000E4206 /* ChartVC.swift in Sources */,
 				883E233C22817D100077AFF3 /* LearnWordParser.swift in Sources */,
 				88283A612275C09700ECB72F /* UserProgressModel.swift in Sources */,
 				88C4E87F226EFB870008382C /* LearnVC.swift in Sources */,
@@ -497,6 +515,8 @@
 				88283A5F2275BFCF00ECB72F /* Extensions.swift in Sources */,
 				88853C47227A4E320095B2FE /* TestVcSaveExtension.swift in Sources */,
 				8840CB3C2270F79900A837FD /* BulletinBoardDataSource.swift in Sources */,
+				885FD1AB22837B390042D95C /* DeleteUserDataModel.swift in Sources */,
+				885FD1B9228552D50042D95C /* DateInterval.swift in Sources */,
 				88B5D0602278BD6400A08E12 /* LearnVcSaveExtension.swift in Sources */,
 				88853C45227A4E1D0095B2FE /* TestVcAnswerExtension.swift in Sources */,
 				8840CB452270FEED00A837FD /* AuthModel.swift in Sources */,
@@ -662,14 +682,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8YQ78WB9N2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/VocabularyLearningApp/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yusufozgul.VocabularyLearningApp11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yusufozgul.VocabularyLearningApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -683,14 +703,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8YQ78WB9N2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/VocabularyLearningApp/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yusufozgul.VocabularyLearningApp11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yusufozgul.VocabularyLearningApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
