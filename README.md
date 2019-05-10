@@ -12,15 +12,22 @@ Swift ile kodlanmıştır, Backend olarak Firebase kullanılmıştır.
 
 Proje detaylarını Wiki sayfasından edinebilirsiniz. [Wiki](https://github.com/yusufozgul/Vocabulary-Learning-App/wiki)
 
-![Alt text](https://github.com/yusufozgul/VVocabulary-Learning-App/raw/master/SS/SS1.png)
-![Alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/raw/master/SS/SS2.png)
-![Alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/raw/master/SS/SS3.png)
-![Alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/raw/master/SS/SS4.png)
-![Alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/raw/master/SS/SS5.png)
-![Alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/raw/master/SS/SS6.png)
-![Alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/raw/master/SS/SS7.png)
-![Alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/raw/master/SS/SS8.png)
-![Alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/raw/master/SS/SS9.png)
-![Alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/raw/master/SS/SS10.png)
-![Alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/raw/master/SS/SS11.png)
-![Alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/raw/master/SS/SS12.png)
+
+
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS1.png)
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS2.png)
+
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS3.png)
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS4.png)
+
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS5.png)
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS6.png)
+
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS7.png)
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS8.png)
+
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS9.png)
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS10.png)
+
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS11.png)
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS12.png)
