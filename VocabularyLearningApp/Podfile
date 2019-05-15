@@ -12,6 +12,7 @@ pod 'CBFlashyTabBarController'
 pod 'IQKeyboardManagerSwift'
 pod 'Charts'
 pod 'SwiftMessages'
+pod 'paper-onboarding'
 end
 
 target 'VocabularyLearningAppAPI' do

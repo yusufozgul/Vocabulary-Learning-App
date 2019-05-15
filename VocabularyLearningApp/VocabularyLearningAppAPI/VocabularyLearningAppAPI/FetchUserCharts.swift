@@ -28,6 +28,7 @@ public class FetchUserCharts: FetchUserChartsProtocol
         var count = 0
         var current = 0
         childs.removeAll()
+        let addedDate = Date().addCurrentDate(value: -intervalValue, byAdding: interval)
 
         dbRef = Database.database().reference().child(FirebaseChilds.UserData.rawValue).child(userID).child(FirebaseChilds.Completed.rawValue)
         let dataBase = dbRef.queryOrderedByKey()
@@ -37,8 +38,6 @@ public class FetchUserCharts: FetchUserChartsProtocol
             {
                 for child in result
                 {
-                    let addedDate = Date().addCurrentDate(value: -intervalValue, byAdding: interval)
-                    
                     if Date().dateFormatter(date: child.key) >= Date().dateFormatter(date: addedDate)
                     {
                         self.childs.append(child.key)
@@ -66,7 +65,7 @@ public class FetchUserCharts: FetchUserChartsProtocol
         chartResponse.date.removeAll()
         var firstNotif = true
         
-        fetchChilds(userID: userID, interval: timeInterval, intervalValue: 1)
+        fetchChilds(userID: userID, interval: timeInterval, intervalValue: timeValue)
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fetchedChart"), object: nil, queue: OperationQueue.main, using: { (_) in
             
             if firstNotif

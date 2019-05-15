@@ -209,4 +209,16 @@ extension LearnVC: UIScrollViewDelegate
             scrollView.contentOffset.x += scrollViewSize.width
         }
     }
+    func goNextPage(delay: TimeInterval) // Otomatik sayfa geçiş fonksiyonu, gönderilen zamana göre geçiş yapılıyor.
+    {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay)
+        {
+            self.wordPages[1].buttonSet()
+            let wordData = self.wordDataParser.getLearnWord()
+            self.wordDatas.remove(at: 0)
+            self.wordDatas.append(wordData)
+            self.layoutWordPage()
+            self.wordPageScrollView.scrollToPage(index: 2, animated: true)
+        }
+    }
 }

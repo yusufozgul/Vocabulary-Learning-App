@@ -18,73 +18,45 @@ extension LearnVC: AnsweredDelegate
         let wordData = wordDatas[1]
         var isKnown: Bool = false
         
+        if selected == wordData.correctAnswer
+        { isKnown = true }
+        
         switch selected {
         case 1:
-            if selected == wordData.correctAnswer
-            {
-                page.answerBox1Image.image = UIImage(named: "correctBoxBackground")
-                isKnown = true
-            }
-            else
-            {
-                page.answerBox1Image.image = UIImage(named: "WrongBoxBackground")
-                dayWrongAnswer.append(wordData.wordInfo.uid)
-            }
+            if selected != wordData.correctAnswer
+            { page.answerBox1Image.image = UIImage(named: "WrongBoxBackground") }
             break
         case 2:
-            if selected == wordData.correctAnswer
-            {
-                page.answerBox2Image.image = UIImage(named: "correctBoxBackground")
-                isKnown = true
-            }
-            else
-            {
-                page.answerBox2Image.image = UIImage(named: "WrongBoxBackground")
-                dayWrongAnswer.append(wordData.wordInfo.uid)
-            }
+            if selected != wordData.correctAnswer
+            { page.answerBox1Image.image = UIImage(named: "WrongBoxBackground") }
             break
         case 3:
-            if selected == wordData.correctAnswer
-            {
-                page.answerBox3Image.image = UIImage(named: "correctBoxBackground")
-                isKnown = true
-            }
-            else
-            {
-                page.answerBox3Image.image = UIImage(named: "WrongBoxBackground")
-                dayWrongAnswer.append(wordData.wordInfo.uid)
-            }
+            if selected != wordData.correctAnswer
+            { page.answerBox1Image.image = UIImage(named: "WrongBoxBackground") }
             break
         case 4:
-            if selected == wordData.correctAnswer
-            {
-                page.answerBox4Image.image = UIImage(named: "correctBoxBackground")
-                isKnown = true
-            }
-            else
-            {
-                page.answerBox4Image.image = UIImage(named: "WrongBoxBackground")
-                dayWrongAnswer.append(wordData.wordInfo.uid)
-            }
+            if selected != wordData.correctAnswer
+            { page.answerBox1Image.image = UIImage(named: "WrongBoxBackground") }
             break
+        default:
+            break
+        }
+        switch wordData.correctAnswer
+        {
+        case 1:
+            page.answerBox1Image.image = UIImage(named: "correctBoxBackground")
+        case 2:
+            page.answerBox2Image.image = UIImage(named: "correctBoxBackground")
+        case 3:
+            page.answerBox3Image.image = UIImage(named: "correctBoxBackground")
+        case 4:
+            page.answerBox4Image.image = UIImage(named: "correctBoxBackground")
         default:
             break
         }
         saveData(isKnown: isKnown) // cevap verisinin kaydedilmesi
         correctCounter.text = String(describing: dayCorrectAnswer.count) // doğru sayacının arttırılması
         wrongCounter.text =  String(describing: dayWrongAnswer.count) // yanlış sayacının arttırılması
-        goNextPage(delay: 0.6) // Otomatik sayfa geçişi
-    }
-    func goNextPage(delay: TimeInterval) // Otomatik sayfa geçiş fonksiyonu, gönderilen zamana göre geçiş yapılıyor.
-    {
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay)
-        {
-            self.wordPages[1].buttonSet()
-            let wordData = self.wordDataParser.getLearnWord()
-            self.wordDatas.remove(at: 0)
-            self.wordDatas.append(wordData)
-            self.layoutWordPage()
-            self.wordPageScrollView.scrollToPage(index: 2, animated: true)
-        }
+        goNextPage(delay: 0.8) // Otomatik sayfa geçişi
     }
 }

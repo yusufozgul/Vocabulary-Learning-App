@@ -26,6 +26,7 @@ class TestWordParser: TestWordParserProtocol
     let learnWordService: LearnWordParserProtocol = LearnWordParser.parser
     let firebaseService: fetchServiceProtocol = FetchWords.fetchWords // Firebase service
     let authdata = UserData.userData
+    let messageService: MessageViewerProtocol = MessageViewer.messageViewer
     
     static let parser = TestWordParser() // Singleton sağlamak için kendi nesnesini oluşturması.
     private init() { }
@@ -52,13 +53,13 @@ class TestWordParser: TestWordParserProtocol
                     }
                     NotificationCenter.default.post(name: Notification.Name(rawValue: "FetchTestWords"), object: nil)
                 case .failure(_):
-                    MessageViewer.messageViewer.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("FAIL_FETCHWORD", comment: ""))
+                    self.messageService.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("FAIL_FETCHWORD", comment: ""))
                 }
             }
         }
         else
         {
-            MessageViewer.messageViewer.failMessage(title: NSLocalizedString("NOT_SIGNIN", comment: ""), body: NSLocalizedString("PLEASE_SIGNIN_FOR_TEST", comment: ""))
+            messageService.failMessage(title: NSLocalizedString("NOT_SIGNIN", comment: ""), body: NSLocalizedString("PLEASE_SIGNIN_FOR_TEST", comment: ""))
         }
     }
     func getTestWord() -> WordTestPageData // Random test edilecek kelime sayfası oluşturup gönderir.
@@ -116,7 +117,7 @@ class TestWordParser: TestWordParserProtocol
         testArray.remove(at: index)
         if getTestArrayCount() == 0
         {
-            MessageViewer.messageViewer.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("EMPTY_TEST_WORD", comment: ""))
+            messageService.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("EMPTY_TEST_WORD", comment: ""))
         }
     }
 //    Öğrenilecek ve test edilecek kaç kelime olduğunu döndürür

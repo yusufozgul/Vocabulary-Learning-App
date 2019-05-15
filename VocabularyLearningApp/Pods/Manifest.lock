@@ -72,6 +72,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - paper-onboarding (6.1.3)
   - SwiftMessages (6.0.2):
     - SwiftMessages/App (= 6.0.2)
   - SwiftMessages/App (6.0.2)
@@ -84,6 +85,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - IQKeyboardManagerSwift
+  - paper-onboarding
   - SwiftMessages
 
 SPEC REPOS:
@@ -104,6 +106,7 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - leveldb-library
     - nanopb
+    - paper-onboarding
     - SwiftMessages
 
 SPEC CHECKSUMS:
@@ -123,8 +126,9 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  paper-onboarding: 47ded9ede6ae9dd7ec135dddd8bd3e170b79d799
   SwiftMessages: 8b3cc68dba2f1c91aac1a74c90b10287aac35371
 
-PODFILE CHECKSUM: 3afec0e5da3c7970b9c557fd768a2b6487fd98b8
+PODFILE CHECKSUM: c829cd64dd38d886638838a94f8b5ad24c4e492b
 
 COCOAPODS: 1.6.1

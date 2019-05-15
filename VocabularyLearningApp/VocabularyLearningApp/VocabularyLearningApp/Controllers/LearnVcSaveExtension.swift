@@ -13,6 +13,7 @@ extension LearnVC
     func saveData(isKnown: Bool)
     {
         let userProgressModel: UserProgressModelProtocol = UserProgressModel()
+        let wordData = wordDatas[1]
 //        Bir soru çözüldüğünde bugünün tarihine göre kelime Firebase'de ilgili yere kaydedilir. Eğer doğru bilinmişse test için gerekli yerede kayıt işlemini yapıyor.
         UserDefaults.standard.setValue(Date().currentDate(), forKey: "day")
         UserDefaults.standard.setValue(dayCorrectAnswer, forKey: "correctAnswer")
@@ -22,13 +23,15 @@ extension LearnVC
        
         if isKnown // Eğer kelime bilindiyse test kısmına ekleme gibi özel ayarlar yapılıyor.
         {
-            let wordData = wordDatas[1]
-            
             solvedWords.append(wordData.wordInfo.uid)
             dayCorrectAnswer.append(wordData.wordInfo.uid)
             
             wordDataParser.deleteLearn(index: wordData.wordIndex) // Bir kelime doğru bilindiyse tekrar etmemesi için siliniyor.
             userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 1, byAdding: DateInterval.day.rawValue), level: "1", word: wordData.wordInfo.word, translate: wordData.wordInfo.translate, sentence: wordData.wordInfo.sentence, category: wordData.wordInfo.category, id: wordData.wordInfo.uid)
+        }
+        else
+        {
+            dayWrongAnswer.append(wordData.wordInfo.uid)
         }
     }
 }

@@ -79,6 +79,8 @@
 "ALERT_TITLE" = "Uyarı";
 "CONGRATULATIONS" = "Tebrikler";
 "COMPLETED_WORDS" = "Bir kelimeyi daha tamamen öğrendiniz.";
+"LEVEL_INFO" = "Öğrenme Seviyesi";
+"LEVEL_INFO_DESC" = "Bir kelimeyi hangi seviyede öğrendiğinizin ölçüsüdür. Dördüncü seviyeye ulaşmış bir kelimeyi doğru cevaplarsanız artık tamamen öğrenmişsiniz demektir. \nHerhangi bir kelimeyi hatalı cevaplarsanız ise seviye 1 olarak yanilenir.";
 
 // ChartVC
 "CHART_VC_TITLE" = "İstatistikler";
@@ -108,3 +110,16 @@
 "PLEASE_SIGNIN_FOR_DELETE_DATA" = "Verilerinizi silmek için lütfen giriş yapınız.";
 "PLEASE_SIGNIN_FOR_TEST" = "Test verilerinizin oluşması için giriş yapmalısınız.";
 "PLEASE_SIGNIN_FOR_CHART" = "İstatistiklerinizi görebilmek için giriş yapmalısınız.";
+
+// SplashVC
+
+"SPLASH_TITLE" = "Hoş Geldiniz";
+"SPLASH_DESC" = "Uygulamayı kullandığınız için teşekkürler. Kaydırarak uygulama hakkında hızlıca bilgi sahibi olabilirsiniz.";
+"SPLASH_LEARN_TITLE" = "Kelimeler Öğrenin";
+"SPLASH_LEARN_DESC" = "Uygulama içerisinde yer alan kelimeleri öğrenin hatta daha fazlası.";
+"SPLASH_TEST_TITLE" = "Kendinizi Test Edin";
+"SPLASH_TEST_DESC" = "Daha önce öğrenmiş olduğunuz kelimeleri belirli periyotlarla test edin ve daha iyi öğrenin.";
+"SPLASH_CHART_TITLE" = "Öğrenme İstatistiğinizi Görün";
+"SPLASH_CHART_DESC" = "Bir kelime tamamen öğrenildiği zaman kaydedilir. İstatistik kısmından dilediğiniz zaman aralığını seçerek öğrenme grafiklerinizi görün.";
+"SPLASH_ADD_TITLE" = "Siz de Destekleyin";
+"SPLASH_ADD_DESC" = "Yeni kelimeler öğrendiğiniz gibi uygulamanın gelişmesine katkı sağlayabilirsiniz. Kelime ekleme sayfasından kelimeye ait tüm bilgileri girerek destek sağlayabilirsiniz.";

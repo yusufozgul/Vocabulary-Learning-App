@@ -9,6 +9,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 import VocabularyLearningAppAPI
+import CBFlashyTabBarController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        memberEntry()
         let _ = ConfigureFireBase()
         
         IQKeyboardManager.shared.enable = true
@@ -26,6 +28,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.keyboardAppearance = .dark
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         return true
+    }
+    func memberEntry()
+    {
+        let isEntry: Bool? = UserDefaults.standard.bool(forKey: "isEntry")
+        if isEntry != false
+        {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabBar = storyBoard.instantiateViewController(withIdentifier: "MainAppTabBar") as! CBFlashyTabBarController
+            window?.rootViewController = tabBar
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

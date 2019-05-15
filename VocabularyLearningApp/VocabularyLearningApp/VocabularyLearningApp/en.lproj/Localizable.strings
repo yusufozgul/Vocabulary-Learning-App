@@ -79,6 +79,8 @@
 "ALERT_TITLE" = "Warning";
 "CONGRATULATIONS" = "Congratulations";
 "COMPLETED_WORDS" = "You learned a word more completely.";
+"LEVEL_INFO" = "Learning Level";
+"LEVEL_INFO_DESC" = "It is a measure of the level at which you learn a word. If you answer a word that has reached the fourth level correctly, you are now fully learned. \ nIf you answer any word incorrectly, it will be lit as level 1.";
 
 // ChartVC
 "CHART_VC_TITLE" = "Statistics";

@@ -20,6 +20,7 @@ public protocol AddNewWordProtocol
 }
 class AddNewWord: AddNewWordProtocol
 {
+    let messageService: MessageViewerProtocol = MessageViewer.messageViewer
     let addWord: AddWordProtocol = AddWord()
     let authdata = UserData.userData
     weak var delegate: AddWordDelegate?
@@ -31,17 +32,17 @@ class AddNewWord: AddNewWordProtocol
             addWord.AddNewWord(word: data.word, translate: data.translate, sentence: data.sentence, category: data.category) { (result) in
                 switch result {
                 case .success(_):
-                    MessageViewer.messageViewer.succesMessage(title: NSLocalizedString("FIREBASE_SUCCES_TITLE", comment: ""), body: NSLocalizedString("FIREBASE_SUCCES", comment: ""))
+                    self.messageService.succesMessage(title: NSLocalizedString("FIREBASE_SUCCES_TITLE", comment: ""), body: NSLocalizedString("FIREBASE_SUCCES", comment: ""))
                     self.delegate?.addWordResult(result: true)
                 case .failure:
-                    MessageViewer.messageViewer.failMessage(title: NSLocalizedString("FIREBASE_ALERT_TITLE", comment: ""), body: "\(NSLocalizedString("A_ISSUE", comment: "")) \n \(Error.self)")
+                    self.messageService.failMessage(title: NSLocalizedString("FIREBASE_ALERT_TITLE", comment: ""), body: "\(NSLocalizedString("A_ISSUE", comment: "")) \n \(Error.self)")
                     self.delegate?.addWordResult(result: false)
                 }
             }
         }
         else
         {
-            MessageViewer.messageViewer.failMessage(title: NSLocalizedString("NOT_SIGNIN", comment: ""), body: NSLocalizedString("PLEASE_SIGNIN", comment: ""))
+            messageService.failMessage(title: NSLocalizedString("NOT_SIGNIN", comment: ""), body: NSLocalizedString("PLEASE_SIGNIN", comment: ""))
         }
     }
 }

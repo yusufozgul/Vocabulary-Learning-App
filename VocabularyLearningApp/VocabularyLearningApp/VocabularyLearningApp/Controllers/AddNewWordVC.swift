@@ -19,6 +19,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBOutlet weak var categoryTextField: UITextField!
     
     let addWordModel = AddNewWord()
+    let messageService: MessageViewerProtocol = MessageViewer.messageViewer
     
     let categoryPickerView = UIPickerView() // Kategori seçici
     let categories = [NSLocalizedString("CATEGORY_BUTTON", comment: ""),"İsim","Fiil","Sıfat", "Zamir","Zarf","Edat","Bağlaç"]
@@ -53,16 +54,16 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         if !wordTextFiled.text!.isEmpty && !wordTranslate.text!.isEmpty && wordDescription.text != NSLocalizedString("WORD_DESC_TEXTVIEW_PLACEHOLDER", comment: "") && !categoryTextField.text!.isEmpty
         {
             addButton.isEnabled = false
-            wordData.word = wordTextFiled.text!
-            wordData.translate = wordTranslate.text!
-            wordData.category = categoryTextField.text!
-            wordData.sentence = wordDescription.text!
+            wordData.word = wordTextFiled.text!.capitalizingFirstLetter()
+            wordData.translate = wordTranslate.text!.capitalizingFirstLetter()
+            wordData.category = categoryTextField.text!.capitalizingFirstLetter()
+            wordData.sentence = wordDescription.text!.capitalizingFirstLetter()
             addWordModel.AddNewWord(data: wordData)
             addButtonLabel.text = NSLocalizedString("PLEASE_WAIT", comment: "")
         }
         else
         {
-            MessageViewer.messageViewer.failMessage(title: NSLocalizedString("EMPTY_ALERT_TITLE", comment: ""), body: NSLocalizedString("EMPTY_ALERT_MESSAGE", comment: ""))
+            messageService.failMessage(title: NSLocalizedString("EMPTY_ALERT_TITLE", comment: ""), body: NSLocalizedString("EMPTY_ALERT_MESSAGE", comment: ""))
         }
     }
     @IBAction func addButton(_ sender: Any)
@@ -70,7 +71,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     
     @IBAction func infoButton(_ sender: Any) // Kelime kategori detayları bilgilendirmesi
     {
-        MessageViewer.messageViewer.infoView(title: NSLocalizedString("INFO_TITLE", comment: ""), body: NSLocalizedString("WORD_INFO", comment: ""))
+        messageService.infoView(title: NSLocalizedString("INFO_TITLE", comment: ""), body: NSLocalizedString("WORD_INFO", comment: ""))
     }
 }
 

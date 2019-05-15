@@ -9,13 +9,21 @@
 import Foundation
 import SwiftMessages
 
-public class MessageViewer
+public protocol MessageViewerProtocol
+{
+    func succesMessage(title: String, body: String)
+    func failMessage(title: String, body: String)
+    func info(title: String, body: String)
+    func infoView(title: String, body: String)
+}
+
+public class MessageViewer: MessageViewerProtocol
 {
     private init() { }
     static let messageViewer = MessageViewer()
     let messageView = MessageView.viewFromNib(layout: .cardView)
     
-    func succesMessage(title: String, body: String)
+    public func succesMessage(title: String, body: String)
     {
         messageView.configureTheme(.success)
         messageView.button?.isHidden = true
@@ -24,7 +32,7 @@ public class MessageViewer
         messageView.layer.cornerRadius = 10
         SwiftMessages.show(view: messageView)
     }
-    func failMessage(title: String, body: String)
+    public func failMessage(title: String, body: String)
     {
         var config = SwiftMessages.Config()
         config.duration = .seconds(seconds: 5)
@@ -35,7 +43,7 @@ public class MessageViewer
         messageView.layer.cornerRadius = 10
         SwiftMessages.show(config: config, view: messageView)
     }
-    func info(title: String, body: String)
+    public func info(title: String, body: String)
     {
         messageView.configureTheme(.info)
         messageView.button?.isHidden = true
@@ -44,7 +52,7 @@ public class MessageViewer
         messageView.layer.cornerRadius = 10
         SwiftMessages.show(view: messageView)
     }
-    func infoView(title: String, body: String)
+    public func infoView(title: String, body: String)
     {
         let messageView: MessageView = MessageView.viewFromNib(layout: .centeredView)
         messageView.configureContent(title: title, body: body, iconImage: nil, iconText: nil, buttonImage: nil, buttonTitle: NSLocalizedString("OKAY", comment: "")) { _ in

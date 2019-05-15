@@ -10,12 +10,14 @@ import UIKit
 
 class TestVC: UIViewController, WordScrollViewProtocol
 {
+    @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var levelView: UIView!
     let wordPageScrollView: UIScrollView = UIScrollView() // kaydırılabilir sayfamız
     var blurredEffectView = UIVisualEffectView() // loading view'u
-    let blurEffect = UIBlurEffect(style: .extraLight)
     let loadingIndicator = UIActivityIndicatorView()
     let wordDataParser = TestWordParser.parser // Api'daki kelimeyi işleyip veren static sınıf
     var wordDataArray: [WordTestPageData] = [] // sayfalardaki verilerimiz
+    let messageService: MessageViewerProtocol = MessageViewer.messageViewer
     
     var wordPages: [WordPage] = { () -> [WordPage] in // ScrollView sayfalarının oluşturulmasu
         let wordPage0: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Previous Page
@@ -38,9 +40,13 @@ class TestVC: UIViewController, WordScrollViewProtocol
         wordPageScrollView.showsVerticalScrollIndicator = false
         view.addSubview(wordPageScrollView)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(levelMessage))
+        levelView.addGestureRecognizer(tapGesture)
+        
 //        Kelime geldiği zaman bilgi mesajını yakalayıp işlem yapımı
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FetchTestWords"), object: nil, queue: OperationQueue.main, using: { _ in
-            self.prepareScrollView()
+            if self.wordDataParser.learnWordService.getLearnArrayCount() > 0
+            { self.prepareScrollView() }
             self.loadingView()
         })
     }
@@ -48,13 +54,13 @@ class TestVC: UIViewController, WordScrollViewProtocol
     {
 //        Verilerin çekilmesi, parse edilmesi ve local verilerin çekilmesi
         wordDataParser.fetchedTestWord()
-        prepareScrollView()
         loadingView()
     }
     internal func loadingView() // Loading sayfası gösterimi ve kontrolü
     {
         if wordDataParser.getTestArrayCount() == 0
         {
+            let blurEffect = UIBlurEffect(style: .extraLight)
             blurredEffectView.effect = blurEffect
             blurredEffectView.frame = view.frame
             loadingIndicator.style = .whiteLarge
@@ -68,6 +74,10 @@ class TestVC: UIViewController, WordScrollViewProtocol
         {
             blurredEffectView.removeFromSuperview() // Kelime varsa Loading ekranı view'dan siliniyor.
         }
+    }
+    @objc func levelMessage()
+    {
+        messageService.infoView(title: NSLocalizedString("LEVEL_INFO", comment: ""), body: NSLocalizedString("LEVEL_INFO_DESC", comment: ""))
     }
     internal func prepareScrollView() // ScrollView'un ayarlanması ve kelimelerin yerleştirilmesi
     {
@@ -122,6 +132,7 @@ class TestVC: UIViewController, WordScrollViewProtocol
                                 height: wordPageScrollView.frame.height)
             index += 1
         }
+        levelLabel.text = String(wordDataArray[1].level)
     }
 }
 
@@ -158,6 +169,18 @@ extension TestVC: UIScrollViewDelegate
             wordDataArray.insert(wordData, at: 0)
             layoutWordPage()
             scrollView.contentOffset.x += scrollViewSize.width
+        }
+    }
+    func goNextPage(delay: TimeInterval) // Otomatik sayfa geçiş fonksiyonu, gönderilen zamana göre geçiş yapılıyor.
+    {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay)
+        {
+            self.wordPages[1].buttonSet()
+            let wordData = self.wordDataParser.getTestWord()
+            self.wordDataArray.remove(at: 0)
+            self.wordDataArray.append(wordData)
+            self.layoutWordPage()
+            self.wordPageScrollView.scrollToPage(index: 2, animated: true)
         }
     }
 }

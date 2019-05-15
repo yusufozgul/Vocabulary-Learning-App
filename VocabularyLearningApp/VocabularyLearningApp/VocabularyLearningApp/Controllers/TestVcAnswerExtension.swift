@@ -56,16 +56,4 @@ extension TestVC: AnsweredDelegate
         saveData(isKnown: isKnown) // cevap verisinin kaydedilmesi
         goNextPage(delay: 0.6) // Otomatik sayfa geçişi
     }
-    func goNextPage(delay: TimeInterval) // Otomatik sayfa geçiş fonksiyonu, gönderilen zamana göre geçiş yapılıyor.
-    {
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay)
-        {
-            self.wordPages[1].buttonSet()
-            let wordData = self.wordDataParser.getTestWord()
-            self.wordDataArray.remove(at: 0)
-            self.wordDataArray.append(wordData)
-            self.layoutWordPage()
-            self.wordPageScrollView.scrollToPage(index: 2, animated: true)
-        }
-    }
 }

@@ -24,6 +24,7 @@ class LearnWordParser: LearnWordParserProtocol
 {
     public var wordArray: [WordData] = [] // Sorulacak kelime dizisi
     let firebaseService: fetchServiceProtocol = FetchWords.fetchWords // Firebase service
+    let messageService: MessageViewerProtocol = MessageViewer.messageViewer
     
     static let parser = LearnWordParser() // Singleton sağlamak için kendi nesnesini oluşturması.
     private init() { }
@@ -46,7 +47,7 @@ class LearnWordParser: LearnWordParserProtocol
                 }
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "FetchWords"), object: nil)
             case .failure:
-                MessageViewer.messageViewer.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("FAIL_FETCHWORD", comment: ""))
+                self.messageService.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("FAIL_FETCHWORD", comment: ""))
             }
         }
     }
@@ -103,7 +104,7 @@ class LearnWordParser: LearnWordParserProtocol
         wordArray.remove(at: index)
         if getLearnArrayCount() < 10
         {
-            MessageViewer.messageViewer.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("EMPTY_LEARN_WORD", comment: ""))
+            messageService.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("EMPTY_LEARN_WORD", comment: ""))
         }
     }
 //    Öğrenilecek ve test edilecek kaç kelime olduğunu döndürür

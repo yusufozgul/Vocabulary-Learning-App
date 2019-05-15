@@ -20,6 +20,7 @@ protocol DeleteUserDataProtocol
 class DeleteUserDataModel: DeleteUserDataProtocol
 {
     let authdata = UserData.userData
+    let messageService: MessageViewerProtocol = MessageViewer.messageViewer
     func deleteData()
     {
         if authdata.isSign
@@ -28,7 +29,7 @@ class DeleteUserDataModel: DeleteUserDataProtocol
         }
         else
         {
-            MessageViewer.messageViewer.failMessage(title: NSLocalizedString("NOT_SIGNIN", comment: ""), body: NSLocalizedString("PLEASE_SIGNIN_FOR_DELETE_DATA", comment: ""))
+            messageService.failMessage(title: NSLocalizedString("NOT_SIGNIN", comment: ""), body: NSLocalizedString("PLEASE_SIGNIN_FOR_DELETE_DATA", comment: ""))
         }
     }
 }

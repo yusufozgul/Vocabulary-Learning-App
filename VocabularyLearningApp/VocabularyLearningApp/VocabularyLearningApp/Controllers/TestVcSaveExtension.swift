@@ -14,6 +14,7 @@ extension TestVC
 //    Bir kelime eğer yanlış bilindiyse yarın tekrar test etmek için level'i 1 yapılır.
     func saveData(isKnown: Bool)
     {
+        let messageService: MessageViewerProtocol = MessageViewer.messageViewer
         let wordData = wordDataArray[1]
         let userProgressModel: UserProgressModelProtocol = UserProgressModel()
         wordDataParser.deleteTest(index: wordData.wordPage.wordIndex) // Test için gelen soru çözüldüğünde tekrar etmemesi için siliniyor
@@ -33,7 +34,7 @@ extension TestVC
             case 4:
                 userProgressModel.saveLearnedWord(day: Date().currentDate(), uid: wordData.wordPage.wordInfo.uid)
                 userProgressModel.deleteSolvedTest(uid: wordData.wordPage.wordInfo.uid)
-                MessageViewer.messageViewer.succesMessage(title: NSLocalizedString("CONGRATULATIONS", comment: ""), body: NSLocalizedString("COMPLETED_WORDS", comment: ""))
+                messageService.succesMessage(title: NSLocalizedString("CONGRATULATIONS", comment: ""), body: NSLocalizedString("COMPLETED_WORDS", comment: ""))
             default:
                 break
             }
