@@ -34,8 +34,9 @@ class UserChartModel: UserChartsModelProtocol
                 switch result {
                 case .success(let value):
                     self.delegate?.loadedChart(date: value.date, values: value.correctArray)
-                case .failure:
-                    self.messageService.failMessage(title: NSLocalizedString("A_ISSUE", comment: ""), body: NSLocalizedString("ERROR_FETCH_CHART", comment: ""))
+                case .failure(let message):
+                    self.messageService.failMessage(title: NSLocalizedString("A_ISSUE", comment: ""), body: "\(NSLocalizedString("ERROR_FETCH_CHART", comment: "")): \(message)")
+                    self.delegate?.loadedChart(date: [], values: [])
                 }
             }
         }

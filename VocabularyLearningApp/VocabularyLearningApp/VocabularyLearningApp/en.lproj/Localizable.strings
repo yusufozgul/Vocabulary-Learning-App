@@ -84,7 +84,7 @@
 
 // ChartVC
 "CHART_VC_TITLE" = "Statistics";
-"ERROR_FETCH_CHART" = "There was a problem getting statistics.";
+"ERROR_FETCH_CHART" = "There was a problem getting statistics";
 "SELECT_MENU" = "Range of Statistics";
 "SELECT_MENU_DESC" = "Specify the range of data to be fetched for the chart.";
 "SELECT_DAY" = "The last day";
@@ -94,12 +94,15 @@
 "SELECT_YEAR" = "Last year";
 "CANCEL" = "Cancel";
 "NO_CHART_DATA" = "No data to display";
+"CHART_VALUE_LABEL" = "Completely Learned Words";
 
 
 // API
 "NULL_TEST_WORDS" = "No data to be tested, please learn from the Learn page and then test what you have learned here.";
 "WORD_NOT_FOUND" = "Word Not Found";
 "TEST_DATA_ERROR" = "Error in test data";
+"CHART_NOT_FOUND" = "Graphic data for selected time not found.";
+
 
 // Model
 "FAIL_FETCHWORD" = "There was an error retrieving words from the server";
@@ -110,3 +113,16 @@
 "PLEASE_SIGNIN_FOR_DELETE_DATA" = "Please login to delete your data.";
 "PLEASE_SIGNIN_FOR_TEST" = "You must log in to create your test data.";
 "PLEASE_SIGNIN_FOR_CHART" = "You must be logged in to view your stats.";
+
+// SplashVC
+
+"SPLASH_TITLE" = "Welcome";
+"SPLASH_DESC" = "Thank you for using the app. You can quickly learn about the application by swiping.";
+"SPLASH_LEARN_TITLE" = "Learn Words";
+"SPLASH_LEARN_DESC" = "Learn the words in the application and even more.";
+"SPLASH_TEST_TITLE" = "Test Yourself";
+"SPLASH_TEST_DESC" = "Test the words you have learned before and learn better.";
+"SPLASH_CHART_TITLE" = "See your Learning Statistics";
+"SPLASH_CHART_DESC" = "A word is saved when fully learned. View your learning graphs by selecting the desired time interval from Statistics.";
+"SPLASH_ADD_TITLE" = "Support You";
+"SPLASH_ADD_DESC" = "As you learn new words, you can contribute to the development of the application. You can provide support by entering all the word's information from the word insertion page.";

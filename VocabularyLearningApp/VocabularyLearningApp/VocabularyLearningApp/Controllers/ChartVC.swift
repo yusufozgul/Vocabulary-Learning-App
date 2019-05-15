@@ -8,7 +8,6 @@
 
 import UIKit
 import Charts
-import VocabularyLearningAppAPI
 
 class ChartVC: UIViewController, ChartViewDelegate, ChartResponseDelegate
 {
@@ -18,7 +17,6 @@ class ChartVC: UIViewController, ChartViewDelegate, ChartResponseDelegate
 //    Grafik verileri
     var dataLabels = [""]
     var dataValues: [BarChartDataEntry] = []
-    let dayCount: Int = Date().getMonthDays()
    
     override func viewDidLoad()
     {
@@ -97,8 +95,10 @@ class ChartVC: UIViewController, ChartViewDelegate, ChartResponseDelegate
     func setChartData() // Grafik verileri yerleştirilip grafik yenilenir.
     {
         chartView.animate(xAxisDuration: 2, yAxisDuration: 2)
-        let set = BarChartDataSet(entries: dataValues, label: "")
+        let set = BarChartDataSet(entries: dataValues, label: NSLocalizedString("CHART_VALUE_LABEL", comment: ""))
+        set.colors = [UIColor(red: 0.22, green: 0.44, blue: 0.65, alpha: 1.0)]
         let data = BarChartData(dataSet: set)
+        
         data.setValueFont(.systemFont(ofSize: 13))
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 0

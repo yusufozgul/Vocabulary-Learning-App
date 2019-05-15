@@ -52,6 +52,10 @@ public class FetchUserCharts: FetchUserChartsProtocol
                         })
                     }
                 }
+                if count == 0
+                {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fetchedChart"), object: nil)
+                }
             }
         })
     }
@@ -66,7 +70,7 @@ public class FetchUserCharts: FetchUserChartsProtocol
         var firstNotif = true
         
         fetchChilds(userID: userID, interval: timeInterval, intervalValue: timeValue)
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fetchedChart"), object: nil, queue: OperationQueue.main, using: { (_) in
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fetchedChart"), object: nil, queue: OperationQueue.main, using: { [unowned self] _  in
             
             if firstNotif
             {
@@ -75,7 +79,7 @@ public class FetchUserCharts: FetchUserChartsProtocol
                 
                 if self.childs.count == 0
                 {
-                    completion(.failure(""))
+                    completion(.failure(NSLocalizedString("CHART_NOT_FOUND", comment: "")))
                 }
                 for child in self.childs
                 {
@@ -97,5 +101,6 @@ public class FetchUserCharts: FetchUserChartsProtocol
             }
             
         })
+        
     }
 }

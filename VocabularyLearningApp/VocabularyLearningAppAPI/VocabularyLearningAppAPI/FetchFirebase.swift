@@ -105,7 +105,7 @@ public class FetchWords: fetchServiceProtocol
     public func fetchTestWord(userID: String, completion: @escaping (Result<FetchTestWordReponse>) -> Void) // Gelen klasör isimlerine göre veriler çekilip gönderilir.
     {
         fetchChilds(userID: userID)
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fetchedChild"), object: nil, queue: OperationQueue.main, using: { (_) in
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fetchedChild"), object: nil, queue: OperationQueue.main, using: { [unowned self] _ in
 
             let wordDetail: WordData = WordData(word: "", translate: "", sentence: "", category: "", uid: "")
             var testableWordData: TestedWordData = TestedWordData(word: wordDetail, level: 0)
@@ -140,7 +140,7 @@ public class FetchWords: fetchServiceProtocol
                 })
             }
         })
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fetchedChildERROR"), object: nil, queue: OperationQueue.main, using: { (_) in
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fetchedChildERROR"), object: nil, queue: OperationQueue.main, using: { _ in
             completion(.failure(NSLocalizedString("NULL_TEST_WORDS", comment: "")))
         })
     }

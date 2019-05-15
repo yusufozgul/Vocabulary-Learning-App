@@ -84,7 +84,7 @@
 
 // ChartVC
 "CHART_VC_TITLE" = "İstatistikler";
-"ERROR_FETCH_CHART" = "İstatistikler alınırken bir sorun oluştu.";
+"ERROR_FETCH_CHART" = "İstatistikler alınırken bir sorun oluştu";
 "SELECT_MENU" = "İstatistiğin Aralığını";
 "SELECT_MENU_DESC" = "Grafik için getirilecek verilerin aralığını belirleyin.";
 "SELECT_DAY" = "Son gün";
@@ -94,12 +94,14 @@
 "SELECT_YEAR" = "Son bir yıl";
 "CANCEL" = "İptal";
 "NO_CHART_DATA" = "Gösterilecek veri bulunamadı";
+"CHART_VALUE_LABEL" = "Tamamen Öğrenilmiş Kelimeler";
 
 
 // API
 "NULL_TEST_WORDS" = "Test edilecek veri bulunamadı, lütfen öğren sayfasından kelime öğrenin ardından buradan öğrendiklerinizi test edin.";
 "WORD_NOT_FOUND" = "Kelime Bulunamadı";
 "TEST_DATA_ERROR" = "Test verilerinde hata";
+"CHART_NOT_FOUND" = "Seçilen zamana ait grafik verisi bulunamadı.";
 
 // Model
 "FAIL_FETCHWORD" = "Kelimeler sunucudan alınırken bir hata oluştu";

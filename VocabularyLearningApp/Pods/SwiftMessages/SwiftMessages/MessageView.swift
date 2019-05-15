@@ -416,7 +416,7 @@ extension MessageView {
      this method.
      */
     public func configureBackgroundView(width: CGFloat) {
-        let constraint = NSLayoutConstraint(item: backgroundView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: width)
+        let constraint = NSLayoutConstraint(item: backgroundView!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: width)
         backgroundView.addConstraint(constraint)
     }
 }

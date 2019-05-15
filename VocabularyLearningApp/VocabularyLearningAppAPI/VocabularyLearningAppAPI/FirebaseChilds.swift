@@ -25,4 +25,4 @@ public enum FirebaseChilds: String
     case category = "category"
     case uid = "uid"
     case level = "level"
-    }
+}

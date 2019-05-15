@@ -235,7 +235,7 @@ open class BaseView: UIView, BackgroundViewable, MarginAdjustable {
             backgroundHeightConstraint = nil
         }
         if let height = backgroundHeight {
-            let constraint = NSLayoutConstraint(item: backgroundView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: height)
+            let constraint = NSLayoutConstraint(item: backgroundView!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: height)
             backgroundView.addConstraint(constraint)
             backgroundHeightConstraint = constraint
         }
