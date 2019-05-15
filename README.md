@@ -13,6 +13,8 @@ Swift ile kodlanmıştır, Backend olarak Firebase kullanılmıştır.
 Proje detaylarını Wiki sayfasından edinebilirsiniz. [Wiki](https://github.com/yusufozgul/Vocabulary-Learning-App/wiki)
 
 
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS0.png)  
+![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS00.png) 
 
 ![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS1.png)  
 ![alt text](https://github.com/yusufozgul/Vocabulary-Learning-App/blob/master/SS/SS2.png)  
