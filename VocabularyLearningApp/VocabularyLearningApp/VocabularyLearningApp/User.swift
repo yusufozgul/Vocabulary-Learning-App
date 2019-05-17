@@ -15,7 +15,7 @@ class CurrentUserData
     public var isSign = false
     private init()
     {
-        if UserDefaults.standard.value(forKey: "CurrentUserID") != nil
+        if UserDefaults.standard.value(forKey: "CurrentUserID") != nil && UserDefaults.standard.value(forKey: "CurrentUserID") as! String != ""
         {
             sign(email: UserDefaults.standard.value(forKey: "CurrentUserMail") as! String, id: UserDefaults.standard.value(forKey: "CurrentUserID") as! String)
         }
