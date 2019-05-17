@@ -13,7 +13,13 @@ class CurrentUserData
     public var userEmail: String = ""
     public var userID: String = ""
     public var isSign = false
-    private init() { }
+    private init()
+    {
+        if UserDefaults.standard.value(forKey: "CurrentUserID") != nil
+        {
+            sign(email: UserDefaults.standard.value(forKey: "CurrentUserMail") as! String, id: UserDefaults.standard.value(forKey: "CurrentUserID") as! String)
+        }
+    }
     
     static let userData = CurrentUserData()
     
@@ -22,6 +28,8 @@ class CurrentUserData
         isSign = false
         userEmail = ""
         userID = ""
+        UserDefaults.standard.setValue(userEmail, forKey: "CurrentUserMail")
+        UserDefaults.standard.setValue(userID, forKey: "CurrentUserID")
     }
     
     public func sign(email: String, id: String)
@@ -29,5 +37,7 @@ class CurrentUserData
         userEmail = email
         userID = id
         isSign = true
+        UserDefaults.standard.setValue(userEmail, forKey: "CurrentUserMail")
+        UserDefaults.standard.setValue(userID, forKey: "CurrentUserID")
     }
 }
