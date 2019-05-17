@@ -48,7 +48,6 @@ extension TestVC: UIScrollViewDelegate
     {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay)
         {
-            self.wordPages[1].buttonSet()
             let wordData = self.wordDataParser.getTestWord()
             self.wordDataArray.remove(at: 0)
             self.wordDataArray.append(wordData)

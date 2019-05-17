@@ -11,44 +11,42 @@ import Firebase
 
 public protocol AuthenticateFirebaseProtocol
 {
-    func signin(userEmail: String, userPassword: String)
-    func signup(userEmail: String, userPassword: String)
+    func signin(userEmail: String, userPassword: String, completion: @escaping (Result<String>) -> Void)
+    func signup(userEmail: String, userPassword: String, completion: @escaping (Result<String>) -> Void)
 }
 
 public final class AuthenticateFirebase: AuthenticateFirebaseProtocol
 {
     public init() {}
     
-    public func signin(userEmail: String, userPassword: String) // Gelen verilere göre giriş yapılır.
+    public func signin(userEmail: String, userPassword: String, completion: @escaping (Result<String>) -> Void) // Gelen verilere göre giriş yapılır.
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         Auth.auth().signIn(withEmail: userEmail, password: userPassword) { (authResults, error) in
             if error != nil
             {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "fireBaseMessage"), object: (error?.localizedDescription)!)
+                completion(.failure(error!.localizedDescription))
             }
             else
             {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "fireBaseMessage"), object: "succes")
-                UserDefaults.standard.setValue([authResults?.user.email, authResults?.user.uid], forKey: "currentUser")
+                completion(.success((authResults?.user.uid)!))
             }
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
     
-    public func signup(userEmail: String, userPassword: String) // Gelen verilere göre yeni kullanıcı oluşturulur.
+    public func signup(userEmail: String, userPassword: String, completion: @escaping (Result<String>) -> Void) // Gelen verilere göre yeni kullanıcı oluşturulur.
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Auth.auth().createUser(withEmail: userEmail, password: userPassword) { (authResult, error) in
             if error != nil
             {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "fireBaseMessage"), object: (error?.localizedDescription)!)
+                completion(.failure(error!.localizedDescription))
             }
             else
             {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "fireBaseMessage"), object: "succes")
-                UserDefaults.standard.setValue([authResult?.user.email, authResult?.user.uid], forKey: "currentUser")
+                completion(.success((authResult?.user.uid)!))
             }
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }

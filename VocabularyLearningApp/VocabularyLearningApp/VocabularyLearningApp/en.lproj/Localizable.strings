@@ -126,3 +126,8 @@
 "SPLASH_CHART_DESC" = "A word is saved when fully learned. View your learning graphs by selecting the desired time interval from Statistics.";
 "SPLASH_ADD_TITLE" = "Support You";
 "SPLASH_ADD_DESC" = "As you learn new words, you can contribute to the development of the application. You can provide support by entering all the word's information from the word insertion page.";
+
+// Network Check
+"NETWORK_ERROR_TITLE" = "Connection problem";
+"NETWORK_ERROR_DESC" = "There is a problem with the Internet connection, please connect to the network and try again.";
+"NETWORK_ERROR_RELOAD" = "Recheck";

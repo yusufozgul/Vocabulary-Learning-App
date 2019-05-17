@@ -19,7 +19,7 @@ protocol DeleteUserDataProtocol
 
 class DeleteUserDataModel: DeleteUserDataProtocol
 {
-    let authdata = UserData.userData
+    let authdata = CurrentUserData.userData
     let messageService: MessageViewerProtocol = MessageViewer.messageViewer
     func deleteData()
     {

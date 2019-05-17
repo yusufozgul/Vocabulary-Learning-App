@@ -14,33 +14,40 @@ extension LearnVC: AnsweredDelegate
 //    Tıklanıldığı indisle gereken kontroller yapılıyor ve işlem devam ediyor.
     func selectAnswer(selected: Int)
     {
+        let generator = UINotificationFeedbackGenerator()
         let page = wordPages[1]
         let wordData = wordDatas[1]
         var isKnown: Bool = false
         
         if selected == wordData.correctAnswer
-        { isKnown = true }
+        {
+            generator.notificationOccurred(.success)
+            isKnown = true
+        }
+        else
+        {
+            generator.notificationOccurred(.error)
+            isKnown = false
+        }
         
-        switch selected {
+        switch selected
+        {
         case 1:
             if selected != wordData.correctAnswer
             { page.answerBox1Image.image = UIImage(named: "WrongBoxBackground") }
-            break
         case 2:
             if selected != wordData.correctAnswer
-            { page.answerBox1Image.image = UIImage(named: "WrongBoxBackground") }
-            break
+            { page.answerBox2Image.image = UIImage(named: "WrongBoxBackground") }
         case 3:
             if selected != wordData.correctAnswer
-            { page.answerBox1Image.image = UIImage(named: "WrongBoxBackground") }
-            break
+            { page.answerBox3Image.image = UIImage(named: "WrongBoxBackground") }
         case 4:
             if selected != wordData.correctAnswer
-            { page.answerBox1Image.image = UIImage(named: "WrongBoxBackground") }
-            break
+            { page.answerBox4Image.image = UIImage(named: "WrongBoxBackground") }
         default:
             break
         }
+        
         switch wordData.correctAnswer
         {
         case 1:

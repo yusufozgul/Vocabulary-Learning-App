@@ -30,25 +30,32 @@ public class LoadData
         }
         return []
     }
-    public func loadSolvedWords() -> [String]
+//    public func loadSolvedWords() -> [String]
+//    {
+//        if UserDefaults.standard.value(forKey: "SolvedWords") != nil
+//        {
+//            return UserDefaults.standard.value(forKey: "SolvedWords") as! [String]
+//        }
+//        return []
+//    }
+}
+public class FecthSolvedWords
+{
+    weak var delegate: SolvedWordDelegate?
+    public func fetchSolvedWord()
     {
-        if UserData.userData.isSign
+        if CurrentUserData.userData.isSign
         {
             let firebaseService: fetchServiceProtocol = FetchWords.fetchWords // Firebase service
-            firebaseService.fetchSolvedWords(userID: UserData.userData.userID) { (result) in
+            firebaseService.fetchSolvedWords(userID: CurrentUserData.userData.userID) { (result) in
                 switch result {
                 case .success(let value):
-                   UserDefaults.standard.setValue(value.result, forKey: "SolvedWords")
-                    
+                    self.delegate?.getSolved(solvedArray: value.result)
+                    break
                 case .failure(_):
                     break
                 }
             }
         }
-        if UserDefaults.standard.value(forKey: "SolvedWords") != nil
-        {
-            return UserDefaults.standard.value(forKey: "SolvedWords") as! [String]
-        }
-        return []
     }
 }

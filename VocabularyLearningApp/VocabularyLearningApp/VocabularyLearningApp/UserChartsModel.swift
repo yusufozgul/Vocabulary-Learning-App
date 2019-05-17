@@ -22,12 +22,11 @@ class UserChartModel: UserChartsModelProtocol
 {
     let userChart: FetchUserChartsProtocol = FetchUserCharts()
     let messageService: MessageViewerProtocol = MessageViewer.messageViewer
-    let authdata = UserData.userData
+    let authdata = CurrentUserData.userData
     weak var delegate: ChartResponseDelegate?
     
     func fetchChart(timeInterval: String, timeValue: Int)
     {
-        authdata.reloadData()
         if authdata.isSign
         {
             userChart.learnCharts(userID: authdata.userID, timeInterval: timeInterval, timeValue: timeValue) { (result) in

@@ -46,7 +46,6 @@ extension LearnVC: UIScrollViewDelegate
     {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay)
         {
-            self.wordPages[1].buttonSet()
             let wordData = self.wordDataParser.getLearnWord()
             self.wordDatas.remove(at: 0)
             self.wordDatas.append(wordData)

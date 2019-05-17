@@ -17,7 +17,7 @@ extension TestVC
         let messageService: MessageViewerProtocol = MessageViewer.messageViewer
         let wordData = wordDataArray[1]
         let userProgressModel: UserProgressModelProtocol = UserProgressModel()
-        wordDataParser.deleteTest(index: wordData.wordPage.wordIndex) // Test için gelen soru çözüldüğünde tekrar etmemesi için siliniyor
+        wordDataParser.deleteTest(deleteID: wordData.wordPage.wordInfo.uid) // Test için gelen soru çözüldüğünde tekrar etmemesi için siliniyor
         if isKnown
         {
             switch wordData.level

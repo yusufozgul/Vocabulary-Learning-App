@@ -11,16 +11,16 @@ import BLTNBoard
 
 protocol BullettinDataSourceProtocol
 {
-    static func splashBoard() -> BLTNPageItem
-    static func signinBoard() -> BLTNBoradSignin
-    static func signupBoard() -> BLTNBoradSignup
-    static func accountBoard() -> BLTNPageItem
+    func splashBoard() -> BLTNPageItem
+    func signinBoard() -> BLTNBoradSignin
+    func signupBoard() -> BLTNBoradSignup
+    func accountBoard() -> BLTNPageItem
 }
 
 //    Signin - login Boards in BulletinBoard
-enum BulletinDataSource: BullettinDataSourceProtocol
+class BulletinDataSource: BullettinDataSourceProtocol
 {
-    static func splashBoard() -> BLTNPageItem
+    func splashBoard() -> BLTNPageItem
     {
         let splashBoard = BLTNPageItem(title: NSLocalizedString("SPLASH_BOARD_TITLE", comment: ""))
         splashBoard.image = UIImage(named: "icon")
@@ -30,19 +30,18 @@ enum BulletinDataSource: BullettinDataSourceProtocol
         splashBoard.isDismissable = true
         
         splashBoard.actionHandler = { (item: BLTNActionItem) in
-            splashBoard.next = signinBoard()
+            splashBoard.next = self.signinBoard()
             item.manager?.displayNextItem()
         }
         splashBoard.alternativeHandler = { item in
-            splashBoard.next = signupBoard()
+            splashBoard.next = self.signupBoard()
             item.manager?.displayNextItem()
         }
         return splashBoard
     }
     
-    static func signinBoard() -> BLTNBoradSignin
+    func signinBoard() -> BLTNBoradSignin
     {
-        let authdata = UserData.userData
         var userData = userRegisterData.init(userEmail: "", userPassowrd: "")
         let signinBoard = BLTNBoradSignin(title: NSLocalizedString("SIGNIN", comment: ""))
         signinBoard.descriptionText = NSLocalizedString("SIGNIN_DESC", comment: "")
@@ -61,18 +60,15 @@ enum BulletinDataSource: BullettinDataSourceProtocol
             {
                 item.manager?.displayActivityIndicator()
                 let authModel: firebaseAuthProtocol = FirebaseAuthModel()
-                authModel.firebaseSignin(userData: userData)
                 
-                NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fireBaseMessage"), object: nil, queue: OperationQueue.main, using: { (firebaseMessage) in
-                    if String(describing: firebaseMessage.object!) != "succes"
+                authModel.firebaseSignin(userData: userData, completion: { (result) in
+                    switch result
                     {
-                        signinBoard.descriptionText = String(describing: firebaseMessage.object!)
-                        item.manager?.hideActivityIndicator()
-                    }
-                    else
-                    {
+                    case .success(_):
                         item.manager?.dismissBulletin()
-                        authdata.reloadData()
+                    case .failure(let error):
+                        signinBoard.descriptionText = error
+                        item.manager?.hideActivityIndicator()
                     }
                 })
             }
@@ -80,9 +76,8 @@ enum BulletinDataSource: BullettinDataSourceProtocol
         return signinBoard
     }
     
-    static func signupBoard() -> BLTNBoradSignup
+    func signupBoard() -> BLTNBoradSignup
     {
-        let authdata = UserData.userData
         var userData = userRegisterData(userEmail: "", userPassowrd: "")
         
         let signupBoard = BLTNBoradSignup(title: NSLocalizedString("SIGNUP", comment: ""))
@@ -102,53 +97,54 @@ enum BulletinDataSource: BullettinDataSourceProtocol
             {
                 item.manager?.displayActivityIndicator()
                 let authModel: firebaseAuthProtocol = FirebaseAuthModel()
-                authModel.firebaseSignup(userData: userData)
-
-                NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "fireBaseMessage"), object: nil, queue: OperationQueue.main, using: { (firebaseMessage) in
-                    if String(describing: firebaseMessage.object!) != "succes"
+                
+                authModel.firebaseSignup(userData: userData, completion: { (result) in
+                    switch result
                     {
-                        signupBoard.descriptionText = String(describing: firebaseMessage.object!)
-                        item.manager?.hideActivityIndicator()
-                    }
-                    else
-                    {
+                    case .success(_):
                         item.manager?.dismissBulletin()
-                        authdata.reloadData()
+                    case .failure(let error):
+                        signupBoard.descriptionText = error
+                        item.manager?.hideActivityIndicator()
+                        
                     }
                 })
             }
         }
         signupBoard.alternativeButtonTitle = NSLocalizedString("SIGNIN", comment: "")
         signupBoard.alternativeHandler = {(item: BLTNActionItem) in
-            signupBoard.next = signinBoard()
+            signupBoard.next = self.signinBoard()
             item.manager?.displayNextItem()
         }
         return signupBoard
     }
-    static func accountBoard() -> BLTNPageItem
+    func accountBoard() -> BLTNPageItem
     {
-        let authdata = UserData.userData
+        let authdata = CurrentUserData.userData
         let accountBoard = BLTNPageItem(title: NSLocalizedString("ACCOUNT_BOARD_TITLE", comment: ""))
         accountBoard.image =  UIImage(named: "alertIcon")
         accountBoard.descriptionText = NSLocalizedString("ACCOUNT_BOARD_DESC", comment: "")
-        accountBoard.actionButtonTitle = NSLocalizedString("ACCOUNT_BOARD_LOG_OUT", comment: "")
         accountBoard.alternativeButtonTitle = NSLocalizedString("ACCOUNT_BOARD_DELETE_DATA", comment: "")
-        accountBoard.appearance.actionButtonColor = .red
         accountBoard.appearance.alternativeButtonTitleColor = .red
         accountBoard.isDismissable = true
         
+        print(authdata.isSign)
         if !authdata.isSign
         {
-            accountBoard.appearance.actionButtonColor = .green
+            accountBoard.appearance.actionButtonColor = UIColor(red: 0.38, green: 0.76, blue: 0.33, alpha: 1.0)
             accountBoard.actionButtonTitle = NSLocalizedString("SIGNIN", comment: "")
+        }
+        else
+        {
+            accountBoard.appearance.actionButtonColor = .red
+            accountBoard.actionButtonTitle = NSLocalizedString("ACCOUNT_BOARD_LOG_OUT", comment: "")
         }
         
         accountBoard.actionHandler = { (item: BLTNActionItem) in
-            UserDefaults.standard.removeObject(forKey: "currentUser")
             UserDefaults.standard.synchronize()
-            authdata.reloadData()
+            authdata.logOut()
 
-            item.next = splashBoard()
+            item.next = self.splashBoard()
             item.manager?.displayNextItem()
         }
         var isSecond = false

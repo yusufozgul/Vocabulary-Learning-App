@@ -36,32 +36,40 @@ class WordPage: UIView
     @IBAction func answerBox1Button(_ sender: Any)
     {
         delegate?.selectAnswer(selected: 1)
-        buttonSet()
+        buttonLock()
     }
     
     @IBAction func answerBox2Button(_ sender: Any)
     {
         delegate?.selectAnswer(selected: 2)
-        buttonSet()
+        buttonLock()
     }
     
     @IBAction func answerBox3Button(_ sender: Any)
     {
         delegate?.selectAnswer(selected: 3)
-        buttonSet()
+        buttonLock()
     }
     
     @IBAction func answerBox4Button(_ sender: Any)
     {
         delegate?.selectAnswer(selected: 4)
-        buttonSet()
+        buttonLock()
     }
     
-    func buttonSet() // Cevap verildikten sonra butonların açılıp kapanması
+// Cevap verildikten sonra butonların açılıp kapanması
+    func buttonLock()
     {
-        answerButton1.isEnabled = !answerButton1.isEnabled
-        answerButton2.isEnabled = !answerButton2.isEnabled
-        answerButton3.isEnabled = !answerButton3.isEnabled
-        answerButton4.isEnabled = !answerButton4.isEnabled
+        answerButton1.isEnabled = false
+        answerButton2.isEnabled = false
+        answerButton3.isEnabled = false
+        answerButton4.isEnabled = false
+    }
+    func buttonUnlock()
+    {
+        answerButton1.isEnabled = true
+        answerButton2.isEnabled = true
+        answerButton3.isEnabled = true
+        answerButton4.isEnabled = true
     }
 }

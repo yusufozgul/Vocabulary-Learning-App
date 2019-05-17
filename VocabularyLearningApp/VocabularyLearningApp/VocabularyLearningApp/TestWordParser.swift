@@ -15,17 +15,18 @@ protocol TestWordParserProtocol
     
     func fetchedTestWord()
     func getTestWord() -> WordTestPageData
-    func deleteTest(index: Int)
+    func deleteTest(deleteID: String)
     func getTestArrayCount() -> Int
 }
 
 // API'dan gelen kelimeleri uygun şartlara göre parse eden singleton kullanılan static bir sınıf.
 class TestWordParser: TestWordParserProtocol
 {
+    weak var fetchedDelegate: FetchedDelegate?
     internal var testArray: [TestedWordData] = [] // Test edilecek kelime dizisi
     let learnWordService: LearnWordParserProtocol = LearnWordParser.parser
     let firebaseService: fetchServiceProtocol = FetchWords.fetchWords // Firebase service
-    let authdata = UserData.userData
+    let authdata = CurrentUserData.userData
     let messageService: MessageViewerProtocol = MessageViewer.messageViewer
     
     static let parser = TestWordParser() // Singleton sağlamak için kendi nesnesini oluşturması.
@@ -33,7 +34,6 @@ class TestWordParser: TestWordParserProtocol
     
     func fetchedTestWord() // Test edilecek kelimelerin çekilmesi
     {
-        authdata.reloadData()
         if authdata.isSign
         {
             firebaseService.fetchTestWord(userID: authdata.userID) { (result) in
@@ -51,17 +51,16 @@ class TestWordParser: TestWordParserProtocol
                         word.level = result.level
                         self.testArray.append(word)
                     }
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: "FetchTestWords"), object: nil)
+                    self.fetchedDelegate?.fetched()
                 case .failure(_):
                     self.messageService.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("FAIL_FETCHWORD", comment: ""))
                 }
             }
         }
         else
-        {
-            messageService.failMessage(title: NSLocalizedString("NOT_SIGNIN", comment: ""), body: NSLocalizedString("PLEASE_SIGNIN_FOR_TEST", comment: ""))
-        }
+        { messageService.failMessage(title: NSLocalizedString("NOT_SIGNIN", comment: ""), body: NSLocalizedString("PLEASE_SIGNIN_FOR_TEST", comment: "")) }
     }
+    
     func getTestWord() -> WordTestPageData // Random test edilecek kelime sayfası oluşturup gönderir.
     {
         if !testArray.isEmpty
@@ -86,35 +85,41 @@ class TestWordParser: TestWordParserProtocol
                                                           option2: learnWordService.wordArray[randomOptions[1]].translate,
                                                           option3: learnWordService.wordArray[randomOptions[2]].translate,
                                                           option4: learnWordService.wordArray[randomOptions[3]].translate,
-                                                          correctAnswer: Int.random(in: 1 ... 4),
-                                                          wordIndex: randomIndex)
+                                                          correctAnswer: Int.random(in: 1 ... 4))
+            
             var wordTestPageData: WordTestPageData = WordTestPageData(wordPage: wordPageData, level: testArray[randomIndex].level)
             
             switch wordTestPageData.wordPage.correctAnswer
             {
             case 1:
                 wordTestPageData.wordPage.option1 = word.word.translate
-                break
             case 2:
                 wordTestPageData.wordPage.option2 = word.word.translate
-                break
             case 3:
                 wordTestPageData.wordPage.option3 = word.word.translate
-                break
             case 4:
                 wordTestPageData.wordPage.option4 = word.word.translate
-                break
             default:
                 break
             }
             return wordTestPageData
         }
-        let wordData = WordPageData(wordInfo: WordData(word: "", translate: "", sentence: "", category: "", uid: ""), option1: "", option2: "", option3: "", option4: "", correctAnswer: 0, wordIndex: 0)
+        let wordData = WordPageData(wordInfo: WordData(word: "", translate: "", sentence: "", category: "", uid: ""), option1: "", option2: "", option3: "", option4: "", correctAnswer: 0)
         return WordTestPageData(wordPage: wordData, level: 0)
     }
-    func deleteTest(index: Int) // Test edilen kelime silinir.
+
+    func deleteTest(deleteID: String) // Test edilen kelime bulunup silinir.
     {
-        testArray.remove(at: index)
+        var index = 0
+        for word in testArray
+        {
+            if word.word.uid == deleteID
+            {
+                testArray.remove(at: index)
+                break
+            }
+            index += 1
+        }
         if getTestArrayCount() == 0
         {
             messageService.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("EMPTY_TEST_WORD", comment: ""))

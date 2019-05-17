@@ -18,7 +18,8 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     
     let wordPageScrollView: UIScrollView = UIScrollView() // kaydırılabilir sayfamız
     let blurredEffectView = UIVisualEffectView() // loading view'u
-    let authdata = UserData.userData
+    let authdata = CurrentUserData.userData
+    
     
     var wordPages: [WordPage] = { () -> [WordPage] in // ScrollView sayfalarının oluşturulmasu
         let wordPage0: WordPage = Bundle.main.loadNibNamed("WordPage", owner: self, options: nil)?.first as! WordPage // Previous Page
@@ -30,24 +31,32 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     let wordDataParser = LearnWordParser.parser // Api'daki kelimeyi işleyip veren static sınıf
     var dayCorrectAnswer: [String] = [] // günlük bilinen doğru kelimeler
     var dayWrongAnswer: [String] = [] // günlük yanlış bilinen kelimeler
-    var solvedWords: [String] = [] // toplamda bilinen kelimeler
     
     var isDragging = false // kaydırma kontrolü
     var scrollViewSize: CGSize = .zero
     
     lazy var authBoard: BLTNItemManager = {
-        let rootItem: BLTNItem = BulletinDataSource.splashBoard()
+        let rootItem: BLTNItem = BulletinDataSource().splashBoard()
         return BLTNItemManager(rootItem: rootItem)
     }()
-    lazy var accountBoard: BLTNItemManager = {
-        let rootItem: BLTNItem = BulletinDataSource.accountBoard()
-        return BLTNItemManager(rootItem: rootItem)
-    }()
+    
+    var accountBoard: BLTNItemManager = BLTNItemManager(rootItem: BulletinDataSource().accountBoard())
+
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        
+        
+        
+        let fetchSolvedWords = FecthSolvedWords()
+        fetchSolvedWords.delegate = self
+        fetchSolvedWords.fetchSolvedWord()
+        wordDataParser.fetchedDelegate = self
+        
+//        İnternet Bağlantı Kontrolü
+        networkCheck(isConnected: Reachability.isConnectedToNetwork())
+        
 //        View ayarlamaları
         navigationItem.title = NSLocalizedString("LEARN_VC_TITLE", comment: "")
         wordPageScrollView.delegate = self
@@ -64,15 +73,6 @@ class LearnVC: UIViewController, WordScrollViewProtocol
 //        Giriş yapılıp yapılmadığının kontrolü. Giriş yapılmamışsa yönlendiriliyor.
         if !authdata.isSign
         { showBulletin() }
-        
-//        Kelime geldiği zaman bilgi mesajını yakalayıp işlem yapımı
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FetchWords"), object: nil, queue: OperationQueue.main, using: { _ in
-            self.prepareScrollView()
-            self.loadingView()
-            self.counterStack.isHidden = false
-            self.correctCounter.text = String(describing: self.dayCorrectAnswer.count)
-            self.wrongCounter.text =  String(describing: self.dayWrongAnswer.count)
-        })
     }
     override func viewWillAppear(_ animated: Bool)
     {
@@ -104,10 +104,8 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         let loader = LoadData()
         dayCorrectAnswer.removeAll()
         dayWrongAnswer.removeAll()
-        solvedWords.removeAll()
         dayCorrectAnswer = loader.loadCorrectAnswers()
         dayWrongAnswer = loader.loadWrongAnswers()
-        solvedWords = loader.loadSolvedWords()
     }
     internal func prepareScrollView() // ScrollView'un ayarlanması ve kelimelerin yerleştirilmesi
     {
@@ -139,6 +137,7 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         {
             let wordData = wordDatas[index]
             page.delegate = self
+            page.buttonUnlock()
             
 //            Sayfaların oluşturulmasında varsayılan ayarları yapılıyor
             page.answerBox1Image.image = UIImage(named: "BoxBackground")
@@ -171,7 +170,26 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     }
     @IBAction func accountButton(_ sender: Any)
     {
+        accountBoard = BLTNItemManager(rootItem: BulletinDataSource().accountBoard())
         accountBoard.backgroundViewStyle = .dimmed
         accountBoard.showBulletin(above: self)
+    }
+}
+extension LearnVC: SolvedWordDelegate
+{
+    func getSolved(solvedArray: [String])
+    {
+        wordDataParser.solvedWords = solvedArray
+    }
+}
+extension LearnVC: FetchedDelegate
+{
+    func fetched()
+    {
+        prepareScrollView()
+        loadingView()
+        counterStack.isHidden = false
+        correctCounter.text = String(describing: self.dayCorrectAnswer.count)
+        wrongCounter.text =  String(describing: self.dayWrongAnswer.count)
     }
 }

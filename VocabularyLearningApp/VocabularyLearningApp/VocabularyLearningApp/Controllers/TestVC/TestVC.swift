@@ -32,6 +32,9 @@ class TestVC: UIViewController, WordScrollViewProtocol
     {
         super.viewDidLoad()
         
+//        İnternet Bağlantı Kontrolü
+        networkCheck(isConnected: Reachability.isConnectedToNetwork())
+        
 //        View ayarlamaları
         navigationItem.title = NSLocalizedString("TEST_VC_TITLE", comment: "")
         wordPageScrollView.delegate = self
@@ -43,12 +46,7 @@ class TestVC: UIViewController, WordScrollViewProtocol
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(levelMessage))
         levelView.addGestureRecognizer(tapGesture)
         
-//        Kelime geldiği zaman bilgi mesajını yakalayıp işlem yapımı
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: "FetchTestWords"), object: nil, queue: OperationQueue.main, using: { _ in
-            if self.wordDataParser.learnWordService.getLearnArrayCount() > 0
-            { self.prepareScrollView() }
-            self.loadingView()
-        })
+        wordDataParser.fetchedDelegate = self
     }
     override func viewWillAppear(_ animated: Bool)
     {
@@ -109,6 +107,7 @@ class TestVC: UIViewController, WordScrollViewProtocol
         {
             let wordData = wordDataArray[index]
             page.delegate = self
+            page.buttonUnlock()
             
 //            Sayfaların oluşturulmasında varsayılan ayarları yapılıyorç
             page.answerBox1Image.image = UIImage(named: "BoxBackground")
@@ -133,6 +132,15 @@ class TestVC: UIViewController, WordScrollViewProtocol
             index += 1
         }
         levelLabel.text = String(wordDataArray[1].level)
+    }
+}
+extension TestVC: FetchedDelegate
+{
+    func fetched()
+    {
+        if self.wordDataParser.learnWordService.getLearnArrayCount() > 0
+        { self.prepareScrollView() }
+        self.loadingView()
     }
 }
 

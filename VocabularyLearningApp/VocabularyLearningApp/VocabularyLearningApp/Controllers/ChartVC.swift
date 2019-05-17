@@ -96,7 +96,7 @@ class ChartVC: UIViewController, ChartViewDelegate, ChartResponseDelegate
     {
         chartView.animate(xAxisDuration: 2, yAxisDuration: 2)
         let set = BarChartDataSet(entries: dataValues, label: NSLocalizedString("CHART_VALUE_LABEL", comment: ""))
-        set.colors = [UIColor(red: 0.22, green: 0.44, blue: 0.65, alpha: 1.0)]
+        set.colors = [UIColor(red: 0.28, green: 0.55, blue: 0.96, alpha: 1.0)]
         let data = BarChartData(dataSet: set)
         
         data.setValueFont(.systemFont(ofSize: 13))

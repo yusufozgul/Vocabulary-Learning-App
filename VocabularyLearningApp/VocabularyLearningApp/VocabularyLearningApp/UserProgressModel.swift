@@ -23,10 +23,9 @@ protocol UserProgressModelProtocol
 class UserProgressModel: UserProgressModelProtocol
 {
     private let service: UserProgressProtocol = UserProgress()
-    let authdata = UserData.userData
+    let authdata = CurrentUserData.userData
     func saveLearnProgress(day: String, correctData: [String], wrongData: [String], solvedWords: [String])
     {
-        authdata.reloadData()
         if authdata.isSign
         {
             service.saveProgress(userID: authdata.userID, day: day, correctData: correctData, wrongData: wrongData, solvedWords: solvedWords)
@@ -35,7 +34,6 @@ class UserProgressModel: UserProgressModelProtocol
     
     func saveTestProgress(askDay: String, level: String, word: String, translate: String, sentence: String, category: String, id: String)
     {
-        authdata.reloadData()
         if authdata.isSign
         {
             service.saveTestedProgress(userID: authdata.userID, askDay: askDay, level: level, word: word, translate: translate, sentence: sentence, category: category, id: id)
@@ -43,7 +41,6 @@ class UserProgressModel: UserProgressModelProtocol
     }
     public func saveLearnedWord(day: String, uid: String)
     {
-        authdata.reloadData()
         if authdata.isSign
         {
             var words: [String] = []
@@ -63,7 +60,6 @@ class UserProgressModel: UserProgressModelProtocol
     }
     func deleteSolvedTest(uid: String)
     {
-        authdata.reloadData()
         if authdata.isSign
         {
             let deleteService: FireBaseDeleteProtocol = FireBaseDelete()

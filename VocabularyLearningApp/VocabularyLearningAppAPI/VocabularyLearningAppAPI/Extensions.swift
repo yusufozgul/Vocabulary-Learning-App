@@ -81,3 +81,19 @@ extension String
         self = self.capitalizingFirstLetter()
     }
 }
+extension UIViewController
+{
+    func networkCheck(isConnected: Bool)
+    {
+        if !isConnected
+        {
+            let networkAlert = UIAlertController(title: NSLocalizedString("NETWORK_ERROR_TITLE", comment: ""), message: NSLocalizedString("NETWORK_ERROR_DESC", comment: ""), preferredStyle: .alert)
+            let reloadButton = UIAlertAction(title: NSLocalizedString("NETWORK_ERROR_RELOAD", comment: ""), style: .default) { _ in
+                self.viewDidLoad()
+                self.viewWillAppear(true)
+            }
+            networkAlert.addAction(reloadButton)
+            self.present(networkAlert, animated: true)
+        }
+    }
+}

@@ -125,3 +125,8 @@
 "SPLASH_CHART_DESC" = "Bir kelime tamamen öğrenildiği zaman kaydedilir. İstatistik kısmından dilediğiniz zaman aralığını seçerek öğrenme grafiklerinizi görün.";
 "SPLASH_ADD_TITLE" = "Siz de Destekleyin";
 "SPLASH_ADD_DESC" = "Yeni kelimeler öğrendiğiniz gibi uygulamanın gelişmesine katkı sağlayabilirsiniz. Kelime ekleme sayfasından kelimeye ait tüm bilgileri girerek destek sağlayabilirsiniz.";
+
+// Network Check
+"NETWORK_ERROR_TITLE" = "Bağlantı Sorunu";
+"NETWORK_ERROR_DESC" = "İnternet bağlantısında bir sorun görünüyor, lütfen ağa bağlanıp yeniden deneyin.";
+"NETWORK_ERROR_RELOAD" = "Yeniden kontrol et";

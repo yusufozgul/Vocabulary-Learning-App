@@ -22,11 +22,10 @@ class AddNewWord: AddNewWordProtocol
 {
     let messageService: MessageViewerProtocol = MessageViewer.messageViewer
     let addWord: AddWordProtocol = AddWord()
-    let authdata = UserData.userData
+    let authdata = CurrentUserData.userData
     weak var delegate: AddWordDelegate?
     func AddNewWord(data: WordData)
     {
-        authdata.reloadData()
         if authdata.isSign
         {
             addWord.AddNewWord(word: data.word, translate: data.translate, sentence: data.sentence, category: data.category) { (result) in

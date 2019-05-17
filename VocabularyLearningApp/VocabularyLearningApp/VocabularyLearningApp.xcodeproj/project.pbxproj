@@ -22,6 +22,9 @@
 		8840CB4C2272530900A837FD /* WordPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8840CB4B2272530900A837FD /* WordPage.xib */; };
 		8840CB4E227482A100A837FD /* WordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840CB4D227482A100A837FD /* WordPage.swift */; };
 		8840CB522274B6E900A837FD /* AnsweredDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840CB512274B6E900A837FD /* AnsweredDelegate.swift */; };
+		884561A7228DC36100C18170 /* NetworkCheckReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884561A6228DC36100C18170 /* NetworkCheckReachability.swift */; };
+		884561AA228ECE8500C18170 /* SolvesWordsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884561A9228ECE8500C18170 /* SolvesWordsDelegate.swift */; };
+		884561AC228EE83C00C18170 /* FethedNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884561AB228EE83C00C18170 /* FethedNotificationDelegate.swift */; };
 		8850BA20226F32F800FFCE3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8850BA22226F32F800FFCE3D /* Main.storyboard */; };
 		8850BA29226F336B00FFCE3D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8850BA2B226F336B00FFCE3D /* Localizable.strings */; };
 		885FD16A2281ED790042D95C /* MessageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885FD1692281ED790042D95C /* MessageViewer.swift */; };
@@ -109,6 +112,9 @@
 		8840CB4B2272530900A837FD /* WordPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordPage.xib; sourceTree = "<group>"; };
 		8840CB4D227482A100A837FD /* WordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPage.swift; sourceTree = "<group>"; };
 		8840CB512274B6E900A837FD /* AnsweredDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnsweredDelegate.swift; sourceTree = "<group>"; };
+		884561A6228DC36100C18170 /* NetworkCheckReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCheckReachability.swift; sourceTree = "<group>"; };
+		884561A9228ECE8500C18170 /* SolvesWordsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvesWordsDelegate.swift; sourceTree = "<group>"; };
+		884561AB228EE83C00C18170 /* FethedNotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FethedNotificationDelegate.swift; sourceTree = "<group>"; };
 		8850BA23226F332600FFCE3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8850BA24226F332D00FFCE3D /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
 		8850BA2A226F336B00FFCE3D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -186,6 +192,7 @@
 				8840CB352270F76C00A837FD /* BLTNBoradSignupExt.swift */,
 				88283A5E2275BFCF00ECB72F /* Extensions.swift */,
 				885FD1692281ED790042D95C /* MessageViewer.swift */,
+				884561A6228DC36100C18170 /* NetworkCheckReachability.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -348,6 +355,8 @@
 				8840CB512274B6E900A837FD /* AnsweredDelegate.swift */,
 				880A82B62281EBE1003E6B6E /* AddWordDelegate.swift */,
 				885FD1B2228481AE0042D95C /* ChartResponseDelegate.swift */,
+				884561A9228ECE8500C18170 /* SolvesWordsDelegate.swift */,
+				884561AB228EE83C00C18170 /* FethedNotificationDelegate.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -519,11 +528,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				884561A7228DC36100C18170 /* NetworkCheckReachability.swift in Sources */,
 				88283A652275CF8D00ECB72F /* LearnVcAnswerExtension.swift in Sources */,
 				88C4E881226EFB870008382C /* TestVC.swift in Sources */,
 				88C4E90B226F0B560008382C /* AddNewWordVC.swift in Sources */,
+				884561AC228EE83C00C18170 /* FethedNotificationDelegate.swift in Sources */,
 				880A82B12281E7B9003E6B6E /* UserData.swift in Sources */,
 				885FD1B72284C3A00042D95C /* User.swift in Sources */,
+				884561AA228ECE8500C18170 /* SolvesWordsDelegate.swift in Sources */,
 				88DF649E228C0FD9007EA904 /* TestVCScrollExtension.swift in Sources */,
 				880A82AD2281E78F003E6B6E /* WordData.swift in Sources */,
 				88C4E87D226EFB870008382C /* AppDelegate.swift in Sources */,

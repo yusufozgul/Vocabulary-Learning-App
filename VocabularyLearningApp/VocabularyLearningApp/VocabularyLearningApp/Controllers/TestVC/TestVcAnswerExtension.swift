@@ -14,12 +14,21 @@ extension TestVC: AnsweredDelegate
 //    Tıklanıldığı indisle gereken kontroller yapılıyor ve işlem devam ediyor.
     func selectAnswer(selected: Int)
     {
+        let generator = UINotificationFeedbackGenerator()
         let page = wordPages[1]
         let wordData = wordDataArray[1]
         var isKnown: Bool = false
         
         if selected == wordData.wordPage.correctAnswer
-        { isKnown = true }
+        {
+            generator.notificationOccurred(.success)
+            isKnown = true
+        }
+        else
+        {
+            generator.notificationOccurred(.error)
+            isKnown = false
+        }
         
         switch selected {
         case 1:
@@ -28,28 +37,24 @@ extension TestVC: AnsweredDelegate
                 
             else
             { page.answerBox1Image.image = UIImage(named: "WrongBoxBackground") }
-            break
         case 2:
             if selected == wordData.wordPage.correctAnswer
             { page.answerBox2Image.image = UIImage(named: "correctBoxBackground") }
                 
             else
             { page.answerBox2Image.image = UIImage(named: "WrongBoxBackground") }
-            break
         case 3:
             if selected == wordData.wordPage.correctAnswer
             { page.answerBox3Image.image = UIImage(named: "correctBoxBackground") }
                 
             else
             { page.answerBox3Image.image = UIImage(named: "WrongBoxBackground") }
-            break
         case 4:
             if selected == wordData.wordPage.correctAnswer
             { page.answerBox4Image.image = UIImage(named: "correctBoxBackground") }
                 
             else
             { page.answerBox4Image.image = UIImage(named: "WrongBoxBackground") }
-            break
         default:
             break
         }

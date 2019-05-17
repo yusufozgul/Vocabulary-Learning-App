@@ -8,27 +8,26 @@
 
 import Foundation
 
-class UserData
+class CurrentUserData
 {
     public var userEmail: String = ""
     public var userID: String = ""
     public var isSign = false
-    private init() { reloadData() }
+    private init() { }
     
-    static let userData = UserData()
-    public func reloadData()
+    static let userData = CurrentUserData()
+    
+    public func logOut()
     {
-        if let data: [String] = (UserDefaults.standard.object(forKey: "currentUser") as? [String])
-        {
-            userEmail = data[0]
-            userID = data[1]
-            isSign = true
-        }
-        else
-        {
-            isSign = false
-            userEmail = ""
-            userID = ""
-        }
+        isSign = false
+        userEmail = ""
+        userID = ""
+    }
+    
+    public func sign(email: String, id: String)
+    {
+        userEmail = email
+        userID = id
+        isSign = true
     }
 }
