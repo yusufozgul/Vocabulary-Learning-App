@@ -52,8 +52,8 @@ class TestWordParser: TestWordParserProtocol
                         self.testArray.append(word)
                     }
                     self.fetchedDelegate?.fetched()
-                case .failure(_):
-                    self.messageService.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: NSLocalizedString("FAIL_FETCHWORD", comment: ""))
+                case .failure(let error):
+                    self.messageService.failMessage(title: NSLocalizedString("ALERT_TITLE", comment: ""), body: error)
                 }
             }
         }

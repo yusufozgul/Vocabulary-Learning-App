@@ -20,6 +20,7 @@ extension LearnVC
             wordDataParser.solvedWords.append(wordData.wordInfo.uid)
             dayCorrectAnswer.append(wordData.wordInfo.uid)
             userProgressModel.saveTestProgress(askDay: Date().addCurrentDate(value: 1, byAdding: DateInterval.day.rawValue), level: "1", word: wordData.wordInfo.word, translate: wordData.wordInfo.translate, sentence: wordData.wordInfo.sentence, category: wordData.wordInfo.category, id: wordData.wordInfo.uid)
+        
         }
         else
         {

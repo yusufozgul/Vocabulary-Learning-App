@@ -14,12 +14,14 @@ extension TestVC
 //    Bir kelime eğer yanlış bilindiyse yarın tekrar test etmek için level'i 1 yapılır.
     func saveData(isKnown: Bool)
     {
-        let messageService: MessageViewerProtocol = MessageViewer.messageViewer
         let wordData = wordDataArray[1]
         let userProgressModel: UserProgressModelProtocol = UserProgressModel()
-        wordDataParser.deleteTest(deleteID: wordData.wordPage.wordInfo.uid) // Test için gelen soru çözüldüğünde tekrar etmemesi için siliniyor
+        
         if isKnown
         {
+            wordDataParser.deleteTest(deleteID: wordData.wordPage.wordInfo.uid) // Test için gelen soru çözüldüğünde tekrar etmemesi için siliniyor
+            let messageService: MessageViewerProtocol = MessageViewer.messageViewer
+            
             switch wordData.level
             {
             case 1:

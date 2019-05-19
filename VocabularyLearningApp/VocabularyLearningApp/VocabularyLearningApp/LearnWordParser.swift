@@ -93,11 +93,10 @@ class LearnWordParser: LearnWordParserProtocol
                 default:
                     break
                 }
-                
                 for solvedWord in solvedWords
                 {
-                    if solvedWord == word.uid
-                    { continue }
+                    if solvedWord != word.uid
+                    { break }
                 }
                 return wordPageData
             }
