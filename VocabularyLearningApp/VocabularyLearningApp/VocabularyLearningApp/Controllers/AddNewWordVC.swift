@@ -17,6 +17,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var addButtonLabel: UILabel!
     @IBOutlet weak var categoryTextField: UITextField!
+    @IBOutlet weak var vcTitle: UILabel!
     
     let addWordModel = AddNewWord()
     let messageService: MessageViewerProtocol = MessageViewer.messageViewer
@@ -28,7 +29,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         super.viewDidLoad()
 //        View ayarlamaları
         
-        navigationItem.title = NSLocalizedString("ADD_WORD_TITLE", comment: "")
+        vcTitle.text = NSLocalizedString("ADD_WORD_TITLE", comment: "")
         wordTextFiled.placeholder = NSLocalizedString("WORD_TEXTFILED_PLACEHOLDER", comment: "")
         wordTranslate.placeholder = NSLocalizedString("WORD_TRANSLATE_TEXTFILED_PLACEHOLDER", comment: "")
         wordDescription.textColor = .lightGray

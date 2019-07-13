@@ -12,17 +12,20 @@ import UIKit
 extension LearnVC: UIScrollViewDelegate
 {
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) // Kaydırma başladı
-    { isDragging = true }
+    {
+        isDragging = true
+    }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) // Kaydırma sonlandırıldı
     { isDragging = false }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) // kaydırma bitince kaydırma sonlandırılmışsa sayfa geçiş işlemleri yapılıyor
     {
+        let offsetX = scrollView.contentOffset.x
+        miniImage.transform = CGAffineTransform(rotationAngle: offsetX / 100)
+        
         if !isDragging
         { return }
-        
-        let offsetX = scrollView.contentOffset.x
         
         if (offsetX > scrollView.frame.size.width * 1.5)
         {

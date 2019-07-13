@@ -64,6 +64,6 @@ extension LearnVC: AnsweredDelegate
         saveData(isKnown: isKnown) // cevap verisinin kaydedilmesi
         correctCounter.text = String(describing: dayCorrectAnswer.count) // doğru sayacının arttırılması
         wrongCounter.text =  String(describing: dayWrongAnswer.count) // yanlış sayacının arttırılması
-        goNextPage(delay: 0.8) // Otomatik sayfa geçişi
+        goNextPage(delay: 1) // Otomatik sayfa geçişi
     }
 }

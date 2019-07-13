@@ -21,10 +21,12 @@ extension TestVC: UIScrollViewDelegate
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) // kaydırma bitince kaydırma sonlandırılmışsa sayfa geçiş işlemleri yapılıyor
     {
+        let offsetX = scrollView.contentOffset.x
+        miniImage.transform = CGAffineTransform(rotationAngle: offsetX / 50)
         if !isDragging
         { return }
         
-        let offsetX = scrollView.contentOffset.x
+        
         
         if (offsetX > scrollView.frame.size.width * 1.5)
         {

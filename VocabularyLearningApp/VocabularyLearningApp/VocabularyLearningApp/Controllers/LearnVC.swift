@@ -15,6 +15,9 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     @IBOutlet weak var counterStack: UIStackView!
     @IBOutlet weak var correctCounter: UILabel!
     @IBOutlet weak var wrongCounter: UILabel!
+    @IBOutlet weak var questionView: UIView!
+    @IBOutlet weak var miniImage: UIImageView!
+    @IBOutlet weak var vcTitle: UILabel!
     
     let wordPageScrollView: UIScrollView = UIScrollView() // kaydırılabilir sayfamız
     let blurredEffectView = UIVisualEffectView() // loading view'u
@@ -47,8 +50,6 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     {
         super.viewDidLoad()
         
-        
-        
         let fetchSolvedWords = FecthSolvedWords()
         fetchSolvedWords.delegate = self
         fetchSolvedWords.fetchSolvedWord()
@@ -58,12 +59,12 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         networkCheck(isConnected: Reachability.isConnectedToNetwork())
         
 //        View ayarlamaları
-        navigationItem.title = NSLocalizedString("LEARN_VC_TITLE", comment: "")
+        vcTitle.text = NSLocalizedString("LEARN_VC_TITLE", comment: "")
         wordPageScrollView.delegate = self
         wordPageScrollView.isPagingEnabled = true
         wordPageScrollView.showsHorizontalScrollIndicator = false
         wordPageScrollView.showsVerticalScrollIndicator = false
-        view.addSubview(wordPageScrollView)
+        questionView.addSubview(wordPageScrollView)
         
 //        Verilerin çekilmesi, parse edilmesi ve local verilerin çekilmesi
         wordDataParser.fetchedLearnWord()
@@ -78,6 +79,9 @@ class LearnVC: UIViewController, WordScrollViewProtocol
     {
         loadData()
         loadingView()
+        
+        questionView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        questionView.layer.cornerRadius = 30
     }
     internal func loadingView() // Loading sayfası gösterimi ve kontrolü
     {
@@ -125,8 +129,13 @@ class LearnVC: UIViewController, WordScrollViewProtocol
         }
         scrollViewSize = (wordPages.first?.frame.size)!
         wordPageScrollView.frame.size = scrollViewSize
-        wordPageScrollView.center = CGPoint(x: view.frame.size.width  / 2, y: view.frame.size.height / 2)
-        wordPageScrollView.contentSize = CGSize(width: scrollViewSize.width * 3, height: scrollViewSize.height)
+        wordPageScrollView.frame = CGRect(x: questionView.center.x - (wordPageScrollView.frame.width / 2),
+                                          y: 30,
+                                          width: wordPageScrollView.frame.width,
+                                          height: wordPageScrollView.frame.height)
+        
+        wordPageScrollView.contentSize = CGSize(width: scrollViewSize.width * 3,
+                                                height: scrollViewSize.height)
         wordPageScrollView.contentOffset = CGPoint(x: scrollViewSize.width, y: 0)
         layoutWordPage()
     }

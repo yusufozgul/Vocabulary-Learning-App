@@ -56,7 +56,7 @@ class LearnWordParser: LearnWordParserProtocol
     {
         if !wordArray.isEmpty
         {
-            while true
+            whilelabel: while true
             {
                 let randomIndex = Int.random(in: 0 ... (wordArray.count - 1))
                 var randomOptions = [0,0,0,0]
@@ -95,8 +95,8 @@ class LearnWordParser: LearnWordParserProtocol
                 }
                 for solvedWord in solvedWords
                 {
-                    if solvedWord != word.uid
-                    { break }
+                    if solvedWord == word.uid
+                    { continue whilelabel }
                 }
                 return wordPageData
             }

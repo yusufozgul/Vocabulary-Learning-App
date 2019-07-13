@@ -110,6 +110,10 @@ class ChartVC: UIViewController, ChartViewDelegate, ChartResponseDelegate
     {
         dateIntervalSelector()
     }
+    @IBAction func backButton(_ sender: Any)
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 extension ChartVC: IAxisValueFormatter
 {

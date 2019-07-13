@@ -59,6 +59,6 @@ extension TestVC: AnsweredDelegate
             break
         }
         saveData(isKnown: isKnown) // cevap verisinin kaydedilmesi
-        goNextPage(delay: 0.6) // Otomatik sayfa geçişi
+        goNextPage(delay: 1) // Otomatik sayfa geçişi
     }
 }
