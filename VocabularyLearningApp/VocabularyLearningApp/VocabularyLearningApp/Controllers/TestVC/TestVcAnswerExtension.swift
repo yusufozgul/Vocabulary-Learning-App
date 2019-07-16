@@ -33,28 +33,28 @@ extension TestVC: AnsweredDelegate
         switch selected {
         case 1:
             if selected == wordData.wordPage.correctAnswer
-            { page.answerBox1Image.image = UIImage(named: "correctBoxBackground") }
+            { page.answerBox1Image.image = UIImage(named: "answerA_True") }
                 
             else
-            { page.answerBox1Image.image = UIImage(named: "WrongBoxBackground") }
+            { page.answerBox1Image.image = UIImage(named: "answerA_Wrong") }
         case 2:
             if selected == wordData.wordPage.correctAnswer
-            { page.answerBox2Image.image = UIImage(named: "correctBoxBackground") }
+            { page.answerBox2Image.image = UIImage(named: "answerB_True") }
                 
             else
-            { page.answerBox2Image.image = UIImage(named: "WrongBoxBackground") }
+            { page.answerBox2Image.image = UIImage(named: "answerB_Wrong") }
         case 3:
             if selected == wordData.wordPage.correctAnswer
-            { page.answerBox3Image.image = UIImage(named: "correctBoxBackground") }
+            { page.answerBox3Image.image = UIImage(named: "answerC_True") }
                 
             else
-            { page.answerBox3Image.image = UIImage(named: "WrongBoxBackground") }
+            { page.answerBox3Image.image = UIImage(named: "answerC_Wrong") }
         case 4:
             if selected == wordData.wordPage.correctAnswer
-            { page.answerBox4Image.image = UIImage(named: "correctBoxBackground") }
+            { page.answerBox4Image.image = UIImage(named: "answerD_True") }
                 
             else
-            { page.answerBox4Image.image = UIImage(named: "WrongBoxBackground") }
+            { page.answerBox4Image.image = UIImage(named: "answerD_Wrong") }
         default:
             break
         }

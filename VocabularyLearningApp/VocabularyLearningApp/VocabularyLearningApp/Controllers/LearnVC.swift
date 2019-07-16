@@ -149,10 +149,10 @@ class LearnVC: UIViewController, WordScrollViewProtocol
             page.buttonUnlock()
             
 //            Sayfaların oluşturulmasında varsayılan ayarları yapılıyor
-            page.answerBox1Image.image = UIImage(named: "BoxBackground")
-            page.answerBox2Image.image = UIImage(named: "BoxBackground")
-            page.answerBox3Image.image = UIImage(named: "BoxBackground")
-            page.answerBox4Image.image = UIImage(named: "BoxBackground")
+            page.answerBox1Image.image = UIImage(named: "answerA")
+            page.answerBox2Image.image = UIImage(named: "answerB")
+            page.answerBox3Image.image = UIImage(named: "answerC")
+            page.answerBox4Image.image = UIImage(named: "answerD")
             
 //            Kelimeleri ve şıkları yerleştirme
             page.wordLabel.text = wordData.wordInfo.word
@@ -197,7 +197,7 @@ extension LearnVC: FetchedDelegate
     {
         prepareScrollView()
         loadingView()
-        counterStack.isHidden = false
+//        counterStack.isHidden = false
         correctCounter.text = String(describing: self.dayCorrectAnswer.count)
         wrongCounter.text =  String(describing: self.dayWrongAnswer.count)
     }

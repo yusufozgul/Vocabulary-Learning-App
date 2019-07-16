@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "learnIcon.png",
+      "filename" : "ebook.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "learnIcon@2x.png",
+      "filename" : "ebook@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "learnIcon@3x.png",
+      "filename" : "ebook@3x.png",
       "scale" : "3x"
     }
   ],

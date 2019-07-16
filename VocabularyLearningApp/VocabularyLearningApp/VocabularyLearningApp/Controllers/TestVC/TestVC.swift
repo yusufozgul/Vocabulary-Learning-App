@@ -56,6 +56,8 @@ class TestVC: UIViewController, WordScrollViewProtocol
 //        Verilerin çekilmesi, parse edilmesi ve local verilerin çekilmesi
         wordDataParser.fetchedTestWord()
         loadingView()
+        
+        levelView.isHidden = true
     }
     override func viewWillAppear(_ animated: Bool)
     {
@@ -122,10 +124,10 @@ class TestVC: UIViewController, WordScrollViewProtocol
             page.buttonUnlock()
             
 //            Sayfaların oluşturulmasında varsayılan ayarları yapılıyorç
-            page.answerBox1Image.image = UIImage(named: "BoxBackground")
-            page.answerBox2Image.image = UIImage(named: "BoxBackground")
-            page.answerBox3Image.image = UIImage(named: "BoxBackground")
-            page.answerBox4Image.image = UIImage(named: "BoxBackground")
+            page.answerBox1Image.image = UIImage(named: "answerA")
+            page.answerBox2Image.image = UIImage(named: "answerB")
+            page.answerBox3Image.image = UIImage(named: "answerC")
+            page.answerBox4Image.image = UIImage(named: "answerD")
             
 //            Kelimeleri ve şıkları yerleştirme
             page.wordLabel.text = wordData.wordPage.wordInfo.word
@@ -144,6 +146,7 @@ class TestVC: UIViewController, WordScrollViewProtocol
             index += 1
         }
         levelLabel.text = String(wordDataArray[1].level)
+        miniImage.transform = .identity
     }
 }
 extension TestVC: FetchedDelegate

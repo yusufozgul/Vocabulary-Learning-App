@@ -22,7 +22,7 @@ extension LearnVC: UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) // kaydırma bitince kaydırma sonlandırılmışsa sayfa geçiş işlemleri yapılıyor
     {
         let offsetX = scrollView.contentOffset.x
-        miniImage.transform = CGAffineTransform(rotationAngle: offsetX / 100)
+        miniImage.transform = CGAffineTransform(rotationAngle: offsetX / 50)
         
         if !isDragging
         { return }

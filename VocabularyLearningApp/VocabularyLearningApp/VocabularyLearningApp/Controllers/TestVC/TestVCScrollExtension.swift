@@ -26,8 +26,6 @@ extension TestVC: UIScrollViewDelegate
         if !isDragging
         { return }
         
-        
-        
         if (offsetX > scrollView.frame.size.width * 1.5)
         {
             let wordData = wordDataParser.getTestWord()
