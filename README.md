@@ -17,6 +17,7 @@ You need GoogleService-Info.plist to run the project.
 https://firebase.google.com/docs/ios/setup
 
 
+## Kelime Öğrenme Uygulaması
 Kelime Öğrenme uygulaması, kelimeler öğrenebileceğiniz, bu öğrendiklerinizi test edebileceğiniz ve katkı sağlayabileceğiniz bir uygulama. 
 Swift ile kodlanmıştır, Kullanıcı verileri ve kelime veritabanı FireBase ile yapılmıştır.
 
