@@ -12,7 +12,7 @@
 The Vocabulary Learning app is an application where you can learn words, test what you have learned, and contribute.
 Encoded with Swift, User data and word database made with FireBase.
 
-## NOTE:
+### NOTE:
 You need GoogleService-Info.plist to run the project.
 https://firebase.google.com/docs/ios/setup
 
@@ -22,7 +22,7 @@ Kelime Öğrenme uygulaması, kelimeler öğrenebileceğiniz, bu öğrendiklerin
 Swift ile kodlanmıştır, Kullanıcı verileri ve kelime veritabanı FireBase ile yapılmıştır.
 
 
-## NOT:
+### NOT:
 Projenin çalışması için GoogleService-Info.plist dosyasını eklemeniz gerekiyor.
 https://firebase.google.com/docs/ios/setup
 
