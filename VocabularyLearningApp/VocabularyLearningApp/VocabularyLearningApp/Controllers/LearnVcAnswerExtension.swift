@@ -34,16 +34,16 @@ extension LearnVC: AnsweredDelegate
         {
         case 1:
             if selected != wordData.correctAnswer
-            { page.answerBox1Image.image = UIImage(named: "answerA_Wrong") }
+            { page.answerBox1Image.image = UIImage(named: "WrongAnswer") }
         case 2:
             if selected != wordData.correctAnswer
-            { page.answerBox2Image.image = UIImage(named: "answerB_Wrong") }
+            { page.answerBox2Image.image = UIImage(named: "WrongAnswer") }
         case 3:
             if selected != wordData.correctAnswer
-            { page.answerBox3Image.image = UIImage(named: "answerC_Wrong") }
+            { page.answerBox3Image.image = UIImage(named: "WrongAnswer") }
         case 4:
             if selected != wordData.correctAnswer
-            { page.answerBox4Image.image = UIImage(named: "answerD_Wrong") }
+            { page.answerBox4Image.image = UIImage(named: "WrongAnswer") }
         default:
             break
         }
@@ -51,13 +51,13 @@ extension LearnVC: AnsweredDelegate
         switch wordData.correctAnswer
         {
         case 1:
-            page.answerBox1Image.image = UIImage(named: "answerA_True")
+            page.answerBox1Image.image = UIImage(named: "TrueAnswer")
         case 2:
-            page.answerBox2Image.image = UIImage(named: "answerB_True")
+            page.answerBox2Image.image = UIImage(named: "TrueAnswer")
         case 3:
-            page.answerBox3Image.image = UIImage(named: "answerC_True")
+            page.answerBox3Image.image = UIImage(named: "TrueAnswer")
         case 4:
-            page.answerBox4Image.image = UIImage(named: "answerD_True")
+            page.answerBox4Image.image = UIImage(named: "TrueAnswer")
         default:
             break
         }

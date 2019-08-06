@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,9 +31,9 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lro-Lt-hoN">
-                    <rect key="frame" x="16" y="380" width="235" height="35"/>
+                    <rect key="frame" x="16" y="271" width="235" height="35"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="answerA" translatesAutoresizingMaskIntoConstraints="NO" id="LVj-cE-ib1">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Answer" translatesAutoresizingMaskIntoConstraints="NO" id="LVj-cE-ib1">
                             <rect key="frame" x="0.0" y="0.0" width="235" height="35"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <userDefinedRuntimeAttributes>
@@ -76,9 +74,9 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNV-EU-6Rn">
-                    <rect key="frame" x="16" y="420" width="235" height="35"/>
+                    <rect key="frame" x="16" y="311" width="235" height="35"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="answerB" translatesAutoresizingMaskIntoConstraints="NO" id="n1l-Wb-q5I">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Answer" translatesAutoresizingMaskIntoConstraints="NO" id="n1l-Wb-q5I">
                             <rect key="frame" x="0.0" y="0.0" width="235" height="35"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GW8-qt-6rf">
@@ -115,9 +113,9 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnI-zy-Z6g">
-                    <rect key="frame" x="16" y="460" width="235" height="35"/>
+                    <rect key="frame" x="16" y="351" width="235" height="35"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="answerC" translatesAutoresizingMaskIntoConstraints="NO" id="x9c-wO-KUd">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Answer" translatesAutoresizingMaskIntoConstraints="NO" id="x9c-wO-KUd">
                             <rect key="frame" x="0.0" y="0.0" width="235" height="35"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PA5-Ni-nTr">
@@ -155,9 +153,9 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VEl-99-FPf">
-                    <rect key="frame" x="16" y="500" width="235" height="35"/>
+                    <rect key="frame" x="16" y="391" width="235" height="35"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="answerD" translatesAutoresizingMaskIntoConstraints="NO" id="JbL-Uw-cC1">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Answer" translatesAutoresizingMaskIntoConstraints="NO" id="JbL-Uw-cC1">
                             <rect key="frame" x="0.0" y="0.0" width="235" height="35"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eei-jL-HcL">
@@ -199,7 +197,7 @@
                     </constraints>
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgZ-Nw-OfB">
-                    <rect key="frame" x="16" y="98" width="235" height="276"/>
+                    <rect key="frame" x="16" y="98" width="235" height="162"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
@@ -211,13 +209,14 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VEl-99-FPf" secondAttribute="bottom" constant="5" id="4IL-BY-Rgg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="VEl-99-FPf" secondAttribute="bottom" constant="114" id="4IL-BY-Rgg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="VEl-99-FPf" secondAttribute="bottom" constant="114" id="5mV-2E-AU6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pgZ-Nw-OfB" secondAttribute="trailing" constant="16" id="5tQ-Wt-8DT"/>
                 <constraint firstItem="TSM-qs-5kf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="Dsj-eD-0XF"/>
                 <constraint firstItem="pnI-zy-Z6g" firstAttribute="top" secondItem="tNV-EU-6Rn" secondAttribute="bottom" constant="5" id="EPc-jC-aeh"/>
                 <constraint firstItem="pgZ-Nw-OfB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="HxN-1Q-gsa"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Lro-Lt-hoN" secondAttribute="trailing" constant="16" id="JN3-bb-6at"/>
-                <constraint firstItem="Lro-Lt-hoN" firstAttribute="top" secondItem="pgZ-Nw-OfB" secondAttribute="bottom" priority="999" constant="6" id="MMg-Wf-vm6"/>
+                <constraint firstItem="Lro-Lt-hoN" firstAttribute="top" secondItem="pgZ-Nw-OfB" secondAttribute="bottom" priority="999" constant="11" id="MMg-Wf-vm6"/>
                 <constraint firstItem="pnI-zy-Z6g" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Ot6-VL-OC1"/>
                 <constraint firstItem="v0m-8O-Cw3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QO0-Mn-O4N"/>
                 <constraint firstItem="VEl-99-FPf" firstAttribute="top" secondItem="pnI-zy-Z6g" secondAttribute="bottom" constant="5" id="RTO-Nj-E8M"/>
@@ -255,9 +254,6 @@
         </view>
     </objects>
     <resources>
-        <image name="answerA" width="236" height="32"/>
-        <image name="answerB" width="237" height="32"/>
-        <image name="answerC" width="237" height="32"/>
-        <image name="answerD" width="237" height="32"/>
+        <image name="Answer" width="243" height="43"/>
     </resources>
 </document>
