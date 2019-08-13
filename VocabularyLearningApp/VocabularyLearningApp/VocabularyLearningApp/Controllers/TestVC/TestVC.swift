@@ -63,6 +63,10 @@ class TestVC: UIViewController, WordScrollViewProtocol
         questionView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         questionView.layer.cornerRadius = 30
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle
+    { return .lightContent }
+    
     internal func loadingView() // Loading sayfası gösterimi ve kontrolü
     {
         if wordDataParser.getTestArrayCount() == 0

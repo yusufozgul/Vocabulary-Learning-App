@@ -36,25 +36,38 @@ extension TestVC: AnsweredDelegate
             { page.answerBox1Image.image = UIImage(named: "TrueAnswer") }
                 
             else
-            { page.answerBox1Image.image = UIImage(named: "WrongAnswer") }
+            {
+                page.answerBox1Image.image = UIImage(named: "WrongAnswer")
+                page.answerBox1Image.shake()
+            }
         case 2:
             if selected == wordData.wordPage.correctAnswer
-            { page.answerBox2Image.image = UIImage(named: "TrueAnswer") }
+            {
+                page.answerBox2Image.image = UIImage(named: "TrueAnswer") }
                 
             else
-            { page.answerBox2Image.image = UIImage(named: "WrongAnswer") }
+            {
+                page.answerBox2Image.image = UIImage(named: "WrongAnswer")
+                page.answerBox2Image.shake()
+            }
         case 3:
             if selected == wordData.wordPage.correctAnswer
             { page.answerBox3Image.image = UIImage(named: "TrueAnswer") }
                 
             else
-            { page.answerBox3Image.image = UIImage(named: "WrongAnswer") }
+            {
+                page.answerBox3Image.image = UIImage(named: "WrongAnswer")
+                page.answerBox3Image.shake()
+            }
         case 4:
             if selected == wordData.wordPage.correctAnswer
             { page.answerBox4Image.image = UIImage(named: "TrueAnswer") }
                 
             else
-            { page.answerBox4Image.image = UIImage(named: "WrongAnswer") }
+            {
+                page.answerBox4Image.image = UIImage(named: "WrongAnswer")
+                page.answerBox4Image.shake()
+            }
         default:
             break
         }

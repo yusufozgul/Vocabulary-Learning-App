@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,6 +36,7 @@
 		886D415D226FC81F0016527B /* VocabularyLearningAppAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 886D414D226F62020016527B /* VocabularyLearningAppAPI.framework */; };
 		886D415E226FC81F0016527B /* VocabularyLearningAppAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 886D414D226F62020016527B /* VocabularyLearningAppAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		886D4169226FCCDA0016527B /* addWordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886D4168226FCCDA0016527B /* addWordModel.swift */; };
+		888507C22302A71F00FE6496 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888507C12302A71F00FE6496 /* UIViewExtension.swift */; };
 		88853C45227A4E1D0095B2FE /* TestVcAnswerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88853C44227A4E1D0095B2FE /* TestVcAnswerExtension.swift */; };
 		88853C47227A4E320095B2FE /* TestVcSaveExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88853C46227A4E320095B2FE /* TestVcSaveExtension.swift */; };
 		88B5D0602278BD6400A08E12 /* LearnVcSaveExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B5D05F2278BD6400A08E12 /* LearnVcSaveExtension.swift */; };
@@ -132,6 +133,7 @@
 		886D4155226FC7BE0016527B /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		886D4164226FC8770016527B /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		886D4168226FCCDA0016527B /* addWordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addWordModel.swift; sourceTree = "<group>"; };
+		888507C12302A71F00FE6496 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		88853C44227A4E1D0095B2FE /* TestVcAnswerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVcAnswerExtension.swift; sourceTree = "<group>"; };
 		88853C46227A4E320095B2FE /* TestVcSaveExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVcSaveExtension.swift; sourceTree = "<group>"; };
 		88B5D05F2278BD6400A08E12 /* LearnVcSaveExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnVcSaveExtension.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				88283A5E2275BFCF00ECB72F /* Extensions.swift */,
 				885FD1692281ED790042D95C /* MessageViewer.swift */,
 				884561A6228DC36100C18170 /* NetworkCheckReachability.swift */,
+				888507C12302A71F00FE6496 /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				88853C47227A4E320095B2FE /* TestVcSaveExtension.swift in Sources */,
 				8840CB3C2270F79900A837FD /* BulletinBoardDataSource.swift in Sources */,
 				885FD1AB22837B390042D95C /* DeleteUserDataModel.swift in Sources */,
+				888507C22302A71F00FE6496 /* UIViewExtension.swift in Sources */,
 				885FD1B9228552D50042D95C /* DateInterval.swift in Sources */,
 				88B5D0602278BD6400A08E12 /* LearnVcSaveExtension.swift in Sources */,
 				88853C45227A4E1D0095B2FE /* TestVcAnswerExtension.swift in Sources */,

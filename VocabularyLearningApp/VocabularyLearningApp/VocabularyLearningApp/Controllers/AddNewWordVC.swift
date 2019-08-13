@@ -23,7 +23,7 @@ class AddNewWordVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     let messageService: MessageViewerProtocol = MessageViewer.messageViewer
     
     let categoryPickerView = UIPickerView() // Kategori seçici
-    let categories = [NSLocalizedString("CATEGORY_BUTTON", comment: ""),"İsim","Fiil","Sıfat", "Zamir","Zarf","Edat","Bağlaç"]
+    let wordCategories = [NSLocalizedString("CATEGORY_BUTTON", comment: ""),"İsim","Fiil","Sıfat", "Zamir","Zarf","Edat","Bağlaç"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,14 +113,14 @@ extension AddNewWordVC // Kategori seçici ayarları
     { return 1 }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
-    { return categories.count }
+    { return wordCategories.count }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         if row == 0
         { categoryTextField.text = "" }
         else
-        { categoryTextField.text =  categories[row] }
+        { categoryTextField.text =  wordCategories[row] }
     }
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat
@@ -135,7 +135,7 @@ extension AddNewWordVC // Kategori seçici ayarları
         
         label.textColor = UIColor.black
         label.textAlignment = .left
-        label.text = categories[row]
+        label.text = wordCategories[row]
         return label
     }
 }

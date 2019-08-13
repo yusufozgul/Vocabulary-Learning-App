@@ -34,16 +34,28 @@ extension LearnVC: AnsweredDelegate
         {
         case 1:
             if selected != wordData.correctAnswer
-            { page.answerBox1Image.image = UIImage(named: "WrongAnswer") }
+            {
+                page.answerBox1Image.image = UIImage(named: "WrongAnswer")
+                page.answerBox1Image.shake()
+            }
         case 2:
             if selected != wordData.correctAnswer
-            { page.answerBox2Image.image = UIImage(named: "WrongAnswer") }
+            {
+                page.answerBox2Image.image = UIImage(named: "WrongAnswer")
+                page.answerBox2Image.shake()
+            }
         case 3:
             if selected != wordData.correctAnswer
-            { page.answerBox3Image.image = UIImage(named: "WrongAnswer") }
+            {
+                page.answerBox3Image.image = UIImage(named: "WrongAnswer")
+                page.answerBox3Image.shake()
+            }
         case 4:
             if selected != wordData.correctAnswer
-            { page.answerBox4Image.image = UIImage(named: "WrongAnswer") }
+            {
+                page.answerBox4Image.image = UIImage(named: "WrongAnswer")
+                page.answerBox4Image.shake()
+            }
         default:
             break
         }
